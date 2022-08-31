@@ -9,8 +9,8 @@ class model{
 
     protected function create($data){
 
-    foreach ($t as $key => $value) {
-        # code...
+    foreach ($data as $key => $value) {
+        
     }
     }
     protected function read(){

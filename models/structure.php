@@ -11,12 +11,15 @@ class structure{
  
     
 		public  $definition = array(
-     "domaine"=>"http://localhost/kingpro",
+     "domaine"=>"http://localhost/thekingproject",
      "db_name"=>"kingpro",
      "hote"=>"localhost",
      "login"=>"root",
      "pass"=>""
     );
+    public static function asset($data){
+        return $this->definition['domaine']."public/".$data;
+    }
 
 
 
