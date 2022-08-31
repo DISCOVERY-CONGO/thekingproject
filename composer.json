@@ -1,0 +1,7 @@
+{
+    "name": "discovery/kingpro",
+    "description": "crm de gestion",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {}
+}
