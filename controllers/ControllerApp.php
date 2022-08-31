@@ -23,12 +23,13 @@ public function __construct(){
 public function init_pages(){
  
 }
+
+
+
 public function get($page){
 
 	$control = new Controller();
-	if($page=="about"){
-
-	
+	if($page=="createClient"){
 	$control->test();	
 	}
 	

@@ -8,7 +8,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../assets/css/tailwind.output.css" />
+    <link rel="stylesheet" href="../public/assets/tailwind.output.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
@@ -25,13 +26,13 @@
             <img
               aria-hidden="true"
               class="object-cover w-full h-full dark:hidden"
-              src="../assets/img/login-office.jpeg"
+              src="<?= $this->asset('img/login-office.jpeg') ?>"
               alt="Office"
             />
             <img
               aria-hidden="true"
               class="hidden object-cover w-full h-full dark:block"
-              src="../assets/img/login-office-dark.jpeg"
+              src="<?= $this->asset('img/login-office-dark.jpeg') ?>"
               alt="Office"
             />
           </div>
