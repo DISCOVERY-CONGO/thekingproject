@@ -9,5 +9,10 @@
 </head>
 <body>
    rezfreztrezctrectrefztcrfceztcrzettezt
+   <?php 
+   var_dump(implode(" ,", array("a", "b", "c")));
+   
+   
+   ?>
 </body>
 </html>

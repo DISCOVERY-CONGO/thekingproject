@@ -1,8 +1,6 @@
 <?php 
 namespace models;
-use\maidusa_network\controleur;
-use\maidusa_network\table;
-use\maidusa_network\structure;
+
 
 
 
@@ -58,15 +56,15 @@ $bdd = new PDO('mysql:host='.$this->hote.';dbname='.$this->db_name, $this->login
 $pdo_options);
 	 // création des  table pour enregistrement comptes utilisateur
 
-	 $bdd->exec("
-	 CREATE TABLE IF NOT EXISTS produits (
+$bdd->exec("
+CREATE TABLE IF NOT EXISTS produit (
  id INT NOT NULL AUTO_INCREMENT,
- nom VARCHAR NOT NULL,
+ nom VARCHAR(255) NOT NULL,
  quantite INT NOT NULL,
  categorie VARCHAR(255),
  prix FLOAT NOT NULL,
  created_at DATE,
- created_at DATE,
+ updated_at DATE,
  PRIMARY KEY (id)
  );");
 
@@ -75,7 +73,7 @@ $pdo_options);
  id INT NOT NULL AUTO_INCREMENT,
  nom VARCHAR(255),
  created_at DATE,
- created_at DATE,
+ updated_at DATE,
  PRIMARY KEY (id)
  );");
 
@@ -86,7 +84,7 @@ $pdo_options);
  post_nom VARCHAR(255),
  sexe VARCHAR(255),
  created_at DATE,
- created_at DATE,
+ updated_at DATE,
  PRIMARY KEY (id)
  );");
 
@@ -95,10 +93,10 @@ $pdo_options);
  id INT NOT NULL AUTO_INCREMENT,
  serveur INT NOT NULL,
  client INT NOT NULL,
- table INT NOT NULL,
+ table_id INT NOT NULL,
  numcommande VARCHAR(255),
  created_at DATE,
- created_at DATE,
+ updated_at DATE,
  PRIMARY KEY (id)
  );");
 
@@ -107,7 +105,7 @@ $pdo_options);
 id INT NOT NULL AUTO_INCREMENT,
 nom VARCHAR(255),
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -121,7 +119,7 @@ email VARCHAR(255),
 password VARCHAR(255),
 role INT NOT NULL,
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -132,7 +130,7 @@ produit INT NOT NULL,
 quantite INT NOT NULL,
 prix FLOAT NOT NULL,
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -141,7 +139,7 @@ $bdd->exec("
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(255),
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -153,7 +151,7 @@ quantite INT NOT NULL,
 provenance VARCHAR(255),
 prix_unit FLOAT NOT NULL,
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -162,7 +160,7 @@ $bdd->exec("
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(255),
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -172,7 +170,7 @@ id INT NOT NULL AUTO_INCREMENT,
 title VARCHAR(255),
 montant FLOAT NOT NULL,
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -182,7 +180,7 @@ $bdd->exec("
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(255),
 created_at DATE,
-created_at DATE,
+updated_at DATE,
 PRIMARY KEY (id)
 );");
 
@@ -326,48 +324,36 @@ private function requetteAll($req){
 	
 return $donnees;
 }
-private function insert($data, $table){	
+public function insert($data, $table, $attributes){	
 /** @$table : le nom de la table qui doit recevoir les données 
 @$data : est un tableau contenant la liste des donnée à inserer dans chaque colonne de la table de donnée suivant l'ordre des colonne
 	*/
-$connect = $this->init_connection();
-	switch ($table) {
-		case 'relation':
-		$requet = "INSERT INTO relation(".$this->table_relation['colonne'].") VALUES(".$this->table_relation['pret'].")";
-	$insert = $connect->prepare($requet);
-	$array = $this->getArray(explode(",", $this->table_relation['colonne']), $data);
-		$insert->execute($array);
-			break;
-	case 'donnees':
-		$requet = "INSERT INTO donnees(".$this->table_donnees['colonne'].") VALUES(".$this->table_donnees['pret'].")";
-	$insert = $connect->prepare($requet);
-	$array = $this->getArray(explode(",", $this->table_donnees['colonne']), $data);
+		$connect = $this->init_connection();
 	
-		$insert->execute($array);
-			break;
-	case 'enregistrement':
-		$requet = "INSERT INTO enregistrement(".$this->table_enregistrement['colonne'].") VALUES(".$this->table_enregistrement['pret'].")";
+	$requet = "INSERT INTO ".$table."(".implode(", ", $attributes).") VALUES(:".implode(", :", $attributes).")";
 	$insert = $connect->prepare($requet);
-	$array = $this->getArray(explode(",", $this->table_enregistrement['colonne']), $data);
+
+	$array = $this->getArray($attributes, $data);
+	var_dump($requet);
+	var_dump($array);
 		$insert->execute($array);
-			break;
-	case 'colonne':
-		$requet = "INSERT INTO colonne(".$this->table_colonne['colonne'].") VALUES(".$this->table_colonne['pret'].")";
-	$insert = $connect->prepare($requet);
-	$array = $this->getArray(explode(",", $this->table_colonne['colonne']), $data);
-		$insert->execute($array);
-			break;
-		
-		default:
 			
-			break;
-	}
     
 	
 	return true;
 }
 
+private function getArray($table1, $table2){
+	/** @var : $table1 et $table2 doivent avoir la meme taille
+	*/
+if(count($table1)==count($table2)){
+	for($i=0; $i < count($table1); $i++){
+		$nouveau[$table1[$i]]=$table2[$i];
 
+	}
+return $nouveau;	
+}else{ return false;}
+}
 private function update($table, $colonne, $data, $reference){
 	/*
 @$table : contient le nom de la table 
