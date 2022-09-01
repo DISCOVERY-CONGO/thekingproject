@@ -25,7 +25,7 @@ class structure{
 
     
         public static $donnees =  array(
-      "domaine"=>"http://localhost/kingpro",
+      "domaine"=>"http://localhost/thekingproject",
      "db_name"=>"kingpro",
      "hote"=>"localhost",
      "login"=>"root",
@@ -34,13 +34,13 @@ class structure{
     
     public $definition_page = array(
     	"encodage"=>"utf-8", 
-        "domaine"=>"http://localhost/kingpro", 
+        "domaine"=>"http://localhost/thekingproject", 
        );
 	
 
 public static function data(){
     return [
-        "domaine"=>"http://localhost/kingpro",
+        "domaine"=>"http://localhost/thekingproject",
      "db_name"=>"kingpro",
      "hote"=>"localhost",
      "login"=>"root",

@@ -794,8 +794,9 @@ function texte_aleatoire_unique(){
 function generate_identifiant(){
     return time()."".str_shuffle("abcdefghijklmnopqrstuvwxyz1234567890");
 }
-
+use \models\structure;
 function route(){
+    
     return str_replace(structure::data()['domaine'], "", get_url());
 }
 

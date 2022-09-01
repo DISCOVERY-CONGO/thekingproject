@@ -24,6 +24,7 @@ public function init_pages(){
 
 public function get($page){
 
+<<<<<<< HEAD
 	$control = new HomeController();
 	if($page=="/"){
 	$control->index();	
@@ -31,6 +32,13 @@ public function get($page){
 	elseif($page == "clients"){
 		$control->clients();
 	}
+=======
+	$control = new Controller();
+	$control->start();	
+	
+	
+	
+>>>>>>> f704cdb226e956292bed3e0c933e6f4a8318b1b3
 
 	
 		
