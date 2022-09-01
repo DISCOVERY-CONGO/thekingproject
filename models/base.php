@@ -225,7 +225,7 @@ private  function start_connection(){
 	$this->pdo=$pdo;
 	return $pdo;
 }
-private function requette($req){
+public function requette($req){
 	$cont=0;
 	$connect =$this->init_connection();
 
@@ -276,7 +276,7 @@ private function requette($req){
 	
 return $donnees;
 }
-private function requetteAll($req){
+public function requetteAll($req){
 	$cont=0;
 	$connect =$this->init_connection();
 	$masque1 = "'";
@@ -354,7 +354,7 @@ if(count($table1)==count($table2)){
 return $nouveau;	
 }else{ return false;}
 }
-private function update($table, $colonne, $data, $reference){
+public function update($table, $colonne, $data, $reference){
 	/*
 @$table : contient le nom de la table 
 @colonne : contient un tableau censé contenir la liste des éléments à modifier dans la table
@@ -366,6 +366,7 @@ private function update($table, $colonne, $data, $reference){
 	$connect = $this->init_connection();
 	$modification = '';
 	$array_fetch = array();
+	// var_dump($data);
 	for($i=0; $i<count($colonne);$i++){
 
 		if($i==0){$modification = ''.$colonne[$i].'=:'.$colonne[$i];
@@ -381,7 +382,7 @@ private function update($table, $colonne, $data, $reference){
 	$base->execute($array_fetch);
 }
 
-private function supprimer($table, $reference){
+public function supprimer($table, $reference){
 	/*
 	@table : contient le nom de la table 
 	@reference : contient le reference ex : id=3
