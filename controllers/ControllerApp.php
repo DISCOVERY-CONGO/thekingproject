@@ -5,8 +5,6 @@ namespace controllers;
 
 use \models\Structure;
 
-
-
 class controllerApp{
 
 private $user;
@@ -24,33 +22,29 @@ public function init_pages(){
  
 }
 
-
-
 public function get($page){
 
-	$control = new Controller();
+	$control = new HomeController();
 	if($page=="/"){
-	$control->test();	
+	$control->index();	
 	}
-	
-	
+	elseif($page == "clients"){
+		$control->clients();
+	}
 
- 	
+	
+		
 }
-
 
 private function controller_admin($context){
 	  		
 }
-
 
 private function root_admin($requirement){
 	if($this->user->administration!=$requirement){
     header("location:connexion");
 	}
 }
-
-
 
 private function administrateurs(){
 

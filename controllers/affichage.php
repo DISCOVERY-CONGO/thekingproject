@@ -20,7 +20,7 @@ private $structure;
 
 	}
 	public function asset($data){
-		return $this->structure->definition['domaine'].'/public/assets/'.$data;
+		return $this->structure->definition['domaine'].'/public/'.$data;
 	}
 	
 public function vue($data){

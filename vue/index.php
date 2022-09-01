@@ -8,12 +8,13 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="<?= $this->asset('tailwind.output.css');  ?>" />
+    <link rel="stylesheet" href="/../public/assets/csss/tailwind.output.css" />
+    <link rel="stylesheet" href="/../public/assets/csss/tailwind.css" />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
-    <script src="<?=$this->asset('init-alpine.js');   ?>"></script>
+    <script src="<?= $this->asset('init-alpine.js');   ?>"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
@@ -74,7 +75,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="forms.html"
+                href="clients"
               >
                 <svg
                   class="w-5 h-5"
