@@ -2,23 +2,45 @@
 
 namespace controllers;
 
-use \models\structure;
-use \models\Produit;
+
 
 
 class Controller{
 
-public $affichage;
 
-public function test(){
-    $this->affichage = new Affichage();
-    $produit = new Produit();
-    $p1 =  $produit->find(1);
-    var_dump($produit->find(1));
-    $produit->update(["nom"=>"viande de soja"], 1);
-    $produit->delete(1);
-    //$produit->create(['p1', 25, 5, 254]);
-    //$this->affichage->views("index");
+
+public function start(){
+ 
+    $c1 = new ControllerProduit();
+    $c1->call();
+
+    $c1 = new ControllerCategorie();
+    $c1->call();
+
+    $c1 = new ControllerClient();
+    $c1->call();
+
+    $c1 = new ControllerCommande();
+    $c1->call();
+
+    $c1 = new ControllerData_table();
+    $c1->call();
+
+    $c1 = new ControllerLibelle_depense();
+    $c1->call();
+
+    $c1 = new ControllerMouvement_commande();
+    $c1->call();
+
+    $c1 = new ControllerRole();
+    $c1->call();
+
+    $c1 = new ControllerServer();
+    $c1->call();
+
+    $c1 = new ControllerUser();
+    $c1->call();
+ 
    
 }
     

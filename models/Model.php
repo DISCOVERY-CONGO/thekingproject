@@ -18,12 +18,20 @@ class model{
     $this->attributes[count($this->attributes)] = "updated_at";
    
     
-    $data[count($data)]=date("Y-m-d");
-    $data[count($data)]=date("Y-m-d");
+    $data['created_at']=date("Y-m-d");
+    $data['updated_at']=date("Y-m-d");
+    $donnees = [];
+    
    
     if(count($data)==count($this->attributes)){
        
-        $this->db->insert($data, strtolower($this->get_class_name()), $this->attributes);
+        foreach ($this->attributes as $key => $value) {
+            if(!in_array($value, array_keys($donnees))){
+                $donnees[$key]=$data[$value];
+            }
+        }
+        //var_dump(transform_array_assoc_to_index($donnees));
+       $this->db->insert(transform_array_assoc_to_index($donnees), strtolower($this->get_class_name()), $this->attributes);
     }
     }
 
@@ -35,6 +43,9 @@ class model{
     public function read(){ //retourne la liste des enregistrement de ce modele
         return $this->db->requetteAll("SELECT * FROM ".strtolower($this->get_class_name()));
 
+    }
+    public function all(){
+        return $this->read();
     }
     public function first(){ //retourne le premier element dans  la liste des enregistrement de ce modele
         return $this->db->requette("SELECT * FROM ".strtolower($this->get_class_name()));   

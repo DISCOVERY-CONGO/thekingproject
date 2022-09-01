@@ -10,7 +10,7 @@
 <body>
    rezfreztrezctrectrefztcrfceztcrzettezt
    <?php 
-   var_dump(implode(" ,", array("a", "b", "c")));
+   var_dump($data);
    
    
    ?>

@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS produit (
  );");
 
  $bdd->exec("
-	 CREATE TABLE IF NOT EXISTS categories (
+	 CREATE TABLE IF NOT EXISTS categorie (
  id INT NOT NULL AUTO_INCREMENT,
  nom VARCHAR(255),
  created_at DATE,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS produit (
  );");
 
  $bdd->exec("
-	 CREATE TABLE IF NOT EXISTS serveurs (
+	 CREATE TABLE IF NOT EXISTS serveur (
  id INT NOT NULL AUTO_INCREMENT,
  nom VARCHAR(255),
  post_nom VARCHAR(255),
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS produit (
  );");
 
  $bdd->exec("
-	 CREATE TABLE IF NOT EXISTS commandes (
+	 CREATE TABLE IF NOT EXISTS commande (
  id INT NOT NULL AUTO_INCREMENT,
  serveur INT NOT NULL,
  client INT NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS produit (
  );");
 
  $bdd->exec("
- CREATE TABLE IF NOT EXISTS clients (
+ CREATE TABLE IF NOT EXISTS client (
 id INT NOT NULL AUTO_INCREMENT,
 nom VARCHAR(255),
 created_at DATE,
@@ -111,20 +111,20 @@ PRIMARY KEY (id)
 
 
 $bdd->exec("
- CREATE TABLE IF NOT EXISTS users (
+ CREATE TABLE IF NOT EXISTS user (
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(255),
 secondName VARCHAR(255),
 email VARCHAR(255),
 password VARCHAR(255),
-role INT NOT NULL,
+role VARCHAR(255) NOT NULL,
 created_at DATE,
 updated_at DATE,
 PRIMARY KEY (id)
 );");
 
 $bdd->exec("
- CREATE TABLE IF NOT EXISTS mouvement_commandes (
+ CREATE TABLE IF NOT EXISTS mouvement_commande (
 id INT NOT NULL AUTO_INCREMENT,
 produit INT NOT NULL,
 quantite INT NOT NULL,
@@ -135,7 +135,7 @@ PRIMARY KEY (id)
 );");
 
 $bdd->exec("
- CREATE TABLE IF NOT EXISTS tables (
+ CREATE TABLE IF NOT EXISTS data_table (
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(255),
 created_at DATE,
@@ -156,7 +156,7 @@ PRIMARY KEY (id)
 );");
 
 $bdd->exec("
- CREATE TABLE IF NOT EXISTS depenses (
+ CREATE TABLE IF NOT EXISTS depense (
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(255),
 created_at DATE,
@@ -165,7 +165,7 @@ PRIMARY KEY (id)
 );");
 
 $bdd->exec("
- CREATE TABLE IF NOT EXISTS libelle_depenses (
+ CREATE TABLE IF NOT EXISTS libelle_depense (
 id INT NOT NULL AUTO_INCREMENT,
 title VARCHAR(255),
 montant FLOAT NOT NULL,
@@ -334,8 +334,7 @@ public function insert($data, $table, $attributes){
 	$insert = $connect->prepare($requet);
 
 	$array = $this->getArray($attributes, $data);
-	var_dump($requet);
-	var_dump($array);
+	
 		$insert->execute($array);
 			
     
