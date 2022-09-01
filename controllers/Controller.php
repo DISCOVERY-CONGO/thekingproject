@@ -8,15 +8,12 @@ namespace controllers;
 class Controller{
 
 
-<<<<<<< HEAD
-public function test(){
-    $this->affichage = new Affichage();
-    $produit = new Produit();
-    //$produit->create(['p1', 25, 5, 254]);
-    $this->affichage->views("index");
-=======
+
 
 public function start(){
+
+    $c1 = new HomeController();
+    $c1->call();
  
     $c1 = new ControllerProduit();
     $c1->call();
@@ -48,7 +45,7 @@ public function start(){
     $c1 = new ControllerUser();
     $c1->call();
  
->>>>>>> f704cdb226e956292bed3e0c933e6f4a8318b1b3
+
    
 }
 
