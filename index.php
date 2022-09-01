@@ -10,7 +10,7 @@ session_start();
  if(isset($_GET["page"])){
  $app->get($_GET['page']);
 }else{
-    $app->get(".");
+    $app->get("/");
 }
   ?>
 
