@@ -23,10 +23,9 @@ class BaseController{
     }
     public function call(){
         $route = route();
-        $masque1 = "/^".$this->model.'s\/[0-9]+/';
-        //var_dump($masque1);
+        $this->pause();
+        $this->route();
        
-        //var_dump($this->model);
         if($route=="/".$this->model.'s'){
             if($this->is_post()){
                 $model = new ("\\models\\".$this->model) ();
@@ -37,8 +36,8 @@ class BaseController{
                 ecrire("success");  
 
             }else{
-               // $this->id = $id;
-                $this->all();
+                $model = new ("\\models\\".$this->model) ();
+                $this->all($model->all());
             }
         }elseif (preg_match("/\/".$this->model.'s\/[0-9]+$/', $route)) {
             $decoupage = explode("/", $route);
@@ -49,8 +48,9 @@ class BaseController{
                 $model->update($this->request["post"], $id);
                 echo "success";
             }else{
+                $model = new ("\\models\\".$this->model) ();
                 $this->id = $id;
-                $this->one();
+                $this->one($model->find($id));
             }
         }elseif (preg_match("/\/".$this->model.'s\/[0-9]+\/delete$/', $route)) {
 
@@ -65,11 +65,26 @@ class BaseController{
         }
     }
 
-    protected function all(){
+    protected function all($data){
 
     }
-    protected function one(){
+    protected function one($data){
 
+    }
+    private function pause(){
+        if($this->middleware()==true){
+            die($this->middleware());
+        }
+    }
+    protected function  middleware(){
+
+    }
+    protected function route(){
+
+    }
+    protected function get($regex){
+        $regex = str_replace("/", "\\/", $regex);
+        return preg_match("/".$regex."$/", route());
     }
 
 }
