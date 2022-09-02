@@ -1,0 +1,21 @@
+<?php
+namespace Controllers;
+
+class HomeController extends BaseController{
+    protected $model = "produit";
+    //implementez les methodes all et one pour afficher les données 
+
+    protected function all(){
+     return $this->affichage->views("index", $this->data_model->all());
+    }
+
+    protected function one(){
+        return $this->affichage->views("index", $this->data_model->one($this->id));
+       }
+   
+
+
+}
+
+
+?>
