@@ -8,12 +8,13 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="<?= $this->asset('assets/csss/tailwind.output.css')?>" />
-    <link rel="stylesheet" href="/../public/assets/csss/tailwind.css" />
+    <link rel="stylesheet" href="<?= $this->asset('style.css'); ?>" />
+    
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="<?= $this->asset('init-alpine.js');   ?>"></script>
     <link
       rel="stylesheet"
@@ -1405,22 +1406,5 @@
     </div>
   </body>
 </html>
-=======
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=$this->asset('style.css');   ?>">
-    <title>Document</title>
-</head>
-<body>
-   rezfreztrezctrectrefztcrfceztcrzettezt
-   <?php 
-   var_dump($data);
-   
-   
-   ?>
-</body>
-</html>
->>>>>>> f704cdb226e956292bed3e0c933e6f4a8318b1b3
+
+
