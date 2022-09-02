@@ -17,16 +17,19 @@ class BaseController{
         $this->data_model = new ("\\models\\".$this->model) ();
         
         $this->affichage  = new affichage();
+        
     }
     protected function is_post(){
         return !empty($this->request["post"]);
     }
     public function call(){
         $route = route();
+        
         $this->pause();
         $this->route();
        
         if($route=="/".$this->model.'s'){
+            
             if($this->is_post()){
                 $model = new ("\\models\\".$this->model) ();
                 if($this->model == "user"){

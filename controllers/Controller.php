@@ -9,11 +9,7 @@ class Controller{
 
 
 
-
 public function start(){
-
-    $c1 = new HomeController();
-    $c1->call();
  
     $c1 = new ControllerProduit();
     $c1->call();
@@ -44,16 +40,12 @@ public function start(){
 
     $c1 = new ControllerUser();
     $c1->call();
-
-    $c1 = new ControllerDepense();
-    $c1->call();
  
- 
-
    
 }
-
     
+
+
 
 }
 
