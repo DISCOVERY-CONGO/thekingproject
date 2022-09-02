@@ -10,16 +10,14 @@ class ControllerClient extends BaseController{
        }
    
        protected function one($data){
-           return $this->affichage->views("index", $data);
+           return $this->affichage->views("client/clientDetail", $data);
           }
 
           protected function route(){
-            // if($this->get("clients")){
-            //     $this->affichage->views("client/clients");
-            // } 
-            // if("newClient"){
-            //     $this->affichage->views('client/create');
-            // }
+           
+            if($this->get("newClient")){
+                $this->affichage->views('client/create');
+            }
         }
 
 }

@@ -7,12 +7,21 @@ class ControllerData_table extends BaseController{
     //implementez les methodes all et one pour afficher les données 
 
     protected function all($data){
-        return $this->affichage->views("index", $data);
+        return $this->affichage->views("table/tables", $data);
        }
    
        protected function one($data){
-           return $this->affichage->views("index", $data);
+           return $this->affichage->views("table/tableDetail", $data);
           }
+
+          protected function route(){
+            if($this->get("newTable")){
+                $this->affichage->views("table/createTable");
+            } 
+            if($this->get("editTable")){
+                $this->affichage->views('table/editTable');
+            }
+}
 }
 
 

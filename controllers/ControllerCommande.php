@@ -13,6 +13,15 @@ class ControllerCommande extends BaseController{
            return $this->affichage->views("index", $data);
           }
 
+          protected function route(){
+            if($this->get("commands")){
+                $this->affichage->views("commands/commmands");
+            } 
+            if($this->get("newCommmand")){
+                $this->affichage->views('categorie/createCategorie');
+            }
+        }
+
 }
 
 
