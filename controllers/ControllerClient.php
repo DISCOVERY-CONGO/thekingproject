@@ -6,18 +6,21 @@ class ControllerClient extends BaseController{
     //implementez les methodes all et one pour afficher les données 
 
     protected function all($data){
-        return $this->affichage->views("client/index",$data);
+        return $this->affichage->views("client/clients", $data);
        }
    
-    protected function one($data){
-           return $this->affichage->views("client/clientDetail", $data);
+       protected function one($data){
+           return $this->affichage->views("index", $data);
           }
 
-    protected function route(){
-            if($this->get("client/[0-9]+")){
-                $this->affichage->views("client/clients");
-            }
-    }
+          protected function route(){
+            // if($this->get("clients")){
+            //     $this->affichage->views("client/clients");
+            // } 
+            // if("newClient"){
+            //     $this->affichage->views('client/create');
+            // }
+        }
 
 }
 

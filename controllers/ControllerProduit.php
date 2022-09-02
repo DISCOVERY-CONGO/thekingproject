@@ -14,8 +14,10 @@ class ControllerProduit extends BaseController{
        }
 
        protected function route(){
-        if($this->get("about/[0-9]+")){
-            $this->affichage->views("index");
+        if($this->get("produits")){
+            $this->affichage->views("product/products");
+        }elseif($this->get("newProduct")){
+            $this->affichage->views(("product/createProduct"));
         }
        }
    
