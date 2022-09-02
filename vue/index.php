@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/../public/assets/csss/tailwind.output.css" />
+    <link rel="stylesheet" href="<?= $this->asset('assets/csss/tailwind.output.css')?>" />
     <link rel="stylesheet" href="/../public/assets/csss/tailwind.css" />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
@@ -23,7 +23,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
       defer
     ></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
     <script src="<?=$this->asset('charts-lines.js');   ?>" defer></script>
     <script src="<?=$this->asset('charts-pie.js');   ?>" defer></script>
   </head>
