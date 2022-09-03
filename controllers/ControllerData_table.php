@@ -15,6 +15,9 @@ class ControllerData_table extends BaseController{
           }
 
           protected function route(){
+            if($this->get("tables")){
+                $this->affichage->views("table/tables");
+            } 
             if($this->get("newTable")){
                 $this->affichage->views("table/createTable");
             } 

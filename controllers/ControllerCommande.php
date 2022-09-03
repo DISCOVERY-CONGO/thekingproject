@@ -14,8 +14,8 @@ class ControllerCommande extends BaseController{
           }
 
           protected function route(){
-            if($this->get("commands")){
-                $this->affichage->views("commands/commmands");
+            if($this->get("commandes")){
+                $this->affichage->views("commands/commands");
             } 
             if($this->get("newCommmand")){
                 $this->affichage->views('categorie/createCategorie');

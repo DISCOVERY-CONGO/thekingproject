@@ -7,7 +7,12 @@ class ControllerDepense extends BaseController{
         return false;
     }
     protected function route(){
-       // ajoutez les routes
+       if($this->get('depenses')){
+        $this->affichage->views("depense/depenses");
+       }
+       if ($this->get('newDepense')) {
+        $this->affichage->views("depense/createDepense");
+       }
     }
 }
 

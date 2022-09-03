@@ -14,7 +14,9 @@ class ControllerClient extends BaseController{
           }
 
           protected function route(){
-           
+           if ($this->get("clients")){
+            $this->affichage->views('client/clients');
+           }
             if($this->get("newClient")){
                 $this->affichage->views('client/create');
             }
