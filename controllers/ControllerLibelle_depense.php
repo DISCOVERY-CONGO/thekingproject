@@ -12,6 +12,14 @@ class ControllerLibelle_depense extends BaseController{
        protected function one($data){
            return $this->affichage->views("Libelle/libelleDetail", $data);
           }
+          protected function route(){
+            if ($this->get("libelles")){
+             $this->affichage->views('Libelle/libelles');
+            }
+             if($this->get("newLibelle")){
+                 $this->affichage->views('Libelle/createLibelle');
+             }
+         }
 
 }
 

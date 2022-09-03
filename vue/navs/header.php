@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windmill Dashboard</title>
+    <title>king pro</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -16,7 +16,7 @@
       defer
     ></script>
   
-    <script src="<?= $this->asset('init-alpine.js');   ?>"></script>
+    <script src="/public/assets/js/init-alpine>"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
@@ -26,7 +26,7 @@
       defer
     ></script>
     
-    <script src="<?=$this->asset('charts-lines.js');   ?>" defer></script>
-    <script src="<?=$this->asset('charts-pie.js');   ?>" defer></script>
+    <script src="/public/assets/js/charts-lines.js" defer></script>
+    <script src="/public/assets/js/charts-pie.js" defer></script>
   </head>
   <body>
