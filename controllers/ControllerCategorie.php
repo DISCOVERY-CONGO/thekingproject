@@ -6,7 +6,10 @@ class ControllerCategorie extends BaseController{
     //implementez les methodes all et one pour afficher les données 
 
     protected function all($data){
-        return $this->affichage->views("categorie/categories", $data);
+        foreach ($data as $key => $value) {
+            var_dump($value->created_at);
+        }
+        //return $this->affichage->views("categorie/categories", $data);
        }
    
        protected function one($data){
@@ -14,9 +17,7 @@ class ControllerCategorie extends BaseController{
           }
 
           protected function route(){
-            if($this->get("/categories")){
-                $this->affichage->views("categorie/categories");
-            } 
+            
             if($this->get("/newCategorie")){
                 $this->affichage->views('categorie/createCategorie');
             }

@@ -184,6 +184,27 @@ updated_at DATE,
 PRIMARY KEY (id)
 );");
 
+$bdd->exec("
+ CREATE TABLE IF NOT EXISTS affectation (
+id INT NOT NULL AUTO_INCREMENT,
+id_server INT NOT NULL,
+id_table  INT NOT NULL,
+created_at DATE,
+updated_at DATE,
+PRIMARY KEY (id)
+);");
+
+$bdd->exec("
+ CREATE TABLE IF NOT EXISTS payement (
+id INT NOT NULL AUTO_INCREMENT,
+id_commande INT NOT NULL,
+id_client  INT NOT NULL,
+created_at DATE,
+updated_at DATE,
+PRIMARY KEY (id)
+);");
+
+
  
     
 
@@ -408,6 +429,7 @@ if(!empty($colonne)){
 	return 'impossible de crée une table à colonne vide';
 }
 }
+
 
 }
 

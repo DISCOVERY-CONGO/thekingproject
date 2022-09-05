@@ -3,13 +3,59 @@ namespace models;
 
 class model{
     protected $name;
+    protected $donnees;
     protected $id;
     protected $created_at;
     protected $updated_at;
     protected $attributes = [];
     protected $db;
-    public function __construct(){
+    protected $child;
+    protected $parent;
+    
+    public function __construct($data=null){
         $this->db  = new base();
+        if($data!=null){
+        $this->donnees = $data;
+        //var_dump($data);
+        }
+    }
+   
+
+    public function get_child(){
+        //var_dump($this);
+        $id = ((object)$this->donnees)->id;
+        //$child = [];
+        foreach ($this->child as $key => $value) {
+            $data = $this->db->requetteAll("SELECT * FROM ".$key." WHERE ".$value."='".$id."'");
+            $child = [];
+            foreach ($data as $cle => $valeur) {
+                $child[count($child)] = new ("\\models\\".$key) ($valeur);
+            }
+           // var_dump($child);
+            $this->child[$key] = $child;
+        }
+        return $this->child;
+    }
+    public function get_parent(){
+        $id = ((object)$this->donnees)->id;
+        //$child = [];
+        foreach ($this->parent as $key => $value) {
+            $data = $this->db->requette("SELECT * FROM ".$key." WHERE id='".$this->$value."'");
+            
+            
+           // var_dump($child);
+            $this->parent[$key] = $data ? new ("\\models\\".$key) ($data) : null;
+        }
+        return $this->child;
+    }
+
+    public function __get($attr){
+        if(in_array($attr, array_keys($this->donnees))){
+            return $this->donnees[$attr];
+        }else{
+            return null;
+        }
+
     }
 
     public function create($data){ //crée un nouveau donnée 
@@ -45,13 +91,31 @@ class model{
 
     }
     public function all(){
-        return $this->read();
+        $data = $this->read();
+        $donnees = [];
+        foreach ($data as $key => $value) {
+           // var_dump($value);
+           $donnees = array_merge($donnees, array(new ("\\models\\".$this->get_class_name()) ($value)));
+        }
+        return $donnees;
     }
     public function first(){ //retourne le premier element dans  la liste des enregistrement de ce modele
-        return $this->db->requette("SELECT * FROM ".strtolower($this->get_class_name()));   
+        $data = $this->db->requette("SELECT * FROM ".strtolower($this->get_class_name())); 
+        if($data){
+            return new ("\\models\\".$this->get_class_name())($this->db->requette("SELECT * FROM ".strtolower($this->get_class_name()))); 
+        }else{
+            return null;
+        }
+        
     }
     public function find($id){ //retourne le premier element dans  la liste des enregistrement de ce modele ayant l'id correspondant
-        return $this->db->requette("SELECT * FROM ".strtolower($this->get_class_name())." WHERE id=".$id);
+        
+        $data = $this->db->requette("SELECT * FROM ".strtolower($this->get_class_name())." WHERE id=".$id);
+        if($data){
+        return new ("\\models\\".$this->get_class_name()) ($data);
+        }else{
+            return null;
+        }
     }
 
     public function update($data, $id){
