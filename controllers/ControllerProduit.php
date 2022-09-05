@@ -1,5 +1,7 @@
 <?php
 namespace Controllers;
+use \Models\Categorie;
+use Models\Produit;
 
 class ControllerProduit extends BaseController{
     protected $model = "produit";
@@ -17,10 +19,16 @@ class ControllerProduit extends BaseController{
         if($this->get("produits")){
             $this->affichage->views("product/products");
         }elseif($this->get("newProduct")){
-            $this->affichage->views(("product/createProduct"));
+            $categories = new Categorie();
+            $data = $categories->all_categories();
+            $this->affichage->views("product/createProduct",$data);
         }
        }
-   
+       public function store($data){
+        $server = new Produit();
+        $server->inserer($data);
+        header('location:produits');
+    }
 
 
 }

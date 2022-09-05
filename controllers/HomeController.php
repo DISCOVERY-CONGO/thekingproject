@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
-
+use Models\Client;
 class HomeController extends BaseController{
     protected $model = "produit";
     //implementez les methodes all et one pour afficher les données 
@@ -15,7 +15,9 @@ class HomeController extends BaseController{
    
        protected function route(){
         if($this->get("/")){
-            $this->affichage->views("index");
+            $clients = new Client();
+            $data = $clients->all_clients();
+            $this->affichage->views("index",$data);
         }
 
 

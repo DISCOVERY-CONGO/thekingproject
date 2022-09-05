@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
-
+use \models\Data_table;
 class ControllerData_table extends BaseController{
     protected $model = "data_table";
     
@@ -25,6 +25,14 @@ class ControllerData_table extends BaseController{
                 $this->affichage->views('table/editTable');
             }
 }
+
+    public function insertion($data){
+            
+            $base = new Data_table();
+            $base->insert($data);
+    }
+
+
 }
 
 

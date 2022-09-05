@@ -330,7 +330,7 @@ public function insert($data, $table, $attributes){
 	*/
 		$connect = $this->init_connection();
 	
-	$requet = "INSERT INTO ".$table."(".implode(", ", $attributes).") VALUES(:".implode(", :", $attributes).")";
+	$requet = "INSERT INTO ".$table."(".implode(", ", $attributes).") VALUES(?,?)";
 	$insert = $connect->prepare($requet);
 
 	$array = $this->getArray($attributes, $data);
@@ -342,10 +342,28 @@ public function insert($data, $table, $attributes){
 	return true;
 }
 
+
+
+public function inserer($data, $table, $attributes){	
+	/** @$table : le nom de la table qui doit recevoir les données 
+		*/
+			$connect = $this->init_connection();
+		
+		$requet = "INSERT INTO ".$table."(".$attributes.") VALUES(?)";
+		$insert = $connect->prepare($requet);
+		$insert->execute([$data]);
+				
+		
+		
+		return true;
+	}
+
+
+
 private function getArray($table1, $table2){
 	/** @var : $table1 et $table2 doivent avoir la meme taille
 	*/
-if(count($table1)==count($table2)){
+if(count($table1) == count($table2)){
 	for($i=0; $i < count($table1); $i++){
 		$nouveau[$table1[$i]]=$table2[$i];
 

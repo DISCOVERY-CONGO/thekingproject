@@ -1,6 +1,6 @@
 <?php
 namespace Controllers;
-
+use \Models\Categorie;
 class ControllerCategorie extends BaseController{
     protected $model = "categorie";
     //implementez les methodes all et one pour afficher les données 
@@ -21,6 +21,13 @@ class ControllerCategorie extends BaseController{
                 $this->affichage->views('categorie/createCategorie');
             }
         }
+
+        
+    public function store($data){
+        $server = new Categorie();
+        $server->inserer($data);
+        header('location:categories');
+    }
 
 }
 
