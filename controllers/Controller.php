@@ -10,7 +10,11 @@ class Controller{
 
 
 public function start(){
- 
+
+ob_start();
+    $c1 = new HomeController();
+    $c1->call();
+
     $c1 = new ControllerProduit();
     $c1->call();
 
@@ -35,12 +39,29 @@ public function start(){
     $c1 = new ControllerRole();
     $c1->call();
 
-    $c1 = new ControllerServer();
+    $c1 = new ControllerServeur();
     $c1->call();
 
     $c1 = new ControllerUser();
     $c1->call();
+
+
+    $c1 = new ControllerDepense();
+    $c1->call();
+
+    $c1 = new ControllerAffectation();
+    $c1->call();
+    $affiche = ob_get_contents();
+
+
+    if(!empty($affiche)){
+        ecrire($affiche);
+    }else{
+        ecrire("404 not found");
+    }
  
+
+
    
 }
     

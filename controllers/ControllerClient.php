@@ -10,9 +10,15 @@ class ControllerClient extends BaseController{
        }
    
        protected function one($data){
-        //var_dump($data);
            return $this->affichage->views("client/clientDetail", $data);
           }
+
+          protected function route(){
+           
+            if($this->get("newClient")){
+                $this->affichage->views('client/create');
+            }
+        }
 
 }
 

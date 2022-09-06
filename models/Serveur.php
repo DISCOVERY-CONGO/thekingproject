@@ -3,7 +3,8 @@
 namespace Models;
 
 
-class Server extends Model{
+class Serveur extends Model{
+    protected $child = ["affectation"=>"id_server"];
 
 protected $attributes=[
     "nom", 

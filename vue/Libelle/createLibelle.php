@@ -41,20 +41,20 @@
               <h1
                 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
               >
-                Ajouter une table
+                Ajouter un libellé
               </h1>
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">nom</span>
+                <span class="text-gray-700 dark:text-gray-400">titre</span>
                 <input
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="" name="nom"
+                  placeholder="" name="title"
                 />
               </label>
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">nombre des places</span>
+                <span class="text-gray-700 dark:text-gray-400">montant</span>
                 <input
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="100" name="places"
+                  placeholder="100" name="montant"
                 />
               </label>
              
@@ -64,7 +64,7 @@
                 class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                 href=""
               >
-                créer un client
+                créér un client
               </a>
 
               <hr class="my-8" />

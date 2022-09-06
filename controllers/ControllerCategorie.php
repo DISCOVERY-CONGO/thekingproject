@@ -13,6 +13,13 @@ class ControllerCategorie extends BaseController{
            return $this->affichage->views("categorie/categorieDetail", $data);
           }
 
+          protected function route(){
+            
+            if($this->get("/newCategorie")){
+                $this->affichage->views('categorie/createCategorie');
+            }
+        }
+
 }
 
 

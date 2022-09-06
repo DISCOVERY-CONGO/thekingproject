@@ -42,9 +42,10 @@ class BaseController{
                 $model = new ("\\models\\".$this->model) ();
                 $this->all($model->all());
             }
-        }elseif (preg_match("/\/".$this->model.'s\/[0-9]+$/', $route)) {
+        }elseif (preg_match("/^\/".$this->model.'s\/[0-9]+$/', $route)) {
             $decoupage = explode("/", $route);
            // var_dump($decoupage[count($decoupage)-1]);
+           //var_dump($this->model);
             $id = $decoupage[count($decoupage)-1];
             if($this->is_post()){ 
                 $model = new ("\\models\\".$this->model) ();

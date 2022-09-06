@@ -6,8 +6,11 @@ class ControllerLibelle_depense extends BaseController{
     //implementez les methodes all et one pour afficher les données 
 
     protected function all($data){
-        return $this->affichage->views("Libelle/index", $data);
-       }
+
+        
+
+        return $this->affichage->views("Libelle/libelles", $data);
+      }
    
        protected function one($data){
            return $this->affichage->views("Libelle/libelleDetail", $data);
