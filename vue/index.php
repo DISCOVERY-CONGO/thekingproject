@@ -305,7 +305,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    6389
+                  <?= $data['count_client'] ?>
                   </p>
                 </div>
               </div>
@@ -382,12 +382,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Pending contacts
+                    total  produit
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    35
+                   <?= $data['count_product'] ?>
                   </p>
                 </div>
               </div>
@@ -402,8 +402,8 @@
                       class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                     >
                       <th class="px-4 py-3">Client</th>
-                      <th class="px-4 py-3">montant</th>
-                      <th class="px-4 py-3">Status</th>
+                      <th class="px-4 py-3">quantité</th>
+                      <th class="px-4 py-3">prix</th>
                       <th class="px-4 py-3">Table</th>
                       <th class="px-4 py-3">action</th>
                     </tr>
@@ -411,7 +411,7 @@
                   <tbody
                     class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
-                  <?php foreach($data as $data) { ?>
+                  <?php foreach($data['clients'] as $data) { ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
@@ -419,12 +419,7 @@
                           <div
                             class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
                           >
-                            <img
-                              class="object-cover w-full h-full rounded-full"
-                              src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                              alt=""
-                              loading="lazy"
-                            />
+                            
                             <div
                               class="absolute inset-0 rounded-full shadow-inner"
                               aria-hidden="true"
@@ -439,23 +434,23 @@
                         </div>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                        $ 863.45
+                      <?= $data['quantite'] ?>
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span
                           class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                         >
-                          en ordre
+                        <?= ($data['prix'] * $data['quantite'] ) ?>fc
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                        10
+                      <?= $data['tname']?>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                      <a href="newCommand/<?= $data['id'] ?>"
-              class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                      <a href="confirmCommand/<?= $data['id'] ?>"
+              class="flex items-center justify-between w-20 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
             >
-                      commander
+                      payer
               <span class="ml-2" aria-hidden="true">+</span>
 </a>
                       </td>
@@ -564,70 +559,7 @@
               </div>
             </div>
 
-            <!-- Charts -->
-            <h2
-              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-            >
-              Charts
-            </h2>
-            <div class="grid gap-6 mb-8 md:grid-cols-2">
-              <div
-                class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                  Revenue
-                </h4>
-                <canvas id="pie"></canvas>
-                <div
-                  class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
-                >
-                  <!-- Chart legend -->
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"
-                    ></span>
-                    <span>Shirts</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"
-                    ></span>
-                    <span>Shoes</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"
-                    ></span>
-                    <span>Bags</span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                  Traffic
-                </h4>
-                <canvas id="line"></canvas>
-                <div
-                  class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
-                >
-                  <!-- Chart legend -->
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"
-                    ></span>
-                    <span>Organic</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"
-                    ></span>
-                    <span>Paid</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+        
           </div>
         </main>
       </div>

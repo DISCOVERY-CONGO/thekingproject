@@ -30,6 +30,12 @@ public function insert($data){
     
 }
 
+public function all_tables(){
+    $sql = "SELECT * FROM data_table ORDER BY id DESC";
+    $this->req = $this->connect->query($sql);
+    $result = $this->req->fetchAll();
+    return $result;
+}
 
 }
 

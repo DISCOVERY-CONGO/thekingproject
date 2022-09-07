@@ -30,13 +30,23 @@ public function inserer($data){
     $req->execute([$nom,$quantite,$categorie,$prix]);
 }
 
-public function all_servers(){
+public function all_products(){
     $sql = "SELECT * FROM produit ORDER BY id DESC";
     $this->req = $this->connect->query($sql);
     $result = $this->req->fetchAll();
     return $result;
 }
 
+public function count(){
+    
+    $this->req = $this->connect->query("SELECT * FROM produit");
+    return $this->req->rowCount();
+}
+
+public function produit_by_id(int $id){
+    $this->req = $this->connect->prepare("SELECT * FROM produit WHERE id = ?");
+    return $this->req->execute([$id]);
+}
 
 }
 

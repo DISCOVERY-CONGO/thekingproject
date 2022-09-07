@@ -25,9 +25,29 @@ public function all_clients(){
         return $result;
 }
 
+public function count(){
+    
+    $this->req = $this->connect->query("SELECT * FROM client");
+    return $this->req->rowCount();
 }
 
+}
 
+// public function getMemberCartItem($member_id)
+// {
+//     $query = "SELECT tbl_product.*, tbl_cart.id as cart_id,tbl_cart.quantity FROM tbl_product, tbl_cart WHERE 
+//         tbl_product.id = tbl_cart.product_id AND tbl_cart.member_id = ?";
+    
+//     $params = array(
+//         array(
+//             "param_type" => "i",
+//             "param_value" => $member_id
+//         )
+//     );
+    
+//     $cartResult = $this->getDBResult($query, $params);
+//     return $cartResult;
+// }
 
 
 ?>

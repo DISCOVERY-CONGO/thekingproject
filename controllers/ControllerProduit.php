@@ -17,7 +17,9 @@ class ControllerProduit extends BaseController{
 
        protected function route(){
         if($this->get("produits")){
-            $this->affichage->views("product/products");
+            $product = new Produit();
+            $data = $product->all_products();
+            $this->affichage->views("product/products",$data);
         }elseif($this->get("newProduct")){
             $categories = new Categorie();
             $data = $categories->all_categories();

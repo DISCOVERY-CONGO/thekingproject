@@ -30,7 +30,7 @@ public function vue($data){
 public function simple_vue($page){
 	include("vue/".$page.".php");
 }
-public function views($page, $data=array()){
+public function views($page, $data=array(),$other=array()){
 	
 	
 	include("vue/".$page.".php");

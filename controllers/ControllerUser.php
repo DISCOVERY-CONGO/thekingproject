@@ -13,6 +13,12 @@ class ControllerUser extends BaseController{
            return $this->affichage->views("index", $data);
           }
 
+          protected function route(){
+            if($this->get("login")){
+                $this->affichage->views("auth/login");
+            } 
+          }
+
 }
 
 

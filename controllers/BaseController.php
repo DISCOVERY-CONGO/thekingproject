@@ -87,6 +87,11 @@ class BaseController{
         return preg_match("/".$regex."$/", route());
     }
 
+    protected function get_parameters(){
+        return explode("/", route());
+       
+    }
+
 }
 
 

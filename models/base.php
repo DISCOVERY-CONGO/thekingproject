@@ -427,6 +427,56 @@ if(!empty($colonne)){
 }
 }
 
+
+function getDBResult($query, $params = array())
+{
+	$connect = $this->init_connection();
+	$sql_statement = $connect->prepare($query);
+	if (! empty($params)) {
+		$this->bindParams($sql_statement, $params);
+	}
+	$sql_statement->execute();
+	$result = $sql_statement->get_result();
+	
+	if ($result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+			$resultset[] = $row;
+		}
+	}
+	
+	if (! empty($resultset)) {
+		return $resultset;
+	}
+}
+
+function updateDB($query, $params = array())
+{
+	$connect = $this->init_connection();
+	$sql_statement =$connect->prepare($query);
+	if (! empty($params)) {
+		$this->bindParams($sql_statement, $params);
+	}
+	$sql_statement->execute();
+}
+
+function bindParams($sql_statement, $params)
+{
+	$param_type = "";
+	foreach ($params as $query_param) {
+		$param_type .= $query_param["param_type"];
+	}
+	
+	$bind_params[] = & $param_type;
+	foreach ($params as $k => $query_param) {
+		$bind_params[] = & $params[$k]["param_value"];
+	}
+	
+	call_user_func_array(array(
+		$sql_statement,
+		'bind_param'
+	), $bind_params);
+}
+
 }
 
 ?>
