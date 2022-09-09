@@ -2,6 +2,7 @@
 
 use \Controllers\ControllerData_table;
 use Models\Data_table;
+$structure = new \models\structure();
 
 if (isset($_POST['table'])) {
     if ($_POST['nom']) {
@@ -11,6 +12,6 @@ if (isset($_POST['table'])) {
         $table = new ControllerData_table();
         $data = array('nom'=>$nom,'places'=>$places);
         $table->insertion($data);
-
+        header("location:".$structure->redirect['domaine']."/tables");
     }
 }

@@ -13,8 +13,6 @@ $command_controller = new ControllerCommande;
 
 
 if (! empty($_POST["action"])) {
-   
-
     
     
     switch ($_POST["action"]) {
@@ -22,26 +20,26 @@ if (! empty($_POST["action"])) {
             if (! empty($_POST["quantite"])) {
 
                 $product_id = $_POST['produit_id'];
-                $client_id = $_POST['client_id'];
+                $command_id = $_POST['command_id'];
                 $quantite = $_POST["quantite"];
-                $table = $_POST['table_id'];
-                $data = ['produit_id'=>$product_id,'client_id'=>$client_id,'quantite'=>$quantite,'table_id'=>$table];
+                
+                $data = ['produit_id'=>$product_id,'command_id'=>$command_id,'quantite'=>$quantite];
 
                 $productResult = $produit->produit_by_id($product_id);
                 
-                $commandResult = $commande->getCommandByProduct($product_id, $client_id);
+                $commandResult = $commande->getCommandByProduct($product_id, $command_id);
                 
                 
                 if (! empty($commandResult)) {
                     
                     $newQuantity = $commandResult[0]["quantite"] + $_POST["quantite"];
                     $commande->updateCommandQuantity($newQuantity, $commandResult[0]["id"]);
-                    header("location:".$structure->redirect['domaine']."/newCommand/$client_id");
+                    header("location:".$structure->redirect['domaine']."/newCommand/$command_id");
                     
                 } else {
                     
                     $commande->store($data);
-                    header("location:".$structure->redirect['domaine']."/newCommand/$client_id");
+                    header("location:".$structure->redirect['domaine']."/newCommand/$command_id");
                 }
             }
             break;

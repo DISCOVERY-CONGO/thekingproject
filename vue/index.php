@@ -396,23 +396,28 @@
             <!-- New Table -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
-                <table class="w-full whitespace-no-wrap">
+                 <table class="w-full whitespace-no-wrap">
                   <thead>
                     <tr
                       class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                     >
-                      <th class="px-4 py-3">Client</th>
-                      <th class="px-4 py-3">quantité</th>
-                      <th class="px-4 py-3">prix</th>
-                      <th class="px-4 py-3">Table</th>
+                      <th class="px-4 py-3">nom</th>
+                      <th class="px-4 py-3">table</th>
+                      <th class="px-4 py-3">client</th>
+                     
                       <th class="px-4 py-3">action</th>
                     </tr>
                   </thead>
                   <tbody
                     class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
+<<<<<<< HEAD
                   <?php
                   if($data['clients'] != null){
+=======
+                  <?php 
+                  if(isset($data['clients'])) {
+>>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
                   foreach($data['clients'] as $data) { ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
@@ -436,23 +441,22 @@
                         </div>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                      <?= $data['quantite'] ?>
+                      <?= $data['tname'] ?>
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span
                           class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                         >
-                        <?= ($data['prix'] * $data['quantite'] ) ?>fc
+                        <?= $data['client'] ?>
                         </span>
                       </td>
+                      
                       <td class="px-4 py-3 text-sm">
-                      <?= $data['tname']?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                      <a href="confirmCommand/<?= $data['id'] ?>"
-              class="flex items-center justify-between w-20 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                      <a href="confirmCommand/<?= $data['comId'] ?>"
+                      onmouseover="voulez vous valider?"
+              class="flex items-center justify-between w-20 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
             >
-                      payer
+                      valider
               <span class="ml-2" aria-hidden="true">+</span>
 </a>
                       </td>
@@ -461,7 +465,7 @@
                     
 
                   </tbody>
-                </table>
+                </table> 
               </div>
               <div
                 class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
