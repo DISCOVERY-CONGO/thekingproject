@@ -1,5 +1,6 @@
 <?php
 namespace Controllers;
+use \Models\User;
 
 class ControllerUser extends BaseController{
     protected $model = "user";
@@ -13,11 +14,24 @@ class ControllerUser extends BaseController{
            return $this->affichage->views("index", $data);
           }
 
+         
+           
+
           protected function route(){
+            $user = new User;
             if($this->get("login")){
                 $this->affichage->views("auth/login");
+  
             } 
+
+            if($this->get("register")){
+                
+                $this->affichage->views("auth/login");
+   
           }
+         
+
+        }
 
 }
 

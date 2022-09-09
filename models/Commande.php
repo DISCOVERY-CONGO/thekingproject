@@ -47,8 +47,8 @@ public function clients_command($client_id){
 }
 
 public function not_approved(){
-    $this->req = $this->connect->query("SELECT produit.*,data_table.name as tname,data_table.id, commande.confirm, commande.id as comId,commande.quantite FROM produit, commande,data_table WHERE 
-    produit.id = commande.produit_id AND commande.table_id = data_table.id AND commande.confirm = 0 ");
+    $this->req = $this->connect->query("SELECT produit.*,data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId,commande.quantite FROM precommande, produit, commande,data_table WHERE 
+    produit.id = commande.produit_id AND precommande.table_id = data_table.id AND precommande.confirm = 0 ");
         $result = $this->req->fetchAll();
         if($result != null){
             return $result;

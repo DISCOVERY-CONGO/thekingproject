@@ -12,7 +12,7 @@ class model{
         $this->db  = new base();
     }
 
-    public function create($data){ //crée un nouveau donnée 
+    public function create($data){ //crée une nouvelle donnée 
   
     $this->attributes[count($this->attributes)] = "created_at";
     $this->attributes[count($this->attributes)] = "updated_at";
