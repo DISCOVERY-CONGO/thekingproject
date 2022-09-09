@@ -1,6 +1,7 @@
 <?php 
 include __DIR__."/../navs/header.php";
 include __DIR__."/../../sanitalizer/command.php";
+global $item_total;
  ?>
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
@@ -600,12 +601,13 @@ include __DIR__."/../../sanitalizer/command.php";
             </th>
             <th class="hidden text-right md:table-cell">table</th>
             <th class="text-right">remove</th>
-            <th class="text-right">confiemer</th>
+            
           </tr>
         </thead>
         <tbody>
           <?php
           if(!empty($data['commandes']))
+          
           foreach($data['commandes'] as $commande) { ?>
             <form method="post">
 
@@ -638,31 +640,29 @@ include __DIR__."/../../sanitalizer/command.php";
             <td class="text-sm text-right text-red-600">
             <input  type="submit" value="X "/>
             </td>
-            <td class="text-sm text-right text">
-            <input  type="submit" value="yes "/>
-            </td>
+            
           </tr> 
             </form>
-         <?php } ?>
+         <?php
+       $item_total += ($commande["prix"] * $commande["quantite"]);
+        } ?>
         </tbody>
       </table>
       <hr class="pb-6 mt-6">
-      <div class="my-4 mt-6 -mx-2 lg:flex">
+      <div class="my-4 mt-2 -mx-2 lg:flex">
         
         <div class="lg:px-2 lg:w-1/2">
          
-          <div class="p-4">
+          <div class="p-2">
         
-                <!-- <div class="flex justify-between pt-4 border-b">
+                <div class="flex justify-between pt-4 border-b">
                   <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                   table
+                   total
                   </div>
-                  <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                   <select name="" id="">
-                    <option value="">jule kalenda</option>
-                   </select>
+                  <div class="lg:px-4 lg:py-2 m-2 lg:text-xs font-bold text-center text-gray-400">
+                  <?= $item_total?> fc
                   </div>
-                </div> -->
+                </div>
                
                
             

@@ -1,5 +1,6 @@
 <?php
 use Controllers\ControllerCommande;
+$structure = new \models\structure;
 if (isset($_POST['precommande'])) {
    
    $name = htmlspecialchars(trim($_POST['name']));
@@ -11,4 +12,5 @@ if (isset($_POST['precommande'])) {
 
    $server = new ControllerCommande();
    $server->store_precommande($data);
+   header("location:".$structure->redirect['domaine']);
 }

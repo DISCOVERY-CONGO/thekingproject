@@ -1,10 +1,4 @@
-<?php
-use \models\structure;
-$structure = new structure;
-if(!isset($_SESSION['role'])){
-  header("location:".$structure->redirect['domaine']."/login");
-}
-?>
+
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
   <head>

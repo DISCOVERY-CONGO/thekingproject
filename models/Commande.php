@@ -68,7 +68,7 @@ public function get_commandById($commandId){
 
 public function all_commandes(){
     $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
-    precommande.table_id = data_table.id AND precommande.client_id = client.id ");
+    precommande.table_id = data_table.id AND precommande.client_id = client.id ORDER BY precommande.id DESC ");
           $result = $this->req->fetchAll();
           if($result != null){
               return $result;

@@ -17,6 +17,15 @@ class ControllerUser extends BaseController{
             if($this->get("login")){
                 $this->affichage->views("auth/login");
             } 
+            if($this->get("register")){
+                $this->affichage->views("auth/register");
+            } 
+
+            if($this->get("logout")){
+                session_destroy();
+                $structure = new \models\structure();
+               return header("location:".$structure->redirect['domaine']."/login");
+            } 
           }
 
 }
