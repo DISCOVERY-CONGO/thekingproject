@@ -77,13 +77,10 @@ public function all_commandes(){
 
 
 public function not_approved(){
-<<<<<<< HEAD
-    $this->req = $this->connect->query("SELECT produit.*,data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId,commande.quantite FROM precommande, produit, commande,data_table WHERE 
-    produit.id = commande.produit_id AND precommande.table_id = data_table.id AND precommande.confirm = 0 ");
-=======
+    // $this->req = $this->connect->query("SELECT produit.*,data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId,commande.quantite FROM precommande, produit, commande,data_table WHERE 
+    // produit.id = commande.produit_id AND precommande.table_id = data_table.id AND precommande.confirm = 0 ");
     $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
   precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ");
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
         $result = $this->req->fetchAll();
         if($result != null){
             return $result;

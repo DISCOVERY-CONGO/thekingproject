@@ -23,13 +23,6 @@ class ControllerUser extends BaseController{
                 $this->affichage->views("auth/login");
   
             } 
-<<<<<<< HEAD
-
-            if($this->get("register")){
-                
-                $this->affichage->views("auth/login");
-   
-=======
             if($this->get("register")){
                 $this->affichage->views("auth/register");
             } 
@@ -39,13 +32,12 @@ class ControllerUser extends BaseController{
                 $structure = new \models\structure();
                return header("location:".$structure->redirect['domaine']."/login");
             } 
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
           }
          
 
         }
 
-}
+
 
 
 ?>

@@ -411,13 +411,8 @@
                   <tbody
                     class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
-<<<<<<< HEAD
-                  <?php
-                  if($data['clients'] != null){
-=======
                   <?php 
                   if(isset($data['clients'])) {
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
                   foreach($data['clients'] as $data) { ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">

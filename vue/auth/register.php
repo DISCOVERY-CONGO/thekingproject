@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-<?php include __DIR__."/../navs/header.php";
-include __DIR__."/../../sanitalizer/user.php"; ?>
-=======
 <?php 
 include __DIR__."/../navs/header.php";
 include __DIR__."/../../sanitalizer/user.php";
 ?>
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       <div
         class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
@@ -29,46 +24,25 @@ include __DIR__."/../../sanitalizer/user.php";
           <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div class="w-full">
               <h1
-<<<<<<< HEAD
-                class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
-              >
-                s'enregistrer
-              </h1>
-              <form  method="post">
-              <label class="block text-sm">
-=======
                 class="mb-4 text-5xl font-semibold text-gray-700 dark:text-gray-200"
               >
                 se connecter
               </h1>
             <form method="post">
             <label class="block text-sm">
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
                 <span class="text-gray-700 dark:text-gray-400">nom</span>
                 <input
                 name="name"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-<<<<<<< HEAD
-                  placeholder="Jane@gmail.com"
-                  type="text"
-                />
-              </label>
-              <label class="block text-sm">
-=======
                   placeholder="kabwe"
                 />
               </label>
             <label class="block text-sm">
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
                 <span class="text-gray-700 dark:text-gray-400">prenom</span>
                 <input
                 name="secondName"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-<<<<<<< HEAD
-                  placeholder="Jane@gmail.com"
-=======
                   placeholder="joel"
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
                   type="text"
                 />
               </label>
@@ -99,22 +73,6 @@ include __DIR__."/../../sanitalizer/user.php";
                 class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                 name="register"
               >
-<<<<<<< HEAD
-                 créer un compte
-              </button>
-
-              <hr class="my-8" />
-              <a type="submit"
-                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-green-700 transition-colors duration-150 border border-transparent   focus:outline-none focus:shadow-outline-purple"
-                href="register"
-              >
-                 se connecter
-</a>
-
-              </form>
-              <p class="mt-1">
-               
-=======
                 s'enregistrer
               </a>
 
@@ -130,7 +88,6 @@ include __DIR__."/../../sanitalizer/user.php";
                 >
                  se connecter
                 </a>
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
               </p>
             </div>
           </div>
