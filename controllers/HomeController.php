@@ -23,7 +23,7 @@ class HomeController extends BaseController{
             $count_client = $repositorie->count_client();
             $clients = new Client();
             $command = $commande->not_approved();
-           
+            
             $data = ['clients'=>$command, 'count_product'=>$count_product,'count_client'=>$count_client];
             
             $this->affichage->views("index",$data);

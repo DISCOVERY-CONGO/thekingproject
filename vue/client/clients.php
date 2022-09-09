@@ -399,10 +399,10 @@
                         </div>
                       </td>
                       <td class="px-4 py-3 text-sm border-green-500">
-                      <a href="newCommand/<?= $client['id'] ?>"
-              class="flex items-center justify-between w-24 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                      <a href="precommande/<?= $client['id'] ?>"
+              class="flex items-center justify-between  w-40 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
             >
-                      commander
+                      precommander
               <span class="ml-2" aria-hidden="true">+</span>
 </a>
                        

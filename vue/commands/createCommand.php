@@ -418,8 +418,8 @@ include __DIR__."/../../sanitalizer/command.php";
                       class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                     >
                       <th class="px-4 py-3">nom</th>
+                      <th class="px-4 py-3">quantité</th>
                       <th class="px-4 py-3">prix</th>
-                      <th class="px-4 py-3">table</th>
                       <th class="px-4 py-3">action</th>
                     </tr>
                   </thead>
@@ -428,12 +428,12 @@ include __DIR__."/../../sanitalizer/command.php";
                   >
 
               <?php
-              
+              if(isset($data['produits'])){
                foreach($data['produits'] as $product) {?>
                 <form  method="post">
                 <input type="hidden" name="action" value="add">
                 <input type="hidden" name="produit_id" value="<?= $product['id'] ?>">
-                <input type="hidden" name="client_id" value="<?= $data['client_id'] ?>">
+                <input type="hidden" name="command_id" value="<?= $data['command_id'] ?>">
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
@@ -461,12 +461,7 @@ include __DIR__."/../../sanitalizer/command.php";
                       </td>
                       <td class="px-4 py-3 text-2xl">
                        
-                          <select name="table_id" >
-                            <option selected>table...</option>
-                            <?php foreach($data['tables'] as $table) { ?>
-                            <option value="<?= $table['id'] ?>"><?= $table['name'] ?></option>
-                            <?php } ?>
-                          </select>
+                      <?= $product['prix'] ?>
                         
                       </td>
                       <td class="px-4 py-3 text-lg border-green-200">
@@ -478,7 +473,7 @@ include __DIR__."/../../sanitalizer/command.php";
               
                 </form>
           <?php 
-          } ?>
+          } }?>
                   </tbody>
                 </table>
               </div>
@@ -585,7 +580,7 @@ include __DIR__."/../../sanitalizer/command.php";
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
-              Charts
+              votre commande
             </h2>
             <div class="grid gap-6 mb-8 md:grid-cols-2">
              
@@ -635,7 +630,9 @@ include __DIR__."/../../sanitalizer/command.php";
             </td>
             <td class="hidden text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
-              <?= $commande['tname'] ?>
+              
+
+
               </span>
             </td>
             <td class="text-sm text-right text-red-600">
