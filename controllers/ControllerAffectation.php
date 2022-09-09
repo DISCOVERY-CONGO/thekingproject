@@ -1,11 +1,14 @@
 <?php
 namespace Controllers;
+use Models\structure;
 
 class ControllerAffectation extends BaseController{
     protected $model = "affectation";
     //implementez les methodes all et one pour afficher les données 
 
     protected function all($data){
+        $structure  = new structure();
+        header("location:".$structure->definition["domaine"]."/trucmashin");
         var_dump($data);
     }
 

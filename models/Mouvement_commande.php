@@ -6,7 +6,7 @@ namespace Models;
 class Mouvement_commande extends Model{
 
 protected $attributes=[
-    "produit", "quantite", "prix"
+    "produit", "quantite", "prix", "commande_id"
 ];
 
 

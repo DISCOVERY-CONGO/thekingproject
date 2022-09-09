@@ -127,6 +127,7 @@ $bdd->exec("
  CREATE TABLE IF NOT EXISTS mouvement_commande (
 id INT NOT NULL AUTO_INCREMENT,
 produit INT NOT NULL,
+commande_id INT NOT NULL,
 quantite INT NOT NULL,
 prix FLOAT NOT NULL,
 created_at DATE,
