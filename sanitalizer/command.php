@@ -30,7 +30,7 @@ if (! empty($_POST["action"])) {
                 $commandResult = $commande->getCommandByProduct($product_id, $command_id);
                 
                 
-                if (! empty($commandResult)) {
+                if (!empty($commandResult)) {
                     
                     $newQuantity = $commandResult[0]["quantite"] + $_POST["quantite"];
                     $commande->updateCommandQuantity($newQuantity, $commandResult[0]["id"]);
@@ -38,7 +38,8 @@ if (! empty($_POST["action"])) {
                     
                 } else {
                     
-                    $commande->store($data);
+                    $command_controller->store_command($data);
+                    $commande->deleteCommandItem($product_id);
                     header("location:".$structure->redirect['domaine']."/newCommand/$command_id");
                 }
             }

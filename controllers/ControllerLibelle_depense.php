@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
 
+use Models\Libelle_depense;
+
 class ControllerLibelle_depense extends BaseController{
     protected $model = "libelle_depense";
     //implementez les methodes all et one pour afficher les données 
@@ -14,12 +16,28 @@ class ControllerLibelle_depense extends BaseController{
           }
           protected function route(){
             if ($this->get("libelles")){
-             $this->affichage->views('Libelle/libelles');
+                $libelles = new Libelle_depense;
+                $data = $libelles->libelles_depense();
+             $this->affichage->views('Libelle/libelles',$data);
             }
              if($this->get("newLibelle")){
-                 $this->affichage->views('Libelle/createLibelle');
+
+                $depenses = new \models\Depense;
+                $server = new \models\Server;
+                $data = [
+                        'servers'=>$server->all_servers(),
+                        'depenses'=>$depenses->all_depenses()
+
+                ];
+                 $this->affichage->views('Libelle/createLibelle',$data);
              }
          }
+
+        public function store_libelleDepense($data)
+        {
+            $libelle = new \models\Libelle_depense;
+            $libelle->store($data);
+        }
 
 }
 

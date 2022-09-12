@@ -447,12 +447,18 @@
                       </td>
                       
                       <td class="px-4 py-3 text-sm">
-                      <a href="confirmCommand/<?= $data['comId'] ?>"
-                      onmouseover="voulez vous valider?"
-              class="flex items-center justify-between w-20 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                      <a href="newCommand/<?= $data['comId'] ?>"
+                      
+                      class="flex items-center justify-between w-20  text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-500 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                    >
+                              commander
+                      
+        </a>/
+                      <a href="confirmCommand/<?= $data['comId'] ?>" 
+                         class="flex items-center justify-between w-20  text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-400 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
             >
                       valider
-              <span class="ml-2" aria-hidden="true">+</span>
+              
 </a>
                       </td>
                     </tr>

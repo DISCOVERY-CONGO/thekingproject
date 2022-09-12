@@ -21,7 +21,10 @@ public function store($data)
 
     $sql = "INSERT INTO commande (command_id,produit_id,quantite) VALUES (?,?,?)";
     $req = $this->connect->prepare($sql);
-    $req->execute([$command_id,$produit_id,$quantite]);
+    $resultat = $req->execute([$command_id,$produit_id,$quantite]);
+    if($resultat){
+        return true;
+    }
 }
 
 public function precommandeStore($data)
@@ -77,14 +80,18 @@ public function all_commandes(){
 
 
 public function not_approved(){
-    // $this->req = $this->connect->query("SELECT produit.*,data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId,commande.quantite FROM precommande, produit, commande,data_table WHERE 
-    // produit.id = commande.produit_id AND precommande.table_id = data_table.id AND precommande.confirm = 0 ");
-    $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
-  precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ");
-        $result = $this->req->fetchAll();
-        if($result != null){
-            return $result;
-        }
+//    $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
+//   precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ");
+//         $result = $this->req->fetchAll();
+//         if($result != null){
+//             return $result;
+//         }
+$this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
+precommande.table_id = data_table.id AND precommande.client_id = client.id ORDER BY precommande.id DESC ");
+      $result = $this->req->fetchAll();
+      if($result != null){
+          return $result;
+      }
 }
 
 public function updateCommandQuantity($quantity, $command_id)

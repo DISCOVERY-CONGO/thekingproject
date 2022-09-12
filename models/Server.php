@@ -40,6 +40,12 @@ public function all_servers(){
     return $result;
 }
 
+public function count_server(){
+    
+    $this->req = $this->connect->query("SELECT * FROM serveur");
+    return $this->req->rowCount();
+}
+
 }
 
 

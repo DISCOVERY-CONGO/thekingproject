@@ -4,6 +4,8 @@ namespace Models;
 
 
 class Depense extends Model{
+    protected $connect;
+    protected $database;
 
 protected $attributes=[
     "name"
@@ -18,6 +20,13 @@ public function store($data){
     $sql = "INSERT INTO depense (name) VALUES (?)";
     $req = $this->connect->prepare($sql);
     $req->execute([$data]);
+}
+
+public function all_depenses(){
+    $sql = "SELECT * FROM depense ORDER BY id DESC";
+    $this->req = $this->connect->query($sql);
+    $result = $this->req->fetchAll();
+    return $result;
 }
 
 }

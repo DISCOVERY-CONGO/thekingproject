@@ -12,6 +12,7 @@ if (isset($_POST['register'])) {
 
     $data = ['name'=>$nom,'secondName'=>$prenom,'email'=>$email,'password'=>$password];
     $user->register($data);
+    header("location:".$structure->redirect['domaine']."/login");
 }
 
 

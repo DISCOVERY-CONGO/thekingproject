@@ -15,7 +15,11 @@ class ControllerServer extends BaseController{
     protected function route()
     {
         if($this->get('servers')){
-            return $this->affichage->views("servant/servants");
+            $server = new Server;
+           $resultat = $server->all_servers();
+           $count_server = $server->count_server();
+           $data = ['count_server'=>$count_server,'all_servers'=>$resultat];
+            return $this->affichage->views("servant/servants",$data);
 
         }
         if ($this->get('newServant')){

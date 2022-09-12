@@ -52,10 +52,6 @@ include __DIR__."/../../sanitalizer/user.php";
                 name="email"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder="Jane@gmail.com"
-<<<<<<< HEAD
-                  type="email"
-=======
->>>>>>> 1af083c54d12d97af626be14b815b16835c03bc8
                 />
               </label>
               <label class="block mt-4 text-sm">
@@ -74,7 +70,7 @@ include __DIR__."/../../sanitalizer/user.php";
                 name="register"
               >
                 s'enregistrer
-              </a>
+              </button>
 
               <hr class="my-8" />
 

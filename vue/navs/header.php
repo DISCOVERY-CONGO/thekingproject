@@ -3,6 +3,7 @@ use \models\structure;
 $structure = new structure;
 if(!isset($_SESSION['role'])){
   header("location:".$structure->redirect['domaine']."/login");
+  
 }
 ?>
 <!DOCTYPE html>

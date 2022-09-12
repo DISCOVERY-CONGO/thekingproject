@@ -30,7 +30,7 @@ class ControllerCommande extends BaseController{
                         $this->affichage->views("commands/commands",$data);
                  } 
 
-                if($this->get("newCommand/[0-9]")){
+                if($this->get("newCommand/([0-9]?[0-9]|100)")){
 
                         $tableau = $this->get_parameters();
                         $last = $tableau[array_key_last($tableau)];
@@ -47,7 +47,7 @@ class ControllerCommande extends BaseController{
                      $this->affichage->views('commands/createCommand',$data);
                 }
 
-                if ($this->get("confirmCommand/[0-9]")) {
+                if ($this->get("confirmCommand/([0-9]?[0-9]|100)")) {
                     
                     $tableau = $this->get_parameters();
                     $last = $tableau[array_key_last($tableau)];
@@ -62,7 +62,7 @@ class ControllerCommande extends BaseController{
                       
                 }
 
-                if ($this->get("precommande/([0-9]?[0-1]|100)")) {
+                if ($this->get("precommande/[0-9]")) {
                 
                     $tableau = $this->get_parameters();
                      $last = $tableau[array_key_last($tableau)];
@@ -86,6 +86,16 @@ class ControllerCommande extends BaseController{
             $commande->precommandeStore($data);
            
         }
+
+ public function store_command($data){
+    $commande = new Commande;
+    $produit = new Produit;
+    $commande->store($data);
+    $produit->updateProductQuantity($data['produit_id']);
+  
+    
+        
+ }
 
 }
 

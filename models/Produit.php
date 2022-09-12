@@ -47,6 +47,12 @@ public function produit_by_id(int $id){
     $this->req = $this->connect->prepare("SELECT * FROM produit WHERE id = ?");
     return $this->req->execute([$id]);
 }
+public function updateProductQuantity($product_id)
+{
+    $this->req = $this->connect->prepare("UPDATE produit SET quantite= quantite -1 WHERE id = ?");
+    $this->req->execute([$product_id]);
+    
+}
 
 }
 
