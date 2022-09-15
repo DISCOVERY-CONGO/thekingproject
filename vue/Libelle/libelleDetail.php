@@ -103,11 +103,16 @@
                 </div>
         <script>
       function printFunction() {
-            var divContents = document.getElementById("libelle").innerHTML;
-            var prnt = window.open('', '', '');
-             prnt .document.write(divContents);
-            prnt .document.close();
-            prnt .print();
+            const divContents = document.getElementById("libelle").innerHTML;
+            // const prnt = window.open('', '', '');
+            //  prnt .document.write(divContents);
+            // prnt .document.close();
+            // prnt .print();
+
+            const originalContent =document.body.innerHTML;
+            document.body.innerHTML = divContents;
+            window.print();
+            document.body.innerHTML= originalContent;
 }
     </script>
     </body>

@@ -34,6 +34,10 @@ class ControllerData_table extends BaseController{
             $base->insert($data);
     }
 
+    public function status_table($data){
+        $table = new \Models\Data_table;
+        $table->change_status($table);
+    }
 
 }
 

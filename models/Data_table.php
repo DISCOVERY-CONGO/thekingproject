@@ -31,10 +31,18 @@ public function insert($data){
 }
 
 public function all_tables(){
-    $sql = "SELECT * FROM data_table ORDER BY id DESC";
-    $this->req = $this->connect->query($sql);
-    $result = $this->req->fetchAll();
-    return $result;
+    $sql = "SELECT data_table.name as tname, data_table.places, data_table.status as status, data_table.id as tId
+    FROM data_table";
+    $req = $this->connect->query($sql);
+    $result = $req->fetchAll();
+   return $result;
+}
+
+public function change_status($data)
+{
+    $req = $this->connect->prepare("UPDATE data_table SET  status = true WHERE id= ?");
+    $req->execute([$data]);
+    
 }
 
 }

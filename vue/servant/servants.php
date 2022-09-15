@@ -340,6 +340,7 @@
                       <th class="px-4 py-3">numero</th>
                       <th class="px-4 py-3">genre</th>
                       <th class="px-4 py-3">tables</th>
+                      <th class="px-4 py-3">affecter</th>
                     </tr>
                   </thead>
                   <tbody
@@ -379,6 +380,31 @@
                       </td>
                       <td class="px-4 py-3 text-sm">
                       <?= $server['sexe'] ?>
+                      </td>
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">table</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3">
+                       <button class="px-4 py-3 text-sm bg-orange-400 hover:bg-pink-900 rounded">
+                          affecter
+                       </button>
                       </td>
                     </tr>
                   <?php } ?>

@@ -1,6 +1,7 @@
 <?php 
 include __DIR__."/inc.php"; 
 include __DIR__."/../../sanitalizer/user.php";
+
 ?>
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       <div
@@ -56,6 +57,17 @@ include __DIR__."/../../sanitalizer/user.php";
                 se connecter
               </button>
 
+              <p
+                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-red-700 transition-colors duration-150  focus:outline-none focus:shadow-outline-purple"
+                name="login"
+              >
+              <?php if (isset($_SESSION['erreur'])){
+                echo  $_SESSION['erreur'] ;
+              }  
+               ?>
+              </p>
+
+              
               <hr class="my-8" />
 
               
@@ -66,7 +78,7 @@ include __DIR__."/../../sanitalizer/user.php";
                   class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
                   href="register"
                 >
-                  Create account
+                  Créer un compte
                 </a>
               </p>
             </div>

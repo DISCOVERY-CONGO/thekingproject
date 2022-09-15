@@ -1,16 +1,23 @@
 <?php
 use Controllers\ControllerCommande;
+
 $structure = new \models\structure;
+
+
 if (isset($_POST['precommande'])) {
    
-   $name = htmlspecialchars(trim($_POST['name']));
-   $client = htmlspecialchars(trim($_POST['client_id']));
+
    $table = htmlspecialchars(trim($_POST['table_id']));
   
 
-   $data = array('name'=>$name,'client_id'=>$client,'table_id'=>$table);
-
+   $data = $table;
+  
    $server = new ControllerCommande();
-   $server->store_precommande($data);
-   header("location:".$structure->redirect['domaine']);
+   $table = new \Models\Data_table;
+  $server->store_precommande($data);
+  $table->change_status($data);
+      
+      header("location:".$structure->redirect['domaine']);
+  
+   
 }

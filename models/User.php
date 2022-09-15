@@ -27,6 +27,7 @@ public function register($data){
     $sql = "INSERT INTO user (name,secondName,email,password) VALUES (?,?,?,?)";
     $req = $this->connect->prepare($sql);
     $req->execute([$nom,$prenom,$email,$password]);
+    return true;
 }
 
 public function login($data){
@@ -41,6 +42,7 @@ public function login($data){
         }
     
    }
+   return true;
     
 }
 

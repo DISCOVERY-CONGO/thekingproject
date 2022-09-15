@@ -329,12 +329,7 @@
             
             
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-               
-             
-              </div>
+              
             </div>
 
             <!-- New Table -->

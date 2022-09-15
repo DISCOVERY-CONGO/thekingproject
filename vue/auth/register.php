@@ -1,5 +1,5 @@
 <?php 
-include __DIR__."/../navs/header.php";
+include __DIR__."/inc.php";
 include __DIR__."/../../sanitalizer/user.php";
 ?>
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -26,7 +26,7 @@ include __DIR__."/../../sanitalizer/user.php";
               <h1
                 class="mb-4 text-5xl font-semibold text-gray-700 dark:text-gray-200"
               >
-                se connecter
+                s'enregistrer
               </h1>
             <form method="post">
             <label class="block text-sm">
@@ -71,7 +71,16 @@ include __DIR__."/../../sanitalizer/user.php";
               >
                 s'enregistrer
               </button>
-
+              <p
+                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-red-700 transition-colors duration-150  focus:outline-none focus:shadow-outline-purple"
+                name="login"
+              >
+              <?php if (isset($_SESSION['error'])){
+                echo  $_SESSION['error'] ;
+                
+              }  
+               ?>
+              </p>
               <hr class="my-8" />
 
               
@@ -80,7 +89,7 @@ include __DIR__."/../../sanitalizer/user.php";
               <p class="mt-1">
                 <a
                   class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                  href="register"
+                  href="login"
                 >
                  se connecter
                 </a>

@@ -30,13 +30,13 @@ public function store($data)
 public function precommandeStore($data)
 {
     
-    $table = $data['table_id'];
-    $client = $data['client_id'];
-    $name = $data['name'];
-    
-    $sql = "INSERT INTO precommande (table_id,client_id,nom) VALUES (?,?,?)";
+    $table = $data;
+    $sql = "INSERT INTO precommande (table_id) VALUES (?)";
     $req = $this->connect->prepare($sql);
-    $req->execute([$table,$client,$name]);
+   $result =  $req->execute([$table]);
+   if ($result) {
+    return true;
+   }
 }
 
 
@@ -70,8 +70,17 @@ public function get_commandById($commandId){
 }
 
 public function all_commandes(){
-    $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
-    precommande.table_id = data_table.id AND precommande.client_id = client.id ORDER BY precommande.id DESC ");
+    $this->req = $this->connect->query("SELECT 
+    data_table.name as tname, data_table.status as tstatus, commande.status as cstatus, data_table.id as comId, produit.prix as prix, commande.quantite as qty, produit.id as pId
+     FROM 
+        commande,data_table,produit 
+     WHERE 
+        commande.command_id = data_table.id
+     AND
+         commande.produit_id = produit.id
+     ORDER BY
+         commande.id 
+     DESC ");
           $result = $this->req->fetchAll();
           if($result != null){
               return $result;
@@ -79,20 +88,20 @@ public function all_commandes(){
 }
 
 
-public function not_approved(){
-//    $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
-//   precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ");
-//         $result = $this->req->fetchAll();
-//         if($result != null){
-//             return $result;
-//         }
-$this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
-precommande.table_id = data_table.id AND precommande.client_id = client.id ORDER BY precommande.id DESC ");
-      $result = $this->req->fetchAll();
-      if($result != null){
-          return $result;
-      }
-}
+// public function not_approved(){
+// //    $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
+// //   precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ");
+// //         $result = $this->req->fetchAll();
+// //         if($result != null){
+// //             return $result;
+// //         }
+// $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
+// precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ORDER BY precommande.id DESC ");
+//       $result = $this->req->fetchAll();
+//       if($result != null){
+//           return $result;
+//       }
+// }
 
 public function updateCommandQuantity($quantity, $command_id)
 {
@@ -118,6 +127,16 @@ public function emptyCommand($client_id)
 {
     $this->req = $this->connect->prepare("DELETE FROM commande WHERE client = ?");
     $this->req->execute([$client_id]);
+}
+
+public function revenue()
+{
+    $this->req = $this->connect->query("SELECT produit.prix as prix, commande.quantite as quantite FROM produit,commande WHERE 
+    commande.produit_id = produit.id");
+          $result = $this->req->fetchAll();
+          if($result != null){
+              return $result;
+          }
 }
 
 

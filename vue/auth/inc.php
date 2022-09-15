@@ -1,4 +1,7 @@
-
+<?php
+use \models\structure;
+$structure = new structure;
+?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
   <head>

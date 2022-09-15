@@ -27,6 +27,7 @@ class ControllerCommande extends BaseController{
                 if($this->get("commandes")){
 
                         $data = $commande->all_commandes();
+                        var_dump($data);
                         $this->affichage->views("commands/commands",$data);
                  } 
 
