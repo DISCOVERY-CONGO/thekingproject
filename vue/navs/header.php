@@ -18,7 +18,7 @@ if(!isset($_SESSION['role'])){
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/../../public/style.css" />
-  
+    <script src="/../../public/assets/js/jquery.js"></script>
     
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"

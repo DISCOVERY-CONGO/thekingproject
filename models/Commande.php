@@ -70,17 +70,10 @@ public function get_commandById($commandId){
 }
 
 public function all_commandes(){
-    $this->req = $this->connect->query("SELECT 
-    data_table.name as tname, data_table.status as tstatus, commande.status as cstatus, data_table.id as comId, produit.prix as prix, commande.quantite as qty, produit.id as pId
-     FROM 
-        commande,data_table,produit 
-     WHERE 
-        commande.command_id = data_table.id
-     AND
-         commande.produit_id = produit.id
-     ORDER BY
-         commande.id 
-     DESC ");
+    $this->req = $this->connect->query("SELECT
+     data_table.name as tname, precommande.id as pId, precommande.created_at, data_table.id as tId
+     FROM data_table, precommande 
+     WHERE data_table.id = precommande.table_id");
           $result = $this->req->fetchAll();
           if($result != null){
               return $result;

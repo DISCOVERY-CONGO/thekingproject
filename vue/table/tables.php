@@ -629,7 +629,7 @@ include __DIR__."/../../sanitalizer/precommande.php";
                           <button type="submit" name="precommande">reserver</button>
                         </form>
                         <?php } else{ ?>
-                          <a href="">commander</a>
+                          <a href="newCommand/<?= $table['pId'] ?>">commander</a>
                           <?php } ?>
                       </td>
                     </tr>

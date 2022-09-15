@@ -428,5 +428,5 @@ global $item_total;
         }
       });
     </script>
-    <script src="/public/assets/js/jquery.min.js"></script>
+    
     <?php include __DIR__."/../navs/footer.php"; ?>
