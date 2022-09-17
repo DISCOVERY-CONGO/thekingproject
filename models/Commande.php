@@ -61,8 +61,8 @@ public function libelleCommand($command_id){
 }
 
 public function get_commandById($commandId){
-    $this->req = $this->connect->query("SELECT  produit.*,client.nom as client,data_table.name as tname,SUM(produit.prix) as prix_total ,data_table.id, commande.id as comId,commande.quantite as qty, precommande.created_at FROM precommande, produit, client,commande,data_table WHERE 
-    produit.id = commande.produit_id AND precommande.client_id = client.id  AND precommande.table_id = data_table.id AND precommande.id = '$commandId'");
+    $this->req = $this->connect->query("SELECT  produit.*,data_table.name as tname,data_table.id, commande.id as comId,commande.quantite as qty, precommande.created_at FROM precommande, produit, commande,data_table WHERE 
+    produit.id = commande.produit_id AND precommande.table_id = data_table.id AND precommande.table_id = '$commandId'");
         $result = $this->req->fetchAll();
         if($result != null){
             return $result;
@@ -104,7 +104,7 @@ public function updateCommandQuantity($quantity, $command_id)
 
 public function confirmCommand($command_id)
 {
-    $this->req = $this->connect->prepare("UPDATE precommande SET  confirm = 1 WHERE id= ?");
+    $this->req = $this->connect->prepare("UPDATE data_table SET  status = 0 WHERE id= ?");
     $this->req->execute([$command_id]);
     
 }
@@ -131,6 +131,8 @@ public function revenue()
               return $result;
           }
 }
+
+
 
 
 }

@@ -32,6 +32,10 @@ class ControllerUser extends BaseController{
                 $structure = new \models\structure();
                return header("location:".$structure->redirect['domaine']."/login");
             } 
+            if ($this->get("users")) {
+                $data = $user->users();
+                $this->affichage->views("user/users",$data);
+            }
           }
          
 

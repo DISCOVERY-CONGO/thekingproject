@@ -50,6 +50,14 @@ protected function hash_passord($password){
     return password_hash($password, PASSWORD_DEFAULT);
 }
 
+public function users()
+{
+    $sql = "SELECT * FROM user ORDER BY id DESC";
+    $this->req = $this->connect->query($sql);
+    $result = $this->req->fetchAll();
+    return $result;
+}
+
 }
 
 

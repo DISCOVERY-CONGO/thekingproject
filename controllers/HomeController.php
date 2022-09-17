@@ -2,6 +2,7 @@
 namespace Controllers;
 use Models\Client;
 use \Models\Commande;
+use \Models\Rapport;
 use \Repositorie\HomeRepositorie;
 class HomeController extends BaseController{
     protected $model = "produit";
@@ -16,6 +17,7 @@ class HomeController extends BaseController{
        }
    
        protected function route(){
+       
         if($this->get("/")){
             if (isset($_SESSION['role']) AND $_SESSION['role'] != "admin") {
                 header("location:login");
@@ -30,6 +32,7 @@ class HomeController extends BaseController{
                 // $command = $commande->not_approved();
                 $revenue = $commande->revenue();
                 
+              
                 $data = [ 'count_product'=>$count_product,'count_client'=>$count_client,'revenue'=>$revenue];
                 
                 $this->affichage->views("index",$data);
