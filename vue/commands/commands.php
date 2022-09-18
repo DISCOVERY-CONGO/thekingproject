@@ -321,7 +321,7 @@
             >
                       commander             
             </a> / <span>
-              <form method="POST">
+              <form  method="POST">
               <input type="hidden" name="precom_id" value="<?= $data['id'] ?>"?>
                 <input type="hidden" name="table_id" value="<?= $data['tId'] ?>"?>
                 <button class=" rounded p-2 bg-green-800 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2" name="confirm_commande">payer</button>
