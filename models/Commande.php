@@ -61,8 +61,11 @@ public function libelleCommand($command_id){
 }
 
 public function get_commandById($commandId){
-    $this->req = $this->connect->query("SELECT  produit.*,data_table.name as tname,data_table.id, commande.id as comId,commande.quantite as qty, precommande.created_at FROM precommande, produit, commande,data_table WHERE 
-    produit.id = commande.produit_id AND precommande.table_id = data_table.id AND precommande.table_id = '$commandId'");
+    $this->req = $this->connect->query("SELECT 
+    commande.quantite as qty, precommande.created_at, produit.prix, produit.nom, data_table.name as tname 
+    FROM commande,precommande,produit,data_table WHERE commande.command_id = precommande.id 
+    AND produit.id = commande.produit_id AND data_table.id = '$commandId' 
+    AND precommande.created_at = CURRENT_DATE");
         $result = $this->req->fetchAll();
         if($result != null){
             return $result;
@@ -71,9 +74,9 @@ public function get_commandById($commandId){
 
 public function all_commandes(){
     $this->req = $this->connect->query("SELECT
-     data_table.name as tname, precommande.id as pId, precommande.created_at, data_table.id as tId
+     precommande.*,data_table.name as tname, data_table.status, data_table.id as tId
      FROM data_table, precommande 
-     WHERE data_table.id = precommande.table_id");
+     WHERE data_table.id = precommande.table_id AND precommande.status = 0 ");
           $result = $this->req->fetchAll();
           if($result != null){
               return $result;

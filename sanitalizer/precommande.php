@@ -2,7 +2,7 @@
 use Controllers\ControllerCommande;
 
 $structure = new \models\structure;
-
+$commande = new \Models\Commande;
 
 if (isset($_POST['precommande'])) {
    
@@ -13,11 +13,13 @@ if (isset($_POST['precommande'])) {
    $data = $table;
   
    $server = new ControllerCommande();
+   
    $table = new \Models\Data_table;
   $server->store_precommande($data);
-  $table->change_status($data);
+//   $table->change_status($data);
       
-      header("location:".$structure->redirect['domaine']);
+
+    // var_dump( header("location:".$structure->redirect['domaine']."/commandes/$commandes"));
   
    
 }

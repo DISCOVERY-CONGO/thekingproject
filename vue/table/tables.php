@@ -622,16 +622,17 @@ include __DIR__."/../../sanitalizer/precommande.php";
                       <td class="px-4 py-3 text-sm">
                         <?= $table['places'] ?>
                       </td>
-                      <td class="px-4 py-3 text-sm">
+                      
                         <?php if($table['status'] == false){ ?>
+                      <td class="px-4 py-3 text-sm">
                         <form method="POST">
                           <input type="hidden" name="table_id" value="<?= $table['tId'] ?>"/>
                           <button type="submit" name="precommande" class=" rounded p-2 bg-teal-500 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2">reserver</button>
                         </form>
-                        <?php } else{ ?>
-                          <a href="newCommand/<?= $table['pId'] ?>" class=" rounded p-2 bg-teal-500 text-gray-50">commander</a> / <span ><a href="confirmCommand/<?= $table['tId'] ?>" class=" bg-green-400 rounded p-2 ml-2 mt-0">payer</a></span>
-                          <?php } ?> 
                       </td>
+                        <?php } ?>
+                    
+                      
                     </tr>
               <?php } ?>
          

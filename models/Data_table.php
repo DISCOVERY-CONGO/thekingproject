@@ -31,7 +31,7 @@ public function insert($data){
 }
 
 public function all_tables(){
-    $sql = "SELECT data_table.name as tname, data_table.id as tId, precommande.id as pId,data_table.places, data_table.status FROM data_table LEFT JOIN precommande ON precommande.table_id = data_table.id";
+    $sql = "SELECT data_table.name as tname, data_table.id as tId, data_table.places, data_table.status FROM data_table";
     $req = $this->connect->query($sql);
     $result = $req->fetchAll();
    return $result;

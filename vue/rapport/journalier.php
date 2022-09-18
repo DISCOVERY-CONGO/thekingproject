@@ -296,7 +296,9 @@
                   <tbody
                     class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
-                  <?php foreach($data as $today) { ?>
+                  <?php
+                  if($data != null)
+                  foreach($data as $today) { ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">

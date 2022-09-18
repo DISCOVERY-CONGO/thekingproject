@@ -16,7 +16,7 @@
                     <div class="w-40">
                         <address class="text-sm">
                             <span class="font-bold"> facturé à: </span>
-                             <?= $data[0]['client'] ?>
+                           
                             
                         </address>
                     </div>
@@ -64,7 +64,7 @@
                                         <div class="text-sm text-gray-500"><?= $data['qty'] ?></div>
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500">
-                                    <?= $data['prix'] ?>
+                                    <?= $data['qty'] * $data['prix']?>
                                     </td>
                                    
                                 </tr>
@@ -75,7 +75,7 @@
                                 <tr class="text-white bg-gray-800">
                                     <th colspan="3"></th>
                                     <td class="text-sm font-bold"><b>Total</b></td>
-                                    <td class="text-sm font-bold"><b><?= $data['prix_total'] ?></b></td>
+                                    <td class="text-sm font-bold"><b></b></td>
                                 </tr>
                                 <!--end tr-->
 

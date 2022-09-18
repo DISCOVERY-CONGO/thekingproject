@@ -29,6 +29,7 @@ class ControllerLibelle_depense extends BaseController{
                         'depenses'=>$depenses->all_depenses()
 
                 ];
+                
                  $this->affichage->views('Libelle/createLibelle',$data);
              }
          }

@@ -57,7 +57,7 @@ class ControllerCommande extends BaseController{
                       
 
                             $data = $commande->get_commandById($last);
-                                
+                     
                             $this->affichage->views('Libelle/libelleDetail',$data);
                          
                       
@@ -84,8 +84,11 @@ class ControllerCommande extends BaseController{
 
     public function store_precommande($data){
             $commande = new Commande;
+            $table = new \Models\Data_table;
             $commande->precommandeStore($data);
-           
+            $table->change_status($data);
+            $commandes = $commande->all_commandes();
+            $this->affichage->views('commands/commands',$commandes);
         }
 
  public function store_command($data){

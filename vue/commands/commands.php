@@ -310,17 +310,22 @@
                         >
                         <?= $data['created_at'] ?>
                         </span>
-                      <!-- </td>
-                    <?php if($data['confirm'] == true) {?>
+                     </td>
+                    <?php if($data['status'] == true) {?>
                       <td class="px-4 py-3 text-sm">
-                      <a href="confirmCommand/<?= $data['comId'] ?>"
-              class="flex items-center justify-between w-20 px-4 py-2 text-sm font-medium leading-5 text-gray-900 transition-colors duration-150 border-green-400 border border-transparent rounded-lg active:bg-green-400 hover:bg-green-400 focus:outline-none focus:shadow-outline-purple"
+                      <a href="newCommand/<?= $data['id'] ?>"
+              class=" rounded p-2 bg-teal-500 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2"
             >
-                      valider
-              <span class="ml-2" aria-hidden="true">+</span>
-</a>
+                      commander             
+            </a> / <span>
+            <a href="confirmCommand/<?= $data['tId'] ?>"
+              class=" rounded p-2 bg-green-800 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2"
+            >
+                      payer             
+            </a>
+            </span>
                       </td>
-                  <?php } else {?>
+                  <?php } ?><!--
                     <td class="px-4 py-3 text-sm">
                       <a href="newCommand/<?= $data['comId'] ?>"
               class="flex items-center justify-between w-24 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
@@ -331,7 +336,7 @@
                       </td>
                  <?php } ?>-->
                     </tr>
-                  <?php } }?> 
+                  <?php } ?> 
                     
 
                   </tbody>
