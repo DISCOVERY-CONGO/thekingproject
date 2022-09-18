@@ -1,4 +1,5 @@
-<?php include "navs/header.php"; 
+<?php 
+include "navs/header.php"; 
 
 ?>
     <div

@@ -528,6 +528,7 @@ include __DIR__."/../../sanitalizer/precommande.php";
               Dashboard
             </h2>
             <!-- CTA -->
+<?php if($_SESSION['role'] == "admin") { ?>    
             <a
               class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
               href="newTable"
@@ -546,6 +547,7 @@ include __DIR__."/../../sanitalizer/precommande.php";
               </div>
               <span> &RightArrow;</span>
             </a>
+<?php } ?>
             <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
               <!-- Card -->

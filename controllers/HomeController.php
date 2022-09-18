@@ -19,9 +19,9 @@ class HomeController extends BaseController{
        protected function route(){
        
         if($this->get("/")){
-            if (isset($_SESSION['role']) AND $_SESSION['role'] != "admin") {
+            if (!isset($_SESSION['role'])) {
                 header("location:login");
-                header("location:register");
+                //header("location:register");
 
             }else{
                 $repositorie = new HomeRepositorie();

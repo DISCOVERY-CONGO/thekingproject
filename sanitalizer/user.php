@@ -26,19 +26,37 @@ if (isset($_POST['register'])) {
 
 
 if (isset($_POST['login'])) {
+    if (!empty($_POST['email']) AND !empty($_POST['password']) ) {
+        $email = htmlspecialchars(trim($_POST['email']));
+        $password = htmlspecialchars(trim($_POST['password']));
     
-    $email = htmlspecialchars(trim($_POST['email']));
-    $password = htmlspecialchars(trim($_POST['password']));
-
-    $data = ['email'=>$email,'password'=>$password];
-    $result = $user->login($data);
-    if($result){
+        $data = ['email'=>$email,'password'=>$password];
+        $result = $user->login($data);
         header("location:".$structure->redirect['domaine']);
-    }
-    else{
-        $_SESSION['erreur'] = "email ou mot de passe érronés";
-        header("location:".$structure->redirect['domaine']."/login");
-    }
+    }   
+
+    // if($result){
+    //     header("location:".$structure->redirect['domaine']);
+    // }
+    // else{
+    //     $_SESSION['erreur'] = "email ou mot de passe érronés";
+    //     header("location:".$structure->redirect['domaine']."/login");
+    // }
+    
+
+}
+
+
+if (isset($_POST['role_save'])) {
+    
+if (!empty($_POST['role'])) {
+    $role = htmlspecialchars(trim($_POST['role']));
+    $user_id = $_POST['user_id'];
+    $data = ['user_id'=>$user_id,'role'=>$role];
+    $user_controller = new \controllers\ControllerUser;
+    $user_controller->role_edit($data);
+
+}
     
 
 }

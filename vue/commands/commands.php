@@ -1,4 +1,7 @@
-<?php include __DIR__."/../navs/header.php"; ?>
+<?php
+ include __DIR__."/../navs/header.php";
+ include __DIR__."/../../sanitalizer/command.php";
+ ?>
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen }"
@@ -274,7 +277,7 @@
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
-             toutes commandes
+             toutes les commandes
             </h2>
             <!-- CTA -->
             
@@ -293,11 +296,11 @@
                       <th class="px-4 py-3">action</th>
                     </tr>
                   </thead>
-                  <tbody
-                    class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+                  <tbody  class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
                   <?php 
                   if(isset($data)) {
+                 
                   foreach($data as $data) { ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                      
@@ -318,11 +321,12 @@
             >
                       commander             
             </a> / <span>
-            <a href="confirmCommand/<?= $data['tId'] ?>"
-              class=" rounded p-2 bg-green-800 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2"
-            >
-                      payer             
-            </a>
+              <form method="POST">
+              <input type="hidden" name="precom_id" value="<?= $data['id'] ?>"?>
+                <input type="hidden" name="table_id" value="<?= $data['tId'] ?>"?>
+                <button class=" rounded p-2 bg-green-800 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2" name="confirm_commande">payer</button>
+              </form>
+          
             </span>
                       </td>
                   <?php } ?><!--
@@ -333,9 +337,10 @@
                       commander
               <span class="ml-2" aria-hidden="true">+</span>
 </a>
-                      </td>
-                 <?php } ?>-->
-                    </tr>
+                      </td> -->
+                       </tr>
+                 <?php } ?>
+                   
                   <?php } ?> 
                     
 

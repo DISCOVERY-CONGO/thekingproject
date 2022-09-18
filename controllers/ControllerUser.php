@@ -30,13 +30,27 @@ class ControllerUser extends BaseController{
             if($this->get("logout")){
                 session_destroy();
                 $structure = new \models\structure();
-               return header("location:".$structure->redirect['domaine']."/login");
+                return header("location:".$structure->redirect['domaine']."/login");
             } 
             if ($this->get("users")) {
                 $data = $user->users();
                 $this->affichage->views("user/users",$data);
             }
+            if ($this->get("editRole/([0-9]?[0-9]|100)")) {
+                $tableau = $this->get_parameters();
+                $last = $tableau[array_key_last($tableau)];
+                $data = $user->user_by_id($last);
+                $this->affichage->views("user/roleEdit",$data);
+
+            }
           }
+
+public function role_edit($data){
+    $user = new \Models\User;
+    $user->edit_role($data);
+    $data = $user->users();
+    $this->affichage->views("user/users",$data);
+}
          
 
         }

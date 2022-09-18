@@ -42,7 +42,7 @@ public function login($data){
         }
     
    }
-   return true;
+
     
 }
 
@@ -56,6 +56,22 @@ public function users()
     $this->req = $this->connect->query($sql);
     $result = $this->req->fetchAll();
     return $result;
+}
+
+public function user_by_id($user_id)
+{
+    $sql = "SELECT * FROM user WHERE id ='$user_id' ";
+    $this->req = $this->connect->query($sql);
+    $result = $this->req->fetchAll();
+    return $result;
+}
+
+public function edit_role($data){
+    $role = $data['role'];
+    $user_id = $data['user_id'];
+    $sql = "UPDATE user SET  role = ? WHERE id= ?";
+    $this->req = $this->connect->prepare($sql);
+    $this->req->execute([$role,$user_id]);
 }
 
 }

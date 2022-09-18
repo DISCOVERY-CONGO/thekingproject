@@ -324,7 +324,7 @@
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                      <?= $user['role'] ?>
+                      <?= $user['role'] ?> / <span><a href="editRole/<?= $user['id'] ?>" class=" bg-green-600 p-1 rounded text-white">edit role</a></span>
                       </td>
                     </tr>
 

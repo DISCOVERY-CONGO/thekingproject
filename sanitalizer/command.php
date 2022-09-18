@@ -55,4 +55,20 @@ if (! empty($_POST["action"])) {
             break;
     }
 }
+
+// confirm commande
+if(isset($_POST['confirm_commande'])){
+    $table_id = htmlspecialchars(trim($_POST['table_id']));
+    $precom_id = htmlspecialchars(trim($_POST['precom_id']));
+    $data = ['table_id'=>$table_id, 'precom_id'=>$precom_id];
+    $commande_conf = $command_controller->confirm_commande($data);
+    if($commande_conf){
+        $recu = $commande->get_commandById($precom_id);
+
+    }
+
+}
+
+
+
 ?>

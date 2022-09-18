@@ -63,8 +63,8 @@ public function libelleCommand($command_id){
 public function get_commandById($commandId){
     $this->req = $this->connect->query("SELECT 
     commande.quantite as qty, precommande.created_at, produit.prix, produit.nom, data_table.name as tname 
-    FROM commande,precommande,produit,data_table WHERE commande.command_id = precommande.id 
-    AND produit.id = commande.produit_id AND data_table.id = '$commandId' 
+    FROM commande,precommande,produit,data_table WHERE commande.command_id = '$commandId'  
+    AND produit.id = commande.produit_id
     AND precommande.created_at = CURRENT_DATE");
         $result = $this->req->fetchAll();
         if($result != null){
@@ -76,7 +76,8 @@ public function all_commandes(){
     $this->req = $this->connect->query("SELECT
      precommande.*,data_table.name as tname, data_table.status, data_table.id as tId
      FROM data_table, precommande 
-     WHERE data_table.id = precommande.table_id AND precommande.status = 0 ");
+     WHERE data_table.id = precommande.table_id AND data_table.status = 1 AND precommande.status = 0 
+     AND precommande.created_at = CURRENT_DATE");
           $result = $this->req->fetchAll();
           if($result != null){
               return $result;
@@ -105,10 +106,16 @@ public function updateCommandQuantity($quantity, $command_id)
     $this->req->execute([$quantity,$command_id]);
 }
 
-public function confirmCommand($command_id)
+public function confirmCommand($table_id)
 {
     $this->req = $this->connect->prepare("UPDATE data_table SET  status = 0 WHERE id= ?");
-    $this->req->execute([$command_id]);
+    $this->req->execute([$table_id]);
+    
+}
+public function precommande_status($id)
+{
+    $this->req = $this->connect->prepare("UPDATE precommande SET  status = 1 WHERE id= ?");
+    $this->req->execute([$id]);
     
 }
 

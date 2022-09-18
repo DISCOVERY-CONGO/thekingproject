@@ -48,20 +48,20 @@ class ControllerCommande extends BaseController{
                      $this->affichage->views('commands/createCommand',$data);
                 }
 
-                if ($this->get("confirmCommand/([0-9]?[0-9]|100)")) {
+                // if ($this->get("confirmCommand/([0-9]?[0-9]|100)")) {
                     
-                    $tableau = $this->get_parameters();
-                    $last = $tableau[array_key_last($tableau)];
+                //     $tableau = $this->get_parameters();
+                //     $last = $tableau[array_key_last($tableau)];
                      
-                    $confirmation = $commande->confirmCommand($last);
+                //     $confirmation = $commande->confirmCommand($last);
                       
 
-                            $data = $commande->get_commandById($last);
+                //             $data = $commande->get_commandById($last);
                      
-                            $this->affichage->views('Libelle/libelleDetail',$data);
+                //             $this->affichage->views('Libelle/libelleDetail',$data);
                          
                       
-                }
+                // }
 
                 if ($this->get("precommande/[0-9]")) {
                 
@@ -99,6 +99,20 @@ class ControllerCommande extends BaseController{
   
     
         
+ }
+
+ public function confirm_commande($data){
+    $structure = new \models\structure();
+    $commande = new \Models\Commande;
+    $table_id = $data['table_id'];
+    $precommande_id = $data['precom_id'];
+    $commande->confirmCommand($table_id);
+    $precommande = $commande->precommande_status($precommande_id);
+   $data = $commande->get_commandById($precommande_id);
+
+       return header("location:".$structure->redirect['domaine']."/Libelle/libelleDetail/");
+    
+
  }
 
 }
