@@ -1,6 +1,6 @@
 <?php include __DIR__."/../navs/header.php"; ?>
-        <div class="flex items-center justify-center min-h-screen bg-gray-100" id="libelle">
-            <div class="w-3/5 bg-white shadow-lg">
+        <div class=" w-6/12 flex items-center justify-center min-h-screen" id="libelle">
+            <div class=" w-6/12 bg-white shadow-lg">
                 <div class="flex justify-between p-4">
                     <div>
                         <h1 class="text-3xl italic font-extrabold tracking-widest text-indigo-500">The king pro</h1>
@@ -8,19 +8,19 @@
                     </div>
                  
                 </div>
-                <div class="w-full h-0.5 bg-indigo-500"></div>
+                <div class=" w-6/12 h-0.5 bg-indigo-500"></div>
                 <div class="flex justify-between p-4">
                     <div>
                         <h6 class="font-bold">Date: <span class="text-sm font-medium"> <?= $data[0]['created_at'] ?></span></h6>
                          </div>
-                    <div class="w-40">
+                    <div class=" w-2">
                         <address class="text-sm">
                             <span class="font-bold"> facturé à: </span>
                            
                             
                         </address>
                     </div>
-                    <div class="w-40">
+                    <div class="w-2">
                         <address class="text-sm">
                             <span class="font-bold">Table : </span>
                             <?= $data[0]['tname'] ?>

@@ -521,9 +521,9 @@
               Dashboard
             </h2>
             <!-- CTA -->
-            <a
+            <button
               class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="newLibelle"
+              type="button" id=""
             >
               <div class="flex items-center">
                 <svg
@@ -538,7 +538,7 @@
                 <span>générer une dépense</span>
               </div>
               <span> &RightArrow;</span>
-            </a>
+            </button>
             <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
               <!-- Card -->

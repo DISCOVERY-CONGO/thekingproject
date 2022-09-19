@@ -1,6 +1,7 @@
 <?php
  include __DIR__."/../navs/header.php";
  include __DIR__."/../../sanitalizer/command.php";
+ if (isset($data[0]['tId'])){
  ?>
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
@@ -309,25 +310,23 @@
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span
-                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 rounded-full dark:bg-green-700 dark:text-green-100"
                         >
                         <?= $data['created_at'] ?>
                         </span>
                      </td>
                     <?php if($data['status'] == true) {?>
                       <td class="px-4 py-3 text-sm">
-                      <a href="newCommand/<?= $data['id'] ?>"
-              class=" rounded p-2 bg-teal-500 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2"
-            >
-                      commander             
-            </a> / <span>
-              <form  method="POST">
-              <input type="hidden" name="precom_id" value="<?= $data['id'] ?>"?>
-                <input type="hidden" name="table_id" value="<?= $data['tId'] ?>"?>
-                <button class=" rounded p-2 bg-green-800 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2" name="confirm_commande">payer</button>
-              </form>
-          
-            </span>
+                           <a href="newCommand/<?= $data['id'] ?>" class=" rounded p-2 bg-teal-500 text-gray-50 hover:bg-green-700">
+                              commander 
+                           </a>  / 
+                              <span>
+                                    <form  method="POST" class="p-1">
+                                      <input type="hidden" name="precom_id" value="<?= $data['id'] ?>"?>
+                                      <input type="hidden" name="table_id" value="<?= $data['tId'] ?>"?>
+                                      <button class=" rounded bg-green-800 text-gray-50 p-3 hover:bg-red-500" name="confirm_commande">payer</button>
+                                    </form>
+                              </span>
                       </td>
                   <?php } ?><!--
                     <td class="px-4 py-3 text-sm">
@@ -347,102 +346,7 @@
                   </tbody>
                 </table> 
               </div>
-              <div
-                class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
-              >
-                <span class="flex items-center col-span-3">
-                  Showing 21-30 of 100
-                </span>
-                <span class="col-span-2"></span>
-                <!-- Pagination -->
-                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                  <nav aria-label="Table navigation">
-                    <ul class="inline-flex items-center">
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
-                          aria-label="Previous"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="w-4 h-4 fill-current"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          1
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          2
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          3
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          4
-                        </button>
-                      </li>
-                      <li>
-                        <span class="px-3 py-1">...</span>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          8
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
-                        >
-                          9
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
-                          aria-label="Next"
-                        >
-                          <svg
-                            class="w-4 h-4 fill-current"
-                            aria-hidden="true"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </span>
-              </div>
+
             </div>
 
         
@@ -452,4 +356,11 @@
     </div>
 <?php include __DIR__."/../navs/footer.php"; ?>
 
+<?php }
+if (isset($data[0]['pId'])){ 
 
+}else{
+
+
+}
+?>

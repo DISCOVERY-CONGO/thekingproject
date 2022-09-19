@@ -24,7 +24,7 @@ public function today_command(){
     WHERE commande.created_at = CURRENT_DATE 
     AND commande.command_id = precommande.id 
     AND commande.produit_id = produit.id  
-    AND precommande.table_id = data_table.id
+    AND precommande.table_id = data_table.id GROUP BY (produit.nom)
     ");
           $result = $this->req->fetchAll();
           if($result != null){

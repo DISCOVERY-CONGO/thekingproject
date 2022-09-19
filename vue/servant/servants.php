@@ -276,6 +276,7 @@
               Dashboard
             </h2>
             <!-- CTA -->
+  <?php if($_SESSION['role'] == "admin") { ?> 
             <a
               class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
               href="newServant"
@@ -294,6 +295,7 @@
               </div>
               <span>+</span>
             </a>
+<?php } ?>
             <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
               <!-- Card -->
@@ -401,11 +403,13 @@
                           </div>
                         </div>
                       </td>
+              <?php if($_SESSION['role'] == "recepteur" OR $_SESSION['role'] == "admin") { ?> 
                       <td class="px-4 py-3">
                        <button class="px-4 py-3 text-sm bg-orange-400 hover:bg-pink-900 rounded">
                           affecter
                        </button>
                       </td>
+                <?php } ?>
                     </tr>
                   <?php } ?>
                   </tbody>

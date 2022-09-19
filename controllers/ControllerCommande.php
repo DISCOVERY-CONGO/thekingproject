@@ -27,8 +27,13 @@ class ControllerCommande extends BaseController{
                 if($this->get("commandes")){
 
                         $data = $commande->all_commandes();
+                        if($data != null){
+                            $this->affichage->views("commands/commands",$data);
+                        }
+                        else{
+                            $this->affichage->views("404");
+                        }
                         
-                        $this->affichage->views("commands/commands",$data);
                  } 
 
                 if($this->get("newCommand/([0-9]?[0-9]?[0-9]|100)")){
@@ -111,6 +116,7 @@ class ControllerCommande extends BaseController{
     $commande->confirmCommand($table_id);
     $precommande = $commande->precommande_status($precommande_id);
    $data = $commande->get_commandById($precommande_id);
+
    return $this->affichage->views('Libelle/libelleDetail',$data);
     
 

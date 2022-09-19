@@ -18,7 +18,7 @@ if(!isset($_SESSION['role'])){
     />
     <link rel="stylesheet" href="/../../public/style.css" />
     <script src="/../../public/assets/js/jquery.js"></script>
-    
+    <script src="/../../public/assets/js/flowbite.js"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer

@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin')
 const Color = require('color')
 
 module.exports = {
-  purge: ['public/**/*.html'],
+  purge: ['public/**/*.js','vue/**/*.php'],
   theme: {
     themeVariants: ['dark'],
     customForms: (theme) => ({
@@ -214,5 +214,6 @@ module.exports = {
 
       addUtilities(newUtilities, variants('boxShadow'))
     }),
+    require('flowbite/plugin')
   ],
 }
