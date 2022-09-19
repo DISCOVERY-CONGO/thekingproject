@@ -31,7 +31,7 @@ class ControllerCommande extends BaseController{
                         $this->affichage->views("commands/commands",$data);
                  } 
 
-                if($this->get("newCommand/([0-9]?[0-9]|100)")){
+                if($this->get("newCommand/([0-9]?[0-9]?[0-9]|100)")){
 
                         $tableau = $this->get_parameters();
                         $last = $tableau[array_key_last($tableau)];

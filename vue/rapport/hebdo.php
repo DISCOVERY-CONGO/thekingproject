@@ -320,7 +320,7 @@
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                      <?= $today['prix'] * $today['quantite'] ?>
+                      <?= $today['prix'] * $today['quantite'] ?> fc
                       </td>
                     </tr>
                 <?php } ?>

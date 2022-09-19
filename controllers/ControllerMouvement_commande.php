@@ -16,6 +16,17 @@ class ControllerMouvement_commande extends BaseController{
       
         $this->affichage->views("rapport/journalier",$data);
       }
+
+      if ($this->get("mensuel")) {
+        $data = $rapport->month_command();
+      
+        $this->affichage->views("rapport/mensuel",$data);
+      }
+      if ($this->get("hebdo")) {
+        $data = $rapport->week_command();
+      
+        $this->affichage->views("rapport/hebdo",$data);
+      }
     }
 
 
