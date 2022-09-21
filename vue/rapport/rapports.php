@@ -360,7 +360,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    <a href="mensuel" target="_blank" rel="noopener noreferrer">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
+                    <a href="mensuel"  rel="noopener noreferrer">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
                   </p>
                 </div>
               </div>
@@ -374,7 +374,7 @@
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
-              vos rapports de depenses
+              vos rapports d'entrées-sorties
             </h2>
             <!-- CTA -->
        
@@ -385,7 +385,7 @@
             
               <!-- Card -->
               <div
-                class="flex items-center p-4  rounded-lg shadow-xs dark:bg-gray-800 bg-orange-300 "
+                class="flex items-center p-4  rounded-lg shadow-xs dark:bg-gray-800 bg-green-600"
               >
                 <div
                   class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
@@ -407,12 +407,12 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    <a href="journalier">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
+                    <a href="stockjournalier">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
                   </p>
                 </div>
               </div>
               <div
-                class="flex items-center p-4  rounded-lg shadow-xs dark:bg-gray-800 bg-green-400"
+                class="flex items-center p-4  rounded-lg shadow-xs dark:bg-gray-800 bg-orange-300"
               >
                 <div
                   class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
@@ -434,12 +434,12 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    <a href="hebdo">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
+                    <a href="stockhebdo">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
                   </p>
                 </div>
               </div>
               <div
-                class="flex items-center p-4  rounded-lg shadow-xs dark:bg-gray-800 bg-green-200"
+                class="flex items-center p-4  rounded-lg shadow-xs dark:bg-gray-800 bg-blue-400"
               >
                 <div
                   class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
@@ -461,7 +461,7 @@
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    <a href="mensuel" target="_blank" rel="noopener noreferrer">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
+                    <a href="stockmensuel"  rel="noopener noreferrer">voir plus</a><span class=" text-cool-gray-700 p-2">+</span>
                   </p>
                 </div>
               </div>

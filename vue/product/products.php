@@ -1,4 +1,7 @@
-<?php include __DIR__."/../navs/header.php"; ?>
+<?php
+ include __DIR__."/../navs/header.php";
+ include __DIR__."/../../sanitalizer/produit.php";
+ ?>
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen }"
@@ -276,9 +279,9 @@
               Dashboard
             </h2>
             <!-- CTA -->
-            <a
+            <button
               class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="newProduct"
+              data-modal-toggle="defaultModal"
             >
               <div class="flex items-center">
                 <svg
@@ -293,7 +296,124 @@
                 <span>Ajouter un produit</span>
               </div>
               <span>+</span>
-            </a>
+            </button>
+
+
+<!-- modal -->
+
+<div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                      <!-- Modal header -->
+                      <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                              ajouter un produit
+                          </h3>
+                          <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
+                              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                              <span class="sr-only">Close modal</span>
+                          </button>
+                      </div>
+<!--               modal       body -->
+<div class="flex items-center p-6  dark:bg-gray-900">
+      <div
+        class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
+      >
+        <div class="flex flex-col overflow-y-auto md:flex-row">
+          <div class="h-32 md:h-auto md:w-1/2">
+            <img
+              aria-hidden="true"
+              class="object-cover w-full h-full dark:hidden"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIinkk11RM0A_TARGmJndddavBw4oTLLs2QA&usqp=CAU"
+              alt="Office"
+            />
+            <img
+              aria-hidden="true"
+              class="hidden object-cover w-full h-full dark:block"
+              src="<?= $this->asset('assets/img/login-office-dark.jpeg') ?>"
+              alt="Office"
+            />
+          </div>
+          <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+            <div class="w-full">
+              <h1
+                class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
+              >
+                Ajouter un produit
+              </h1>
+          <form method="POST">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">nom du produit</span>
+                <input
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="ex: simba" name="nom"
+                />
+              </label>
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">quantité</span>
+                <input
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="ex: 5" name="quantite"
+                />
+              </label>
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">prix</span>
+                <input
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder="ex: 50" name="prix"
+                />
+              </label>
+              <br>
+            
+  <div class="flex justify-center">
+  <div class="mb-3 xl:w-96">
+              <select name="categorie" class="form-select form-select-sm
+    appearance-none
+    block
+    w-full
+    px-2
+    py-1
+    text-sm
+    font-normal
+    text-gray-700
+    bg-white bg-clip-padding bg-no-repeat
+    border border-solid border-gray-300
+    rounded
+    transition
+    ease-in-out
+    m-0
+    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-sm example">
+      <option selected>choisissez une cat...</option>
+  <?php foreach($data['categories'] as $categorie) { ?>
+      <option value="<?= $categorie['nom'] ?>"><?= $categorie['nom'] ?></option>
+  <?php } ?>   
+    </select>
+  </div>
+</div>
+
+              <!-- You should use a button here, as the anchor is only used for the example  -->
+              <button name="produit" type="submit"
+                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                
+              >
+                Ajouter un produit
+              </button>
+
+              <hr class="my-8" />
+
+       
+          </form>         
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+    </div>
+</div>
+
             <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
               <!-- Card -->
@@ -347,7 +467,7 @@
                     class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
 
-              <?php foreach($data as $product) {?>
+              <?php foreach($data['produits'] as $product) {?>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">

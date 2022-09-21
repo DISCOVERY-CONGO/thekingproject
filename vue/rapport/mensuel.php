@@ -282,14 +282,15 @@
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
-                  <thead>
+                  <thead class="">
                     <tr
                       class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                     >
-                      <th class="px-4 py-3">table</th>
-                      <th class="px-4 py-3">produit</th>
-                      <th class="px-4 py-3">quantite</th>
-                      <th class="px-4 py-3">montant</th>
+                      
+                      <th class="px-4 py-3 text-white  bg-cool-gray-600">produit</th>
+                      <th class="px-4 py-3 text-white bg-cool-gray-600">quantite</th>
+                      <th class="px-4 py-3 text-white bg-cool-gray-600">prix initial</th>
+                      <th class="px-4 py-3 text-white bg-cool-gray-600">montant total</th>
                       
                     </tr>
                   </thead>
@@ -300,27 +301,22 @@
                   if($data != null)
                   foreach($data as $today) { ?>
                     <tr class="text-gray-700 dark:text-gray-400">
-                      <td class="px-4 py-3">
-                        <div class="flex items-center text-sm">
-                        
-                          <div>
-                            <p class="font-semibold"><?= $today['tname'] ?></p>
-                           
-                          </div>
-                        </div>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                      <?= $today['pname'] ?>
+                    
+                      <td class="px-4 py-3 text-sm uppercase">
+                      <?= $today['nom'] ?>
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span
                           class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
                         >
-                        <?= $today['quantite'] ?>
+                        <?= $today['qty'] ?>
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                      <?= $today['prix'] * $today['quantite'] ?>
+                      <?= $today['prix'] ?> fc
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                      <?= $today['prix'] * $today['qty'] ?> fc
                       </td>
                     </tr>
                 <?php } ?>

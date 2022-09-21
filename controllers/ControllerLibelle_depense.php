@@ -32,6 +32,7 @@ class ControllerLibelle_depense extends BaseController{
                 
                  $this->affichage->views('Libelle/createLibelle',$data);
              }
+             
          }
 
         public function store_libelleDepense($data)

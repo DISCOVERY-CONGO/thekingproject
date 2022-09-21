@@ -16,12 +16,15 @@ class ControllerProduit extends BaseController{
        }
 
        protected function route(){
+        $categories = new Categorie();
         if($this->get("produits")){
             $product = new Produit();
-            $data = $product->all_products();
+            $produits = $product->all_products();
+            $categories = $categories->all_categories();
+            $data = ['produits'=>$produits,'categories'=>$categories];
             $this->affichage->views("product/products",$data);
         }elseif($this->get("newProduct")){
-            $categories = new Categorie();
+        
             $data = $categories->all_categories();
             $this->affichage->views("product/createProduct",$data);
         }

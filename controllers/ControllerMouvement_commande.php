@@ -7,6 +7,7 @@ class ControllerMouvement_commande extends BaseController{
 
     protected function route()
     {
+      // liens des rapports 
         $rapport = new Mouvement_commande;
       if ($this->get("rapports")) {
         $this->affichage->views("rapport/rapports");
@@ -27,6 +28,9 @@ class ControllerMouvement_commande extends BaseController{
       
         $this->affichage->views("rapport/hebdo",$data);
       }
+
+
+
     }
 
 

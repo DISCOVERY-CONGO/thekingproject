@@ -31,7 +31,7 @@ public function inserer($data){
 }
 
 public function all_products(){
-    $sql = "SELECT * FROM produit ORDER BY id DESC";
+    $sql = "SELECT * FROM produit WHERE quantite > 0 ORDER BY id DESC";
     $this->req = $this->connect->query($sql);
     $result = $this->req->fetchAll();
     return $result;

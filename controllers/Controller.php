@@ -49,6 +49,9 @@ public function start(){
     $c1->call();
  
 
+    $c1 = new ControllerStock();
+    $c1->call();
+
  
 
    
