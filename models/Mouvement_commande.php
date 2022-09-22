@@ -68,17 +68,22 @@ public function week_command(){
 }
 
 public function inpout_output(){
-    $sql = "SELECT produit.nom,
-	            (SELECT SUM(commande.quantite) 
-     	            FROM commande 
-     	            WHERE commande.produit_id = produit.id 
-                    AND commande.created_at = CURRENT_DATE) 
-                    AS qty_commande, produit.quantite as qty_total, -commande.quantite + produit.quantite as solde
-                FROM produit,commande 
-                WHERE  commande.produit_id = produit.id 
-                AND commande.created_at = CURRENT_DATE 
-                AND produit.created_at = CURRENT_DATE 
-                GROUP BY produit.nom ";
+    $sql = "SELECT produit.nom,(SELECT SUM(quantite_produit.quantite) 
+    FROM quantite_produit 
+    WHERE quantite_produit.id_produit = produit.id 
+   AND quantite_produit.created_at = CURRENT_DATE) 
+   AS input,
+    (SELECT SUM(commande.quantite) 
+         FROM commande 
+         WHERE commande.produit_id = produit.id 
+        AND commande.created_at = CURRENT_DATE) 
+        AS qty_commande, produit.quantite as qty_total, -commande.quantite + produit.quantite as solde
+    FROM produit,commande,quantite_produit 
+    WHERE  commande.produit_id = produit.id 
+    AND commande.created_at = CURRENT_DATE 
+    AND quantite_produit.created_at = CURRENT_DATE 
+    AND quantite_produit.id_produit = produit.id
+    GROUP BY produit.nom ";
                     $this->req = $this->connect->query($sql);
                     $result = $this->req->fetchAll();
                         if($result != null){

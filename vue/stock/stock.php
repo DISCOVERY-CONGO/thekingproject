@@ -350,13 +350,15 @@
                       <th class="px-4 py-3">Entrée</th>
                       <th class="px-4 py-3">sortie</th>
                       <th class="px-4 py-3">solde</th>
-
+                      <th class="px-4 py-3">total</th>
                     </tr>
                   </thead>
                   <tbody
                     class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
-                <?php foreach($data as $stock){ ?>
+                <?php 
+                if($data != null)
+                foreach($data as $stock){ ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
@@ -369,7 +371,7 @@
                         </div>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                      <?= $stock['qty_total'] ?>
+                      <?= $stock['input'] ?>
                       </td>
 
                       <td class="px-4 py-3 text-sm">
@@ -377,6 +379,9 @@
                       </td>
                       <td class="px-4 py-3 text-sm">
                       <?= $stock['solde'] ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                      <?= $stock['qty_total'] ?>
                       </td>
                     </tr>
                 <?php } ?>

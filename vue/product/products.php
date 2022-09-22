@@ -350,13 +350,7 @@
                   placeholder="ex: simba" name="nom"
                 />
               </label>
-              <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">quantité</span>
-                <input
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="ex: 5" name="quantite"
-                />
-              </label>
+
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">prix</span>
                 <input
@@ -455,12 +449,14 @@
                 <table class="w-full whitespace-no-wrap">
                   <thead>
                     <tr
-                      class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                      class="text-xs font-semibold tracking-wide text-left text-white uppercase border-b dark:border-gray-700 bg-gray-700 dark:text-gray-400 dark:bg-gray-800"
                     >
                       <th class="px-4 py-3">nom</th>
                       <th class="px-4 py-3">quantie</th>
                       <th class="px-4 py-3">prix</th>
                       <th class="px-4 py-3">categorie</th>
+                      <th class="px-4 py-3">ajouter quantité</th>
+                      <th class="px-4 py-3">modifier prix</th>
                     </tr>
                   </thead>
                   <tbody
@@ -501,6 +497,65 @@
                       </td>
                       <td class="px-4 py-3 text-sm">
                         <?= $product['categorie'] ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                      <?= $product['id'] ?>
+                        <button type="submit" data-modal-toggle="addProduit" class=" bg-green-500 p-1 rounded text-white">ajouter</button>
+                                          <!-- Main modal -->
+                                <div id="addProduit" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-auto mt-auto ml-auto right-auto left-auto z-50 w-3/12 md:inset-0 h-modal md:h-full">
+                                    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto"> 
+                                              <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                            <!-- Modal header -->
+                                                  <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-green-600 dark:text-white">
+                                                                    ajouter la quantité
+                                                        </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="addProduit">
+                                                              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                                    <span class="sr-only">Close modal</span>
+                                                         </button>
+                                                  </div>
+                                      <!--               modal       body -->
+                                                  <form class="" method="POST">
+                                                    <label class=" text-base text-green-500 ml-2 underline">quantite : </label>
+                                                    <input type="hidden" name="produit_id" value="<?= $product['id'] ?>">
+                                                   
+                                                    <input type="number" class="block w-2/4 ml-16  mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="quantite">
+                                                    <!-- <input type="date" name="created_at" class="block w-2/4 ml-16  mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-outline-gray form-input"> -->
+                                                    <input type="submit" name="addQuantite" class="ml-16 mt-4 mb-3 rounded  pl-2 pr-2 bg-green-900 text-white text-base" value="ajouter">
+                                                  </form>
+                                        </div>
+                                     </div>
+                                 </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                      <button type="submit" data-modal-toggle="modifyPrice" class=" bg-green-500 p-1 rounded text-white">modifier</button>
+                                          <!-- Main modal -->
+                                <div id="modifyPrice" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-auto mt-auto ml-auto right-auto left-auto z-50 w-3/12 md:inset-0 h-modal md:h-full">
+                                    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto"> 
+                                              <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                            <!-- Modal header -->
+                                                  <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-green-600 dark:text-white">
+                                                                    modifier le prix
+                                                        </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="modifyPrice">
+                                                              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                                    <span class="sr-only">Close modal</span>
+                                                         </button>
+                                                  </div>
+                                      <!--               modal       body -->
+                                                  <form class="" method="POST">
+                                                    <label class=" text-base text-green-500 ml-2 underline">prix : </label>
+                                                    <input type="hidden" name="produit_id" value="<?= $product['id'] ?>">
+                                                    <input type="number" class="block w-2/4 ml-16  mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="prix">
+                                                    <input type="submit" class="ml-16 mt-4 mb-3 rounded  pl-2 pr-2 bg-green-900 text-white text-base" value="modifier" name="modifierPrix">
+                                                  </form>
+                                        </div>
+                                     </div>
+                                 </div>
                       </td>
               </tr>
           <?php } ?>

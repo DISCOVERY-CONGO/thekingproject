@@ -21,17 +21,16 @@ public function __construct()
 
 public function inserer($data){
     $nom = $data['nom'];
-    $quantite = $data['quantite'];
     $categorie = $data['categorie'];
     $prix = $data['prix'];
 
-    $sql = "INSERT INTO produit (nom,quantite,categorie,prix) VALUES (?,?,?,?)";
+    $sql = "INSERT INTO produit (nom,categorie,prix) VALUES (?,?,?)";
     $req = $this->connect->prepare($sql);
-    $req->execute([$nom,$quantite,$categorie,$prix]);
+    $req->execute([$nom,$categorie,$prix]);
 }
 
 public function all_products(){
-    $sql = "SELECT * FROM produit WHERE quantite > 0 ORDER BY id DESC";
+    $sql = "SELECT * FROM produit  ORDER BY id DESC";
     $this->req = $this->connect->query($sql);
     $result = $this->req->fetchAll();
     return $result;
@@ -52,6 +51,37 @@ public function updateProductQuantity($product_id)
     $this->req = $this->connect->prepare("UPDATE produit SET quantite= quantite -1 WHERE id = ?");
     $this->req->execute([$product_id]);
     
+}
+
+public function updateQuantite($data)
+{
+
+
+    $product_id = $data['produit_id'];
+    $quantite = $data['quantite'];
+
+        $sql = "INSERT INTO quantite_produit (id_produit,quantite) VALUES (?,?)";
+        $req = $this->connect->prepare($sql);
+        $req->execute([$product_id,$quantite]);
+
+}
+
+public function addquantite($data){
+    $product_id = $data['produit_id'];
+    $quantite = $data['quantite'];
+        $this->req = $this->connect->prepare("UPDATE `produit` SET quantite = quantite + ? WHERE id = ?");
+        $this->req->execute([$quantite,$product_id]);
+  
+return true;
+}
+
+public function modifierprix($data){
+    $product_id = $data['produit_id'];
+    $prix = $data['prix'];
+        $this->req = $this->connect->prepare("UPDATE `produit` SET prix = ? WHERE id = ?");
+        $this->req->execute([$prix,$product_id]);
+  
+return true;
 }
 
 }

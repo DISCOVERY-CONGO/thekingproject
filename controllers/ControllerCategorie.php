@@ -14,8 +14,10 @@ class ControllerCategorie extends BaseController{
           }
 
           protected function route(){
+            $categories = new Categorie;
             if($this->get("/categories")){
-                $this->affichage->views("categorie/categories");
+                $data = $categories->all_categories();
+                $this->affichage->views("categorie/categories",$data);
             } 
             if($this->get("/newCategorie")){
                 $this->affichage->views('categorie/createCategorie');
