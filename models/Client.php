@@ -9,27 +9,24 @@ class Client extends Model{
     protected $database;
     protected $req;
 
-protected $attributes=[
-    "nom"
-];
+    protected $attributes=["nom"];
 
-public function __construct(){
-    $this->database = new base();
-    $this->connect = $this->database->init_connection();
-}
+    public function __construct(){
+        $this->database = new base();
+        $this->connect = $this->database->init_connection();
+    }
 
-public function all_clients(){
-        $sql = "SELECT * FROM client ORDER BY id DESC";
-        $this->req = $this->connect->query($sql);
-        $result = $this->req->fetchAll();
-        return $result;
-}
+    public function all_clients(){
+            $sql = "SELECT * FROM client ORDER BY id DESC";
+            $this->req = $this->connect->query($sql);
+            $result = $this->req->fetchAll();
+            return $result;
+    }
 
-public function count(){
-    
-    $this->req = $this->connect->query("SELECT * FROM client");
-    return $this->req->rowCount();
-}
+    public function count(){
+        $this->req = $this->connect->query("SELECT * FROM client");
+        return $this->req->rowCount();
+    }
 
 }
 

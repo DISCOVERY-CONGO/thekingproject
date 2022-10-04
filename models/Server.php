@@ -46,6 +46,17 @@ public function count_server(){
     return $this->req->rowCount();
 }
 
+public function store_affectation($data){
+
+    $serve_id = $data['server_id'];
+    $table_id = $data['table_id'];
+
+    $sql = "INSERT INTO affectation (server_id,table_id) VALUES (?,?)";
+    $req = $this->connect->prepare($sql);
+    $req->execute([$serve_id,$table_id]);
+
+}
+
 }
 
 

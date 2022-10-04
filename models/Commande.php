@@ -43,7 +43,8 @@ public function precommandeStore($data)
 
 public function getCommandByProduct($product_id, $command_id)
 {
-       $this->req = $this->connect->query("SELECT * FROM commande WHERE produit_id = '$product_id' AND command_id = '$command_id' ");
+       $this->req = $this->connect->query("SELECT * FROM commande 
+                        WHERE produit_id = '$product_id' AND command_id = '$command_id' ");
         $result = $this->req->fetchAll();
         if($result != null){
             return $result;
@@ -61,7 +62,13 @@ public function libelleCommand($command_id){
 }
 
 public function get_commandById($commandId){
-    $this->req = $this->connect->query("SELECT commande.quantite as qty, produit.nom, produit.prix, precommande.created_at, data_table.name as tname, precommande.id as pId FROM precommande,commande,produit,data_table  WHERE commande.command_id = precommande.id AND precommande.id = '$commandId' AND precommande.created_at = CURRENT_DATE AND commande.produit_id = produit.id AND data_table.id = precommande.table_id");
+    $this->req = $this->connect->query("SELECT commande.quantite as qty, produit.nom, produit.prix, precommande.created_at, data_table.name as tname, precommande.id as pId 
+                                            FROM precommande,commande,produit,data_table  
+                                            WHERE commande.command_id = precommande.id 
+                                            AND precommande.id = '$commandId' 
+                                            AND precommande.created_at = CURRENT_DATE 
+                                            AND commande.produit_id = produit.id 
+                                            AND data_table.id = precommande.table_id");
         $result = $this->req->fetchAll();
         if($result != null){
             return $result;
@@ -70,31 +77,34 @@ public function get_commandById($commandId){
 
 public function all_commandes(){
     $this->req = $this->connect->query("SELECT
-     precommande.*,data_table.name as tname, data_table.status, data_table.id as tId
-     FROM data_table, precommande 
-     WHERE data_table.id = precommande.table_id AND data_table.status = 1 AND precommande.status = 0 
-     AND precommande.created_at = CURRENT_DATE");
+                            precommande.*,data_table.name as tname, data_table.status, data_table.id as tId
+                        FROM data_table, precommande 
+                        WHERE data_table.id = precommande.table_id 
+                        AND data_table.status = 1 
+                        AND precommande.status = 0 
+                        AND precommande.created_at = CURRENT_DATE");
           $result = $this->req->fetchAll();
           if($result != null){
               return $result;
           }
 }
 
+public function new_commands(){
 
-// public function not_approved(){
-// //    $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
-// //   precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ");
-// //         $result = $this->req->fetchAll();
-// //         if($result != null){
-// //             return $result;
-// //         }
-// $this->req = $this->connect->query("SELECT DISTINCT precommande.nom, data_table.name as tname,data_table.id, precommande.confirm, precommande.id as comId, client.nom as client FROM precommande,data_table,client WHERE 
-// precommande.table_id = data_table.id AND precommande.client_id = client.id AND precommande.confirm = 0 ORDER BY precommande.id DESC ");
-//       $result = $this->req->fetchAll();
-//       if($result != null){
-//           return $result;
-//       }
-// }
+$this->req = $this->connect->query("SELECT DISTINCT  
+                        data_table.name as tname,data_table.id as tId, precommande.status, precommande.id
+                    FROM precommande,data_table 
+                    WHERE precommande.table_id = data_table.id 
+                    AND precommande.status = 0 
+                    ORDER BY precommande.id DESC ");
+      $result = $this->req->fetchAll();
+      if($result != null){
+          return $result;
+      }
+}
+
+
+
 
 public function updateCommandQuantity($quantity, $command_id)
 {
@@ -130,7 +140,8 @@ public function emptyCommand($client_id)
 
 public function revenue()
 {
-    $this->req = $this->connect->query("SELECT produit.prix as prix, commande.quantite as quantite FROM produit,commande WHERE 
+    $this->req = $this->connect->query("SELECT produit.prix as prix, commande.quantite as quantite 
+                                FROM produit,commande WHERE 
     commande.produit_id = produit.id");
           $result = $this->req->fetchAll();
           if($result != null){

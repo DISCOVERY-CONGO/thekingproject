@@ -1,8 +1,9 @@
 <?php 
 include __DIR__."/../navs/header.php";
-include __DIR__."/../../sanitalizer/command.php";
+//include __DIR__."/../../sanitalizer/command.php";
 global $item_total;
  ?>
+ <script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen }"
@@ -305,16 +306,16 @@ global $item_total;
                             <?php
                             if(isset($data['produits'])){
                             foreach($data['produits'] as $product) {?>
-                                   <form  method="post">
-                                      <input type="hidden" name="action" value="add">
-                                      <input type="hidden" name="produit_id" value="<?= $product['id'] ?>">
-                                      <input type="hidden" name="command_id" value="<?= $data['command_id'] ?>">
+                                   <form action="javascript:void(0)"  method="post" id="ajax-form">
+                                      <input type="hidden" id="action" name="action" value="add">
+                                      <input type="hidden" id="produit_id" name="produit_id" value="<?= $product['id'] ?>">
+                                      <input type="hidden" id="command_id" name="command_id" value="<?= $data['command_id'] ?>">
                                     <tr class="text-gray-700 dark:text-gray-400">
                                         <td class="px-4 py-3"><?= $product['nom'] ?></td>
                                          <td class="px-4 py-3"> <?= $product['prix'] ?></td>
                                         <td class="px-4 py-3"> 
-                                           <input type="text" name="quantite" value="1" size="2" />
-                                           <input type="submit" value="ajouter " class="btnAddAction" />
+                                           <input type="text" name="quantite" id="quantite" value="1" size="2" />
+                                           <input type="submit" value="ajouter"   class="btnAddAction" />
                                        </td>
                                      </tr>
                                    </form>
@@ -345,10 +346,10 @@ global $item_total;
                                            foreach($data['commandes'] as $commande) { ?>
                                       
                                       <form method="post">
-                                         <input type="hidden" name="action" value="remove">
+                                         <input type="hidden" name="action" value="remove" id="action">
                                     <tr>
                                           <td class="hidden pb-4 md:table-cell">
-                                              <input type="hidden" name="command_id" value="<?= $commande['comId'] ?>">
+                                              <input type="hidden" name="command_id" id="command_id" value="<?= $commande['comId'] ?>">
                                           </td>
                                           <td>
                                             <a href="#">
@@ -372,8 +373,10 @@ global $item_total;
                                   <?php
                                 $item_total += ($commande["prix"] * $commande["quantite"]);
                                   } ?>
+                                
                                   </tbody>
                                 </table>
+                                
                                 <hr class="pb-6 mt-6">
                                 <div class="my-4 mt-2 -mx-2 lg:flex">
                                   
@@ -381,7 +384,7 @@ global $item_total;
                                   
                                     <div class="p-2">
                                   
-                                          <div class="flex justify-between pt-4 border-b">
+                                          <div class="flex justify-between pt-4 border-b mt-12">
                                             <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                                             total
                                             </div>
@@ -389,10 +392,11 @@ global $item_total;
                                             <?= $item_total?> fc
                                             </div>
                                           </div>
+                                          <a href="facture/<?= $data['command_id'] ?>" class=" mt-8 ml-2 mr-3 mb-0 bg-green-500 hover:bg-red-500 text-white ext-sm  py-2 px-8 rounded ">generer</a>
 
                                 </div>
                               </div>
-                            </div>
+                            </div> 
                          
 
                         </div>
@@ -405,7 +409,7 @@ global $item_total;
       </div>
     </div>
     <script type="text/javascript">
-      $(document).ready(function(){
+    $(document).ready(function(){
         $("#search").keyup(function(){
             search_on_table($(this).val());
         });
@@ -427,6 +431,62 @@ global $item_total;
           });
         }
       });
-    </script>
+
+      /// ajax form submit 
+
+      $(document).ready(function(){
+    // hide messages 
+    $("#error").hide();
+    $("#show_message").hide();
+    // on submit...
+    $('#ajax-form').submit(function(e){
+    e.preventDefault();
+    $("#error").hide();
+    //name required
+    var action = $("input#action").val();
+    if(action == ""){
+    $("#error").fadeIn().text("Name required.");
+    $("input#action").focus();
+    return false;
+    }
+    // email required
+    var produit_id = $("input#produit_id").val();
+    if(produit_id == ""){
+    $("#error").fadeIn().text("Email required");
+    $("input#produit_id").focus();
+    return false;
+    }
+    // command
+    var command_id = $("input#command_id").val();
+    if(command_id == ""){
+    $("#error").fadeIn().text("Mobile number required");
+    $("input#command_id").focus();
+    return false;
+    }
+// quantite
+    var quantite = $("input#quantite").val();
+    if(quantite == ""){
+    $("#error").fadeIn().text("Mobile number required");
+    $("input#quantite").focus();
+    return false;
+    }
+    // ajax
+    $.ajax({
+    type:"POST",
+    url: "sanitCommand.php",
+    data: $(this).serialize(), // get all form field value in serialize form
+    success: function(){
+    $("#show_message").fadeIn();
+    //$("#ajax-form").fadeOut();
+    }
+    });
+    });  
+    return false;
+    });
+
+
+</script>
+
+<script src="script.js"></script>
     
     <?php include __DIR__."/../navs/footer.php"; ?>

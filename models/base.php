@@ -23,8 +23,6 @@ class base{
 	protected $colonne = array();
 
 
-
-	
 	
  public function __construct(){
  
@@ -48,175 +46,164 @@ class base{
  	$this->pass = $structure->definition['pass'];
  	$this->db_name = $structure->definition['db_name'];
  	try{
-$connexion=new PDO("mysql:host=".$this->hote,$this->login,$this->pass);
-	$connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$connexion->exec("CREATE DATABASE IF NOT EXISTS ".$this->db_name."");
-	$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-$bdd = new PDO('mysql:host='.$this->hote.';dbname='.$this->db_name, $this->login, $this->pass,
-$pdo_options);
+		$connexion=new PDO("mysql:host=".$this->hote,$this->login,$this->pass);
+			$connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+			$connexion->exec("CREATE DATABASE IF NOT EXISTS ".$this->db_name."");
+			$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+			$bdd = new PDO('mysql:host='.$this->hote.';dbname='.$this->db_name, $this->login, $this->pass,$pdo_options);
 	 // création des  table pour enregistrement comptes utilisateur
 
-$bdd->exec("
-CREATE TABLE IF NOT EXISTS produit (
- id INT NOT NULL AUTO_INCREMENT,
- nom VARCHAR(255) NOT NULL,
- quantite INT NOT NULL,
- categorie VARCHAR(255),
- prix FLOAT NOT NULL,
- created_at DATE,
- updated_at DATE,
- PRIMARY KEY (id)
- );");
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS produit (
+					id INT NOT NULL AUTO_INCREMENT,
+					nom VARCHAR(255) NOT NULL,
+					quantite INT NOT NULL,
+					categorie VARCHAR(255),
+					prix FLOAT NOT NULL,
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
- $bdd->exec("
-	 CREATE TABLE IF NOT EXISTS categorie (
- id INT NOT NULL AUTO_INCREMENT,
- nom VARCHAR(255),
- created_at DATE,
- updated_at DATE,
- PRIMARY KEY (id)
- );");
+					$bdd->exec("
+						CREATE TABLE IF NOT EXISTS categorie (
+					id INT NOT NULL AUTO_INCREMENT,
+					nom VARCHAR(255),
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
- $bdd->exec("
-	 CREATE TABLE IF NOT EXISTS serveur (
- id INT NOT NULL AUTO_INCREMENT,
- nom VARCHAR(255),
- post_nom VARCHAR(255),
- sexe VARCHAR(255),
- created_at DATE,
- updated_at DATE,
- PRIMARY KEY (id)
- );");
+					$bdd->exec("
+						CREATE TABLE IF NOT EXISTS serveur (
+					id INT NOT NULL AUTO_INCREMENT,
+					nom VARCHAR(255),
+					post_nom VARCHAR(255),
+					sexe VARCHAR(255),
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
- $bdd->exec("
-	 CREATE TABLE IF NOT EXISTS commande (
- id INT NOT NULL AUTO_INCREMENT,
- serveur INT NOT NULL,
- client INT NOT NULL,
- table_id INT NOT NULL,
- numcommande VARCHAR(255),
- created_at DATE,
- updated_at DATE,
- PRIMARY KEY (id)
- );");
+					$bdd->exec("
+						CREATE TABLE IF NOT EXISTS commande (
+					id INT NOT NULL AUTO_INCREMENT,
+					serveur INT NOT NULL,
+					client INT NOT NULL,
+					table_id INT NOT NULL,
+					numcommande VARCHAR(255),
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
- $bdd->exec("
- CREATE TABLE IF NOT EXISTS client (
-id INT NOT NULL AUTO_INCREMENT,
-nom VARCHAR(255),
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
-
-
-$bdd->exec("
- CREATE TABLE IF NOT EXISTS user (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(255),
-secondName VARCHAR(255),
-email VARCHAR(255),
-password VARCHAR(255),
-role VARCHAR(255) NOT NULL,
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
-
-$bdd->exec("
- CREATE TABLE IF NOT EXISTS mouvement_commande (
-id INT NOT NULL AUTO_INCREMENT,
-produit INT NOT NULL,
-quantite INT NOT NULL,
-prix FLOAT NOT NULL,
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
-
-$bdd->exec("
- CREATE TABLE IF NOT EXISTS data_table (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(255),
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS client (
+					id INT NOT NULL AUTO_INCREMENT,
+					nom VARCHAR(255),
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
 
-$bdd->exec("
- CREATE TABLE IF NOT EXISTS approvisionnement (
-id INT NOT NULL AUTO_INCREMENT,
-quantite INT NOT NULL,
-provenance VARCHAR(255),
-prix_unit FLOAT NOT NULL,
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS user (
+					id INT NOT NULL AUTO_INCREMENT,
+					name VARCHAR(255),
+					secondName VARCHAR(255),
+					email VARCHAR(255),
+					password VARCHAR(255),
+					role VARCHAR(255) NOT NULL,
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
-$bdd->exec("
- CREATE TABLE IF NOT EXISTS depense (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(255),
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS mouvement_commande (
+					id INT NOT NULL AUTO_INCREMENT,
+					produit INT NOT NULL,
+					quantite INT NOT NULL,
+					prix FLOAT NOT NULL,
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
-$bdd->exec("
- CREATE TABLE IF NOT EXISTS libelle_depense (
-id INT NOT NULL AUTO_INCREMENT,
-title VARCHAR(255),
-montant FLOAT NOT NULL,
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
-
- 
-$bdd->exec("
- CREATE TABLE IF NOT EXISTS role (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(255),
-created_at DATE,
-updated_at DATE,
-PRIMARY KEY (id)
-);");
-
- 
-    
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS data_table (
+					id INT NOT NULL AUTO_INCREMENT,
+					name VARCHAR(255),
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
 
 
- 	}catch(Exception $e){
-	die('Erreur : '.$e->getMessage());
-	var_dump($e);
-	echo"<h1>echecs de la connexion<h1>";} 
- }
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS approvisionnement (
+					id INT NOT NULL AUTO_INCREMENT,
+					quantite INT NOT NULL,
+					provenance VARCHAR(255),
+					prix_unit FLOAT NOT NULL,
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
+
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS depense (
+					id INT NOT NULL AUTO_INCREMENT,
+					name VARCHAR(255),
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
+
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS libelle_depense (
+					id INT NOT NULL AUTO_INCREMENT,
+					title VARCHAR(255),
+					montant FLOAT NOT NULL,
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
+
+					
+					$bdd->exec("
+					CREATE TABLE IF NOT EXISTS role (
+					id INT NOT NULL AUTO_INCREMENT,
+					name VARCHAR(255),
+					created_at DATE,
+					updated_at DATE,
+					PRIMARY KEY (id)
+					);");
+
+
+		}catch(Exception $e){
+				die('Erreur : '.$e->getMessage());
+						var_dump($e);
+						echo"<h1>echecs de la connexion<h1>";} 
+				}
 
 public  function init_connection(){
-	
 	if(isset($GLOBALS["pdo"])){
 		return $GLOBALS["pdo"];
 	}else{
-
-
-
-	$dsn = 'mysql:host='.$this->hote.';dbname='.$this->db_name;
-	$pdo = new PDO($dsn, $this->login, $this->pass);
-	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$this->pdo=$pdo;
-	$GLOBALS["pdo"] = $pdo;
+		$dsn = 'mysql:host='.$this->hote.';dbname='.$this->db_name;
+		$pdo = new PDO($dsn, $this->login, $this->pass);
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$this->pdo=$pdo;
+		$GLOBALS["pdo"] = $pdo;
 	return $pdo;
+	}
 }
-}
+
 protected function init_base(){
-	
-
-
 
 }
-
 
 private  function start_connection(){
 	$dsn = 'mysql:host='.$this->hote.';dbname='.$this->db_name;
@@ -225,6 +212,7 @@ private  function start_connection(){
 	$this->pdo=$pdo;
 	return $pdo;
 }
+
 public function requette($req){
 	$cont=0;
 	$connect =$this->init_connection();

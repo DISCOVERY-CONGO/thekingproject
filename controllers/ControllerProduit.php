@@ -39,8 +39,9 @@ class ControllerProduit extends BaseController{
 
     public function update_quantity($data){
         $product = new Produit();
-        $product->updateQuantite($data);
         $product->addquantite($data);
+        $product->updateQuantite($data);
+      
         header('location:produits');
 
     }

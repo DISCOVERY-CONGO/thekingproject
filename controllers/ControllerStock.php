@@ -12,11 +12,12 @@ protected function route()
 {
   $stock = new Mouvement_commande;
     if ($this->get("stock")) {
-      $data = $stock->inpout_output();
-        $this->affichage->views("stock/stock",$data);
+      
+        $this->affichage->views("stock/stock");
     }
-    if ($this->get("stockmensuel")) {
-
+    if ($this->get("daily")) {
+      $data = $stock->inpout_output();
+     $this->affichage->views("stock/journalier",$data);
       }
       if ($this->get("stockhebdo")) {
 

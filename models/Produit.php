@@ -30,7 +30,7 @@ public function inserer($data){
 }
 
 public function all_products(){
-    $sql = "SELECT * FROM produit  ORDER BY id DESC";
+    $sql = "SELECT * FROM produit";
     $this->req = $this->connect->query($sql);
     $result = $this->req->fetchAll();
     return $result;
@@ -69,19 +69,19 @@ public function updateQuantite($data)
 public function addquantite($data){
     $product_id = $data['produit_id'];
     $quantite = $data['quantite'];
-        $this->req = $this->connect->prepare("UPDATE `produit` SET quantite = quantite + ? WHERE id = ?");
+        $this->req = $this->connect->prepare("UPDATE produit SET quantite = quantite + ? WHERE id = ?");
         $this->req->execute([$quantite,$product_id]);
   
-return true;
+
 }
 
 public function modifierprix($data){
     $product_id = $data['produit_id'];
     $prix = $data['prix'];
-        $this->req = $this->connect->prepare("UPDATE `produit` SET prix = ? WHERE id = ?");
+        $this->req = $this->connect->prepare("UPDATE produit SET prix = ? WHERE id = ?");
         $this->req->execute([$prix,$product_id]);
   
-return true;
+
 }
 
 }

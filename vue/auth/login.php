@@ -1,90 +1,126 @@
 <?php 
 include __DIR__."/inc.php"; 
 include __DIR__."/../../sanitalizer/user.php";
+// use \Models\User;
+
+// $structure = new \models\structure();
+// $user = new User;
+
+
+// if (isset($_POST['action']) == 'login') {
+   
+//   $email = $_POST['email'];
+//   $password = $_POST['password'];
+//   // validation
+//   $error = array(
+//     'error_status' => 0
+//   );
+
+//   if (empty($email)) {
+//     $error['error_status'] = 1;
+//     $error['email'] = 'Email is required!';
+//   }
+//   if (empty($password)) {
+//     $error['error_status'] = 1;
+//     $error['password'] = 'Password is required!';
+//   }
+//   if ($error['error_status'] > 0) {
+//     echo json_encode($error);
+//     exit();
+//   }
+//   // if validation is successful
+//   $data = ['email'=>$email,'password'=>$password];
+//   $result = $user->login($data);
+//   if($result){
+//     $response = array(
+//       'status' => 1,
+//       'msg' => 'Login successful'
+//     );
+//   } else {
+//     $response = array(
+//       'status' => 0,
+//       'msg' => 'Invalid Credentials'
+//     );
+//   }
+//   echo json_encode($response);
+//   exit();
+// } 
 
 ?>
-    <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
-      <div
-        class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
-      >
-        <div class="flex flex-col overflow-y-auto md:flex-row">
-          <div class="h-32 md:h-auto md:w-1/2">
-            <img
-              aria-hidden="true"
-              class="object-cover w-full h-full dark:hidden"
-              src="public/assets/img/login-office.jpeg"
-              alt="Office"
-            />
-            <img
-              aria-hidden="true"
-              class="hidden object-cover w-full h-full dark:block"
-              src="<?= $this->asset('img/login-office-dark.jpeg') ?>"
-              alt="Office"
-            />
-          </div>
-          <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-            <div class="w-full">
-              <h1
-                class="mb-4 text-5xl font-semibold text-gray-700 dark:text-gray-200"
-              >
-                se connecter
-              </h1>
-            <form method="post">
-              <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Email</span>
-                <input
-                name="email"
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="Jane@gmail.com"
-                  type="email"
-                />
-              </label>
-              <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">mot de passe</span>
-                <input
-                name="password"
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="***************"
-                  type="password"
-                />
-              </label>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
 
-              <!-- You should use a button here, as the anchor is only used for the example  -->
-              <button type="submit"
-                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                name="login"
-              >
-                se connecter
-              </button>
+              <h4 class="center">se connecter</h4>
+              <form class="pt-3" method="POST">
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                </div>
+                <small class=" text-red-800 ml-5" id="emailError"></small>
+                <div class="form-group">
+                  <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <small class=" text-red-800 ml-5" id="passwordError"></small>
+                <div class="mt-3">
+                  <input class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" name="login">
+                </div>
 
-              <p
-                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-red-700 transition-colors duration-150  focus:outline-none focus:shadow-outline-purple"
-                name="login"
-              >
-              <?php if (isset($_SESSION['erreur'])){
-                echo  $_SESSION['erreur'] ;
-              }  
-               ?>
-              </p>
-
-              
-              <hr class="my-8" />
-
-              
-              </button>
-              
-              <p class="mt-1">
-                <a
-                  class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                  href="register"
-                >
-                  Créer un compte
-                </a>
-              </p>
+              </form>
             </div>
           </div>
         </div>
       </div>
+      <!-- content-wrapper ends -->
     </div>
-  </body>
+    <!-- page-body-wrapper ends -->
+  </div><script>
+    // $('#loginForm').on('submit', function(e) {
+    //   e.preventDefault();
+    //   var data = new FormData($(this)[0]);
+    //   data.append('action', 'login');
+    //   var form = $(this);
+    //   form.find(':submit').attr('disabled', true);
+    //   var url = "http://theking/login";
+    //   $.ajax({
+    //     type: 'POST',
+    //     url: url,
+    //     data: data,
+    //     dataType: 'JSON',
+    //     processData: false,
+    //     contentType: false,
+    //     error: function(xhr, textStatus, errorThrown) {
+    //       console.log(xhr.responseText);
+    //     },
+    //     success: function(response) {
+    //       console.log(response);
+    //       form.find(':submit').attr('disabled', false);
+    //       if (response.error_status == 1) {
+    //         form.find('small').text('');
+    //         // If validation error exists
+    //         for (var key in response) {
+    //           var errorContainer = form.find(`#${key}Error`);
+    //           if (errorContainer.length !== 0) {
+    //             errorContainer.html(response[key]);
+    //           }
+    //         }
+    //       }
+    //       if (response.status == 1) {
+    //         form.trigger('reset');
+    //         form.find('small').text('');
+    //         // handling success response
+    //         window.location.href = 'commandes';
+
+    //       } else if (response.status == 0) {
+    //         // Handling failure response
+    //         toastr.error(response.msg);
+    //       }
+    //     }
+    //   });
+    // });
+  </script>
+</body>
+
 </html>

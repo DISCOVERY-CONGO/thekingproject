@@ -615,7 +615,7 @@ include __DIR__."/../../sanitalizer/table.php";
                 class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                 
               >
-                créer un client
+                créer une table
               </button>
 
               <hr class="my-8" />
@@ -679,7 +679,7 @@ include __DIR__."/../../sanitalizer/table.php";
                     >
                       <th class="px-4 py-3">nom</th>
                       <th class="px-4 py-3">places</th>
-                      <th class="px-4 py-3">action</th>
+                      <th class="px-4 py-3">reserver des places</th>
                     </tr>
                   </thead>
                   <tbody
@@ -714,8 +714,9 @@ include __DIR__."/../../sanitalizer/table.php";
                         <?php if($table['status'] == false){ ?>
                       <td class="px-4 py-3 text-sm">
                         <form method="POST">
+                         
                           <input type="hidden" name="table_id" value="<?= $table['tId'] ?>"/>
-                          <button type="submit" name="precommande" class=" rounded p-2 bg-teal-500 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2">reserver</button>
+                         <input name="places" class=" w-20 form-input"> <button type="submit" name="precommande" class=" rounded p-2 bg-teal-500 text-gray-50 pr-2 px-2 py-2 pl-2 mr-2 ml-2">reserver</button>
                         </form>
                       </td>
                         <?php } ?>

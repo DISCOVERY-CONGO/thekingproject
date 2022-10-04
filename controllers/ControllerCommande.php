@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
 
+use \Models\Rapport;
+use \Repositorie\HomeRepositorie;
 use Models\Commande;
 use \models\Produit;
 use \Models\Data_table;
@@ -23,17 +25,12 @@ class ControllerCommande extends BaseController{
         $produits = new Produit();
         $commande = new Commande;
             $table = $tables->all_tables();
-
+            $commands = $commande->new_commands();
                 if($this->get("commandes")){
-
-                        $data = $commande->all_commandes();
-                        if($data != null){
-                            $this->affichage->views("commands/commands",$data);
-                        }
-                        else{
-                            $this->affichage->views("404");
-                        }
-                        
+                    
+                     $data = ['tables'=>$table,'commandes'=>$commands];
+                     
+                     $this->affichage->views("commands/precommandes",$data);               
                  } 
 
                 if($this->get("newCommand/([0-9]?[0-9]?[0-9]|100)")){
@@ -53,19 +50,17 @@ class ControllerCommande extends BaseController{
                      $this->affichage->views('commands/createCommand',$data);
                 }
 
-                if ($this->get("confirmCommand/")) {
+                if ($this->get("detailCommande/([0-9]?[0-9]?[0-9]|100)")) {
 
-                    var_dump($_POST);
+
                     
-                //     $tableau = $this->get_parameters();
-                //     $last = $tableau[array_key_last($tableau)];
-                     
-                //     $confirmation = $commande->confirmCommand($last);
-                      
+                    $tableau = $this->get_parameters();
+                    $last = $tableau[array_key_last($tableau)];
 
-                //             $data = $commande->get_commandById($last);
+
+                            $data = $commande->get_commandById($last);
                      
-                //             $this->affichage->views('Libelle/libelleDetail',$data);
+                            $this->affichage->views('Libelle/libelleDetail',$data);
                          
                       
                 }
@@ -79,6 +74,14 @@ class ControllerCommande extends BaseController{
                     $this->affichage->views('precommande/create',$data);
                                     
                  }
+                
+                 if ($this->get("facture/([0-9]?[0-9]?[0-9]|100)")) {
+                    $tableau = $this->get_parameters();
+                    $id = $tableau[array_key_last($tableau)];
+                    $data = $commande->get_commandById($id);
+                    $this->affichage->views('libelle/facture',$data);
+                 }
+
 
 
         }
@@ -95,7 +98,8 @@ class ControllerCommande extends BaseController{
             $commande->precommandeStore($data);
             $table->change_status($data);
             $commandes = $commande->all_commandes();
-            $this->affichage->views('commands/commands',$commandes);
+            //$this->affichage->views('commands/commands',$commandes);
+            header('location:commandes');
         }
 
  public function store_command($data){
@@ -111,15 +115,32 @@ class ControllerCommande extends BaseController{
  public function confirm_commande($data){
     $structure = new \models\structure();
     $commande = new \Models\Commande;
+
     $table_id = $data['table_id'];
     $precommande_id = $data['precom_id'];
     $commande->confirmCommand($table_id);
     $precommande = $commande->precommande_status($precommande_id);
    $data = $commande->get_commandById($precommande_id);
 
-   return $this->affichage->views('Libelle/libelleDetail',$data);
+   $repositorie = new HomeRepositorie();
+   $commande = new Commande;
+   $count_product = $repositorie->count_produit();
+   $count_client = $repositorie->count_client();
+ 
+   // $command = $commande->not_approved();
+   $revenue = $commande->revenue();
+   
+ 
+   $data = [ 'count_product'=>$count_product,'revenue'=>$revenue];
+   
+   $this->affichage->views("index",$data);
     
 
+ }
+
+ public function commande_by_id($data){
+    $commande = new \Models\Commande;
+    $data = $commande->get_commandById($data);
  }
 
 }

@@ -17,14 +17,18 @@ if(!isset($_SESSION['role'])){
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/../../public/style.css" />
+  
     <script src="/../../public/assets/js/jquery.js"></script>
     <script src="/../../public/assets/js/flowbite.js"></script>
+    <script src="/public/assets/js/html2pdf.bundle.min.js"></script>
+    <script src="/../public/assets/js/generateur.js"></script>
+    <script src="/../public/assets/js/printThis.js"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
   
-    <script src="/public/assets/js/init-alpine>"></script>
+    <script src="/../../public/assets/js/init-alpine>"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
@@ -34,7 +38,7 @@ if(!isset($_SESSION['role'])){
       defer
     ></script>
     
-    <script src="/public/assets/js/charts-lines.js" defer></script>
-    <script src="/public/assets/js/charts-pie.js" defer></script>
+    <script src="/../../public/assets/js/charts-lines.js" defer></script>
+    <script src="/../../public/assets/js/charts-pie.js" defer></script>
   </head>
   <body>

@@ -1,0 +1,126 @@
+<?php 
+use \Models\User;
+
+$structure = new \models\structure();
+$user = new User;
+
+if (isset($_POST['register'])) {
+    $nom = htmlspecialchars(trim($_POST['name']));
+    $prenom = htmlspecialchars(trim($_POST['secondName']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $password = htmlspecialchars(trim($_POST['password']));
+
+    $data = ['name'=>$nom,'secondName'=>$prenom,'email'=>$email,'password'=>$password];
+    $result = $user->register($data);
+    
+
+    if($result){
+        header("location:".$structure->redirect['domaine']."/login");
+    }
+    else{
+        $_SESSION['error'] = "veuillez remplir tous les champs";
+        header("location:".$structure->redirect['domaine']."/register");
+    }
+    
+}
+
+
+if (isset($_POST['login'])) {
+    if (!empty($_POST['email']) AND !empty($_POST['password']) ) {
+        $email = htmlspecialchars(trim($_POST['email']));
+        $password = htmlspecialchars(trim($_POST['password']));
+    
+        $data = ['email'=>$email,'password'=>$password];
+        $result = $user->login($data);
+        header("location:".$structure->redirect['domaine']);
+    }   
+    
+    // if($result){
+    //     header("location:".$structure->redirect['domaine']);
+    // }
+    // else{
+    //     $_SESSION['erreur'] = "email ou mot de passe érronés";
+    //     header("location:".$structure->redirect['domaine']."/login");
+    // }
+
+}
+
+
+
+
+
+
+// if (isset($_POST['action']) == 'login') {
+   
+//     $email = $_POST['email'];
+//     $password = $_POST['password'];
+//     // validation
+//     $error = array(
+//       'error_status' => 0
+//     );
+
+//     if (empty($email)) {
+//       $error['error_status'] = 1;
+//       $error['email'] = 'Email is required!';
+//     }
+//     if (empty($password)) {
+//       $error['error_status'] = 1;
+//       $error['password'] = 'Password is required!';
+//     }
+//     if ($error['error_status'] > 0) {
+//       echo json_encode($error);
+//       exit();
+//     }
+//     // if validation is successful
+//     $data = ['email'=>$email,'password'=>$password];
+//     $result = $user->login($data);
+//     if($result){
+//       $response = array(
+//         'status' => 1,
+//         'msg' => 'Login successful'
+//       );
+//     } else {
+//       $response = array(
+//         'status' => 0,
+//         'msg' => 'Invalid Credentials'
+//       );
+//     }
+//     echo json_encode($response);
+//     exit();
+// } 
+
+//   if (isset($_GET['action']) == 'logout') {
+//     session_start();
+//     session_destroy();
+//     header('Location: /php_tutorial/login.php');
+//   }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+if (isset($_POST['role_save'])) {
+    
+if (!empty($_POST['role'])) {
+    $role = htmlspecialchars(trim($_POST['role']));
+    $user_id = $_POST['user_id'];
+    $data = ['user_id'=>$user_id,'role'=>$role];
+    $user_controller = new \controllers\ControllerUser;
+    $user_controller->role_edit($data);
+
+}
+    
+
+}

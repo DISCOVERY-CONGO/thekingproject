@@ -39,8 +39,9 @@ public function login($data){
    if($result){
         if(password_verify($password,$result[0]['password'])){
             $_SESSION['role'] = $result[0]['role'];
+            // return true;
         }
-    
+        
    }
 
     

@@ -273,11 +273,13 @@
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
-              rapport du 
+            <button onclick="generatePDF()" class=" text-sm bg-green-500 p-2 text-white hover:bg-red-600 rounded"> telecharger le rapport</button>
+            
             </h2>
           
 
-
+            <div id="text">
+      <h3 class=" text-base">rapport de la semaine du </h3> <br>
             <!-- New Table -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
@@ -327,11 +329,30 @@
               </div>
 
             </div>
-
+    </div>
 
           </div>
         </main>
       </div>
     </div>
-
+    <script>
+function generatePDF(){
+    //nom du fichier | file name
+    var nom_fichier = prompt("Nom du fichier PDF :");
+    //generer le pdf
+    var element = document.getElementById('text');
+    var opt = {
+            margin:  0.5,
+            filename:     `${nom_fichier}.pdf`,
+            image:        { type: 'jpeg', quality: 1 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+    if(nom_fichier != null){
+        html2pdf().set(opt).from(element).save()
+    }else {
+        alert("Veuillez choisir un nom ")
+    }
+}
+</script>
     <?php include __DIR__."/../navs/footer.php"; ?>
