@@ -1,6 +1,8 @@
 <?php 
 include __DIR__."/../navs/head.php";  
 
+include __DIR__."/../../sanitalizer/precommande.php";
+include __DIR__."/../../sanitalizer/table.php";
 
 ?>
  <div class="container-scroller">

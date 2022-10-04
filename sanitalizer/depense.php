@@ -6,6 +6,5 @@ if (isset($_POST['save'])) {
     $nom = htmlspecialchars(trim($_POST['name']));
 
     $depense->store($nom);
-    header("location:".$structure->definition['domaine']."/depenses");
     
 }

@@ -3,6 +3,7 @@ namespace Controllers;
 use Models\Client;
 use \Models\Commande;
 use \Models\Rapport;
+use Models\Produit;
 use \Repositorie\HomeRepositorie;
 class HomeController extends BaseController{
     protected $model = "produit";
@@ -25,15 +26,18 @@ class HomeController extends BaseController{
 
             }else{
                 $repositorie = new HomeRepositorie();
-                $commande = new Commande;
-                $count_product = $repositorie->count_produit();
-                $count_client = $repositorie->count_client();
-                $clients = new Client();
+                // $commande = new Commande;
+                // $count_product = $repositorie->count_produit();
+                // $count_client = $repositorie->count_client();
+                // $clients = new Client();
                 // $command = $commande->not_approved();
-                $revenue = $commande->revenue();
-                
+                // $revenue = $commande->revenue();
+
+                $product = new Produit();
+                $data = ['produits'=>$product];
+                $produits = $product->all_products();
               
-                $data = [ 'count_product'=>$count_product,'count_client'=>$count_client,'revenue'=>$revenue];
+                $data = ['produits'=>$produits];
                 
                 $this->affichage->views("index",$data);
 
