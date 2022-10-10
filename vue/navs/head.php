@@ -27,4 +27,22 @@ if(!isset($_SESSION['role'])){
   <!-- inject:css -->
   <link rel="stylesheet" href="/../../public/css/vertical-layout-light/style.css">
 
+  <script>
+    // jQuery(document).ready(function($){
+    //     $("a").click(function(event){
+    //         link = $(this).attr("href");
+    //         $.ajax({
+    //           url : link,
+    //         }).done(function(html){
+    //           $("#page").empty().append(html);
+    //         }).fail(function(){
+    //           console.log('erreur de traitement');
+    //         }).always(function(){
+    //           console.log("completed");
+    //         });
+    //         return false;
+    //     });
+    // });
+  </script>
+
   </head>

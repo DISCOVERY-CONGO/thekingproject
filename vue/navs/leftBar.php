@@ -70,13 +70,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="servers" >
-              <i class="icon-grid-2 menu-icon"></i>
-              <span class="menu-title">servants</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="rapports" >
               <i class="icon-grid-2 menu-icon"></i>
               <span class="menu-title">rapports</span>

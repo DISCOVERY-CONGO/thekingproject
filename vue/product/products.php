@@ -184,7 +184,7 @@ include __DIR__."/../../sanitalizer/produit.php";
     <?php include __DIR__."/../navs/leftBar.php"; ?>
       <!-- p artial -->
 
-      <div class="main-panel">
+      <div class="main-panel" id="page">
         <div class="content-wrapper">
           <div class="row">
 
@@ -241,7 +241,7 @@ include __DIR__."/../../sanitalizer/produit.php";
     <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Mes tables</h4>
+                  <h4 class="card-title">Mes produits</h4>
                   <p class="card-description">
                   </p>
                   <div class="table-responsive pt-3">

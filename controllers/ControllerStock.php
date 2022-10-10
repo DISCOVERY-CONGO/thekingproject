@@ -19,8 +19,13 @@ protected function route()
       $data = $stock->inpout_output();
      $this->affichage->views("stock/journalier",$data);
       }
-      if ($this->get("stockhebdo")) {
-
+      if ($this->get("weekly")) {
+        $data = $stock->inpout_output();
+        $this->affichage->views("stock/weekly",$data);
+      }
+      if ($this->get("monthly")) {
+        $data = $stock->inpout_output();
+        $this->affichage->views("stock/monthly",$data);
       }
 }
 

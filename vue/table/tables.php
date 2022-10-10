@@ -2,7 +2,7 @@
 include __DIR__."/../navs/head.php";  
 
 include __DIR__."/../../sanitalizer/precommande.php";
-include __DIR__."/../../sanitalizer/table.php";
+//include __DIR__."/../../sanitalizer/table.php";
 
 ?>
  <div class="container-scroller">
@@ -186,7 +186,7 @@ include __DIR__."/../../sanitalizer/table.php";
     <?php include __DIR__."/../navs/leftBar.php"; ?>
       <!-- p artial -->
 
-      <div class="main-panel">
+      <div class="main-panel" id="page">
         <div class="content-wrapper">
           <div class="row">
 
@@ -209,14 +209,14 @@ include __DIR__."/../../sanitalizer/table.php";
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action=""> 
+        <form method="POST" action="" onsubmit="return post();"> 
         <div class="form-group">
         <label for="recipient-name" class="col-form-label">nom:</label>
-          <input type="text" name="nom" class="form-control" id="recipient-name">
+          <input type="text"  name="nom" class="form-control" id="nom">
         </div>
         <div class="form-group">
         <label for="recipient-name" class="col-form-label">places :</label>
-          <input type="number" name="places" class="form-control" id="recipient-name">
+          <input type="number" name="places" class="form-control" id="places">
         </div>
           <div class="modal-footer">
             <button name="table" type="submit" class="btn btn-primary">créer</button>
@@ -275,5 +275,34 @@ include __DIR__."/../../sanitalizer/table.php";
         </div>
       </div>
                       </div>
+
+<script>
+
+  function post () {
+
+  var nom = document.getElementById("nom").value;
+  var places = document.getElementById("places").value;
+  if(comment && name)
+  {
+    $.ajax
+    ({
+      type: 'post',
+      url: '/table.php',
+      data: 
+      {
+      nom:nom,
+	     places:places
+      },
+      success: function (response) 
+      {
+	    document.getElementById("all_tables").innerHTML=response+document.getElementById("all_tables").innerHTML;
+  
+      }
+    });
+  }
+  
+  return false;
+}
+</script>
 
     <?php include __DIR__."/../navs/footer.php"; ?>

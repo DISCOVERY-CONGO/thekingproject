@@ -1,6 +1,5 @@
 <?php 
 include __DIR__."/../navs/head.php";  
-include __DIR__."/../../sanitalizer/servant.php";
 ?>
  <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -189,60 +188,13 @@ include __DIR__."/../../sanitalizer/servant.php";
 
 
 
-<div class="col-lg-12 grid-margin stretch-card">
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title"></h4>
-    <p class="card-description">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Ajouter un serveur</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter un serveur</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="" > 
-        <div class="form-group">
-        <label for="recipient-name" class="col-form-label">nom:</label>
-          <input type="text"  name="nom" class="form-control" id="nom">
-        </div>
-        <div class="form-group">
-        <label for="recipient-name" class="col-form-label">post-nom:</label>
-          <input type="text"  name="post_nom" class="form-control" id="nom">
-        </div>
-        <div class="form-group">
-        <label for="recipient-name" class="col-form-label">telephone :</label>
-          <input type="tel" name="phone" class="form-control" id="places">
-        </div>
-        <div class="form-group">
-          <label for="">genre :</label>
-          <select  class="form-control" name="sexe" id="">
-            <option selected>selectionner un genre</option>
-            <option value="homme">Homme</option>
-            <option value="femme">Femme</option>
-          </select>
-        </div>
-          <div class="modal-footer">
-            <button name="table" type="submit" class="btn btn-primary">créer</button>
-          </div>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</div> 
-    </p>
 
 
     <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Mes serveurs</h4>
+                  <h4 class="card-title">Mes tables</h4>
                   <p class="card-description">
                   </p>
                   <div class="table-responsive pt-3">
@@ -251,31 +203,39 @@ include __DIR__."/../../sanitalizer/servant.php";
                         <tr  class="table-info">
 
                           <th>
-                            nom
+                            produits
                           </th>
                           <th>
-                            post-nom
+                            entrées
                           </th>
                           <th>
-                            telephone
+                            sorties
                           </th>
                           <th>
-                            genre
+                            solde
                           </th>
                           <th>
-                            Action
+                            total
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                      <?php foreach($data['all_servers'] as $server) : ?>
+                      <?php 
+                       if($data != null)
+                      foreach($data as $stock) : 
+                      ?>
                         <tr>
                          
-                          <td><?= $server['nom'] ?> </td>
-                          <td><?= $server['post_nom'] ?></td>
-                          <td><?= $server['phone'] ?></td>
-                          <td><?= $server['sexe'] ?></td>
-                          <td>affecter</td>
+                          <td><?= $stock['nom'] ?>
+                          </td>
+                          <td><?= $stock['input'] ?>
+                          </td>
+                          <td><?= $stock['qty_commande'] ?>
+                          </td>
+                          <td><?= $stock['solde'] ?>
+                          </td>
+                          <td><?= $stock['qty_total'] ?>
+                          </td>
                         </tr>
                       <?php endforeach; ?>
                       </tbody>
@@ -293,33 +253,6 @@ include __DIR__."/../../sanitalizer/servant.php";
       </div>
                       </div>
 
-<script>
 
-  function post () {
-
-  var nom = document.getElementById("nom").value;
-  var places = document.getElementById("places").value;
-  if(comment && name)
-  {
-    $.ajax
-    ({
-      type: 'post',
-      url: '/table.php',
-      data: 
-      {
-      nom:nom,
-	     places:places
-      },
-      success: function (response) 
-      {
-	    document.getElementById("all_tables").innerHTML=response+document.getElementById("all_tables").innerHTML;
-  
-      }
-    });
-  }
-  
-  return false;
-}
-</script>
 
     <?php include __DIR__."/../navs/footer.php"; ?>

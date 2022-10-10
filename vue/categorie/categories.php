@@ -184,7 +184,7 @@ include __DIR__."/../../sanitalizer/categorie.php";
     <?php include __DIR__."/../navs/leftBar.php"; ?>
       <!-- p artial -->
 
-      <div class="main-panel">
+      <div class="main-panel" id="page">
         <div class="content-wrapper">
           <div class="row">
 
