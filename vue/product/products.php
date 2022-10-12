@@ -241,11 +241,11 @@ include __DIR__."/../../sanitalizer/produit.php";
     <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Mes produits</h4>
+                  <h4 class="card-title">Mes produits</h4><input type="text" id="myInput" class="" onkeyup="myFunction()" placeholder="Search for names..">
                   <p class="card-description">
                   </p>
                   <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="myTable">
                       <thead>
                         <tr  class="table-info">
 
@@ -284,7 +284,7 @@ include __DIR__."/../../sanitalizer/produit.php";
                           <form action="" method="post">
                             <input type="number" class="" name="quantite">
                             <input type="hidden" name="produit_id" value="<?= $product['id'] ?>">
-                            <button type="submit"  class=" btn btn-success  text-white" name="addQuantite">ajouter</button>
+                            <button type="submit"  class=" btn btn-success btn-sm text-white" name="addQuantite">ajouter</button>
                           </form>                   <!-- Main modal rounded-->
                            
                           </td>
@@ -292,7 +292,7 @@ include __DIR__."/../../sanitalizer/produit.php";
                           <form action="" method="post">
                              <input type="number" class="" name="prix">
                              <input type="hidden" name="produit_id" value="<?= $product['id'] ?>">
-                             <button type="submit"  class="btn text-white btn-success" name="modifierPrix">modifier</button>
+                             <button type="submit"  class="btn text-white btn-sm btn-success" name="modifierPrix">modifier</button>
                          </form>
                           </td>
                         </tr>
@@ -311,5 +311,27 @@ include __DIR__."/../../sanitalizer/produit.php";
         </div>
       </div>
       
+      <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
 
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
     <?php include __DIR__."/../navs/footer.php"; ?>

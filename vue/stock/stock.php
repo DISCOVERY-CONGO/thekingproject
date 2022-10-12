@@ -194,7 +194,6 @@ include __DIR__."/../../sanitalizer/precommande.php";
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Rapport du stock</h4>
-                  <p class="card-description">Add class <code>.btn-social-icon-text</code></p>
                   <div class="template-demo">
                     <a href="daily" class="btn btn-primary">jouralier</a>
                     <a href="weekly" class="btn btn-success">hebdomadaire</a>                                        

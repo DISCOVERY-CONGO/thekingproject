@@ -196,13 +196,13 @@ include __DIR__."/../../sanitalizer/depense.php";
   <div class="card-body">
     <h4 class="card-title"></h4>
     <p class="card-description">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">créer une table</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">créer une depense</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">créér une table</h5>
+        <h5 class="modal-title" id="exampleModalLabel">créér une depense</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -212,6 +212,14 @@ include __DIR__."/../../sanitalizer/depense.php";
         <div class="form-group">
         <label for="recipient-name" class="col-form-label">nom:</label>
           <input type="text" name="name" class="form-control" id="recipient-name">
+        </div>
+        <div class="form-group">
+        <label for="recipient-name" class="col-form-label">utilisateur:</label>
+          <input type="text" name="username" class="form-control" id="recipient-name">
+        </div>
+        <div class="form-group">
+        <label for="recipient-name" class="col-form-label">montant:</label>
+          <input type="text" name="montant" class="form-control" id="recipient-name">
         </div>
           <div class="modal-footer">
             <button name="save" type="submit" class="btn btn-primary">créer</button>
@@ -239,6 +247,12 @@ include __DIR__."/../../sanitalizer/depense.php";
                           <th>
                             noms
                           </th>
+                          <th>
+                            utilisateur
+                          </th>
+                          <th>
+                            montant
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -247,6 +261,12 @@ include __DIR__."/../../sanitalizer/depense.php";
                          
                           <td>
                           <?= $depense['name']?>
+                          </td>
+                          <td>
+                          <?= $depense['username']?>
+                          </td>
+                          <td>
+                          <?= $depense['montant']?>
                           </td>
 
                         </tr>

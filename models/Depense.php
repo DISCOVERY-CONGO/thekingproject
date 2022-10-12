@@ -17,9 +17,12 @@ public function __construct(){
 }
 
 public function store($data){
-    $sql = "INSERT INTO depense (name) VALUES (?)";
+    $nom = $data['nom'];
+    $username = $data['username'];
+    $montant = $data['montant'];
+    $sql = "INSERT INTO depense (name,username,montant) VALUES (?,?,?)";
     $req = $this->connect->prepare($sql);
-    $req->execute([$data]);
+    $req->execute([$nom,$username,$montant]);
 }
 
 public function all_depenses(){

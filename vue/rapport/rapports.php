@@ -3,7 +3,9 @@ include __DIR__."/../navs/head.php";
 
 include __DIR__."/../../sanitalizer/precommande.php";
 //include __DIR__."/../../sanitalizer/table.php";
-
+if (isset($donne)) {
+  var_dump($donne);
+}
 ?>
  <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -194,7 +196,6 @@ include __DIR__."/../../sanitalizer/precommande.php";
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Rapport du stock</h4>
-                  <p class="card-description">Add class <code>.btn-social-icon-text</code></p>
                   <div class="template-demo">
                     <a href="journalier" class="btn btn-primary">jouralier</a>
                     <a href="hebdo" class="btn btn-success">hebdomadaire</a>                                        
@@ -204,6 +205,20 @@ include __DIR__."/../../sanitalizer/precommande.php";
               </div>
             </div>
 
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">filtrer entre les dates</h4>
+                  <div class="template-demo">
+                      <form action="" method="post">
+                        <input type="date" name="from_date" id="">
+                        <input type="date" name="to_date" id="">
+                        <input type="submit" value="filtrer" name="filtrer" class="btn btn-primary btn-sm">
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         </div>
       </div>

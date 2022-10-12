@@ -38,7 +38,7 @@ public function all_products(){
 
 public function count(){
     
-    $this->req = $this->connect->query("SELECT * FROM produit");
+    $this->req = $this->connect->query("SELECT * FROM produit WHERE quantite >= 0");
     return $this->req->rowCount();
 }
 

@@ -3,7 +3,7 @@ include __DIR__."/../navs/head.php";
 include __DIR__."/../../sanitalizer/command.php";
 global $item_total;
  ?>
-
+ <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <?php include __DIR__."/../navs/nav.php"; ?>
@@ -192,11 +192,11 @@ global $item_total;
       <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Produits</h4>
+                  <h4 class="card-title">Produits</h4><input type="text" id="myInput" class="" onkeyup="myFunction()" placeholder="Search for names..">
                   <p class="card-description">
                   </p>
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="myTable">
                       <thead>
                         <tr>
                           <th>nom</th>
@@ -216,7 +216,7 @@ global $item_total;
                           <td><?= $product['nom'] ?></td>
                           <td><?= $product['prix'] ?></td>
                           <td> <input type="text" name="quantite" id="quantite" value="1" size="2" />
-                                           <input type="submit" value="ajouter"   class="btn btn-success" />
+                                           <input type="submit" value="ajouter"   class="btn btn-success btn-sm" />
                                        </td>
                         </tr>
                       </form>
@@ -301,33 +301,32 @@ global $item_total;
       </div>
 
 
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $("#search").keyup(function(){
-            search_on_table($(this).val());
-        });
-        function search_on_table(value){
-          $("#myProductTable tr").each(function(){
-            var  found = 'false';
-            $(this).each(function(){
-              if($(this).text().toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0)
-              {
-                found = 'true';
-              }
-            });
-            if(found == 'true'){
-              $(this).show();
-            }
-            else{
-              $(this).hide();
-            }
-          });
-        }
-      });
 
-   
+      <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 </script>
 
-<script src="script.js"></script>
+
+
     
     <?php include __DIR__."/../navs/footer.php"; ?>

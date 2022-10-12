@@ -33,6 +33,11 @@ class ControllerMouvement_commande extends BaseController{
 
     }
 
+    public function filter_by_date ($data){
+        $mouvement = new Mouvement_commande();
+       $donne = $mouvement-> rapport_between($data);
+    }
+
 
 }
 

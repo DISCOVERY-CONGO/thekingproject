@@ -27,14 +27,11 @@ class ControllerCommande extends BaseController{
             $table = $tables->all_tables();
             $commands = $commande->new_commands();
                 if($this->get("commandes")){
-                    
                      $data = ['tables'=>$table,'commandes'=>$commands];
-                     
                      $this->affichage->views("commands/precommandes",$data);               
                  } 
 
                 if($this->get("newCommand/([0-9]?[0-9]?[0-9]|100)")){
-
                         $tableau = $this->get_parameters();
                         $last = $tableau[array_key_last($tableau)];
                     
@@ -78,7 +75,7 @@ class ControllerCommande extends BaseController{
                  if ($this->get("facture/([0-9]?[0-9]?[0-9]|100)")) {
                     $tableau = $this->get_parameters();
                     $id = $tableau[array_key_last($tableau)];
-                    $data = $commande->get_commandById($id);
+                    $data = $commande->facture($id);
                     $this->affichage->views('libelle/facture',$data);
                  }
 
@@ -142,6 +139,14 @@ class ControllerCommande extends BaseController{
     $commande = new \Models\Commande;
     $data = $commande->get_commandById($data);
  }
+
+ public function status($data){
+    $commande = new Commande;
+    $commande->precommande_status($data);
+    //$this->affichage->views('commands/commands',$commandes);
+    header('location:/');
+}
+
 
 }
 

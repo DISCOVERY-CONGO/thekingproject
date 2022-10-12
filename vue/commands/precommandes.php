@@ -3,6 +3,7 @@ include __DIR__."/../navs/head.php";
 include __DIR__."/../../sanitalizer/categorie.php";
 include __DIR__."/../../sanitalizer/precommande.php";
 include __DIR__."/../../sanitalizer/command.php";
+
 ?>
  <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -239,28 +240,42 @@ include __DIR__."/../../sanitalizer/command.php";
               action
             </th>
             <th>
-              detail
+              facture
+            </th>
+            <th>
+              confirmer
             </th>
             <th>
           </tr>
         </thead>
         <tbody>
-        <?php foreach($data['commandes'] as $commande): ?>
+        <?php 
+        if($data['commandes']) :
+        foreach($data['commandes'] as $commande): 
+        ?>
           <tr>
             <td><?= $commande['tname'] ?>
             </td>
             <td>
-            <a href="newCommand/<?= $commande['id'] ?>" class=" rounded p-2 bg-teal-500 text-gray-50 hover:bg-green-700">
+            <a href="newCommand/<?= $commande['id'] ?>" class=" btn-primary btn-sm">
                               commander 
                            </a> 
             </td>
             <td>
                         
-            <a href="facture/<?= $commande['id'] ?>" class=" rounded bg-green-400 text-gray-50 p-3 hover:bg-red-500" >detail</a>
+            <a href="facture/<?= $commande['id'] ?>" class=" rounded bg-green-400 text-gray-50 p-3 hover:bg-red-500" >génerer la facure</a>
 
             </td>
+            <td> 
+               <form  method="POST" class="p-1">
+                <input type="hidden" name="precomande_id" value="<?= $commande['id'] ?>">
+                 <button type="submit" class="" name="confirm_commande">payer</button>
+                </form></td>
           </tr>
-          <?php endforeach; ?>
+          <?php
+         endforeach;
+        endif;
+         ?>
         </tbody>
       </table>
     </div>

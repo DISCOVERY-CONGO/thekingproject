@@ -197,10 +197,10 @@ include __DIR__."/../../sanitalizer/precommande.php";
   <div class="card-body">
     <h4 class="card-title"></h4>
     <p class="card-description">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">créer une table</button>
+    <button type="button" onclick="generatePDF()" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Télécharger le rapport</button>
 
     </p>
-
+    <div id="text">
 
     <div class="col-lg-12 stretch-card">
               <div class="card">
@@ -257,7 +257,7 @@ include __DIR__."/../../sanitalizer/precommande.php";
                 </div>
               </div>
             </div>
-
+    </div>
   </div>
 </div>
 </div>
@@ -294,5 +294,26 @@ include __DIR__."/../../sanitalizer/precommande.php";
   return false;
 }
 </script>
+<script>
+function generatePDF(){
+    //nom du fichier | file name
+    var nom_fichier = prompt("Nom du fichier PDF :");
+    //generer le pdf
+    var element = document.getElementById('text');
+    var opt = {
+            margin:  0.5,
+            filename:     `${nom_fichier}.pdf`,
+            image:        { type: 'jpeg', quality: 1 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+    if(nom_fichier != null){
+        html2pdf().set(opt).from(element).save()
+    }else {
+        alert("Veuillez choisir un nom ")
+    }
+}
+</script>
+
 
     <?php include __DIR__."/../navs/footer.php"; ?>

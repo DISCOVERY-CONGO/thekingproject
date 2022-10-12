@@ -96,6 +96,32 @@ public function inpout_output(){
                         }
     }
 
+    public function rapport_between($data){
+        $from_date = $data['from_date'];
+        $to_date = $data['to_date'];
+        $req = "SELECT DISTINCT nom, produit.id, prix, commande.created_at as Ccreated, 
+        (SELECT SUM(commande.quantite) 
+            FROM commande 
+            WHERE commande.produit_id = produit.id 	
+            AND commande.created_at 
+            BETWEEN '.$from_date.'
+            AND '.$to_date.'
+            OR commande.created_at  
+            BETWEEN  '.$from_date.'
+            AND '.$to_date.'
+            AS qty 
+    FROM produit,commande
+    WHERE commande.produit_id = produit.id 
+    AND commande.created_at 
+        BETWEEN '.$from_date.'
+        AND '.$to_date.'
+         OR commande.created_at  
+        BETWEEN '.$to_date.'
+        AND '.$from_date.'
+    GROUP BY produit.nom,commande.produit_id";
+       
+}
+
 }
 
 ?>

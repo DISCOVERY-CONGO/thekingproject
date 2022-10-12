@@ -1,5 +1,5 @@
 <?php 
-include __DIR__."/../navs/header.php";
+include __DIR__."/../navs/head.php";
 include __DIR__."/../../sanitalizer/command.php";
 
 global $item_total;
@@ -21,150 +21,46 @@ global $item_total;
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Details</h1>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <section class="content">
-      <div class="container-fluid">
-        <div id="myPrintable">
-        <div class="row">
-          <div class="col-5">
-
-
-
-            <!-- Main content -->
-            <div class="invoice p-3 mb-3">
-              <!-- title row -->
-              <div class="row">
-                <div class="col-12">
-                  <h4>
-                    <i class="fas fa-globe"></i> The king
-                    <small class="float-right">Date: <?= date("Y/m/d") ?><br><span class=" text-sm"><?= date("h:i:s") ?> </span></small>
-                  </h4>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- info row -->
-              <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
-                  
-
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
- 
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                  
-                  <br>
-                  <b>Table:</b> <?= $data[0]['tname'] ?>J<br>
-               
-                 <br>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              <!-- Table row -->
-              <div class="row">
-                <div class="col-12 table-responsive">
-                  <table class="table table-striped">
-                    <thead>
-                    <tr>
-                      <th>Quantité</th>
-                      <th>produit</th>
-                      <th>prix unitaire</th>
-                      <th>sous-total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($data as $data){ ?>
-                    <tr>
-                      <td><?= $data['qty'] ?></td>
-                      <td><?= $data['nom'] ?> </td>
-                      <td><?= $data['prix']?> fc</td>
-                      <td><?= $data['qty'] * $data['prix']?> fc</td>
-                    </tr>
-                    <?php
-                  $item_total += ($data["prix"] * $data["qty"]);
-                  } ?> 
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              <div class="row">
-                <!-- accepted payments column -->
-                <div class="col-6">
-
-
-                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;"><i>merci de repasser chez pour en profiter
-                  du bon moment</i>
-                  </p>
-                </div>
-                <!-- /.col -->
-                <div class="col-6">
-               
-
-                  <div class="table-responsive">
-                    <table class="table">
-                      <tr>
-                        <th style="width:50%">total:</th>
-                        <td><?= $item_total?> fc </td>
-                      </tr>
-
-                    </table>
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-<div>
-              <!-- this row will not appear when printing -->
-              <div class="row no-print">
-                <div class="col-12">
-                  <button id="basic" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
-                  <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                    Payment
-                  </button>
-                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Generate PDF
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- /.invoice -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<div class="offset-xl-2 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 padding mt-4">
+<div class="card">
+<div class="card-header p-4">
+<a class="pt-2 d-inline-block" href="index.html" data-abc="true">The king</a>
+<div class="float-right"> <h3 class="mb-0"></h3>
+Date: <?= date("Y/m/d") ?></div>
 </div>
-<!-- ./wrapper -->
+<div class="card-body">
+<div class="row mb-4">
+</div>
+<div class="table-responsive-sm">
+<table class="table table-striped">
+<thead>
+<tr>
 
+<th>produit</th>
+<th class="right">quantité</th>
+<th class="right">sous-total</th>
+</tr>
+</thead>
+<tbody>
+<?php foreach($data as $commande) : ?>
+<tr>
+
+<td class="left strong text-uppercase"><?= $commande['nom'] ?></td>
+<td class="right"><?= $commande['qty'] ?></td>
+ <td class="right"> <?= $commande['qty'] * $commande['prix']?> fc</td>
+ <?php $item_total += ($commande['prix']  * $commande['qty'] ); ?>
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="card-footer bg-white">
+<p class="mb-0"><span class="text-uppercase font-weight-bold">Total : <?= $item_total ?> fc</span></p>
+</div>
+</div>
+</div>
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

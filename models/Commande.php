@@ -150,7 +150,18 @@ public function revenue()
 }
 
 
-
+public function facture($commandId){
+    $this->req = $this->connect->query("SELECT commande.quantite as qty, produit.nom, produit.prix, precommande.created_at, data_table.name as tname, precommande.id as pId 
+                                            FROM precommande,commande,produit,data_table  
+                                            WHERE commande.command_id = precommande.id 
+                                            AND precommande.id = '$commandId' 
+                                            AND commande.produit_id = produit.id 
+                                            AND data_table.id = precommande.table_id");
+        $result = $this->req->fetchAll();
+        if($result != null){
+            return $result;
+        }
+}
 
 }
 
