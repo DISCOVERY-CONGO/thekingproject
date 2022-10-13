@@ -55,7 +55,3 @@ public function role_edit($data){
 
         }
 
-
-
-
-?>

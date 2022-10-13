@@ -196,38 +196,38 @@ include __DIR__."/../../sanitalizer/command.php";
     <p class="card-description">
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">créer une commande</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">créér une commande</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action=""> 
-          <div class="form-group">
-            <label for="recipient-name" , class="col-form-label"> selectionner une table:</label>
-            <div class="form-group">
-              <label for=""></label>
-              <select class="form-control" name="table_id" id="">
-                <option selected class=" text-black">selectionner une table ...</option>
-                <?php foreach($data['tables'] as $table) : ?>
-                <option value=" <?= $table['tId'] ?>"><?= $table['tname'] ?></option>
-                <?php endforeach; ?>
-              </select>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">créér une commande</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button name="precommande" type="submit" class="btn btn-primary">commander</button>
-          </div>
-        </form>
-      </div>
+            <div class="modal-body">
+              <form method="POST" action=""> 
+                <div class="form-group">
+                  <label for="recipient-name" , class="col-form-label"> selectionner une table:</label>
+                  <div class="form-group">
+                    <label for=""></label>
+                    <select class="form-control" name="table_id" id="">
+                      <option selected class=" text-black">selectionner une table ...</option>
+                      <?php foreach($data['tables'] as $table) : ?>
+                      <option value=" <?= $table['tId'] ?>"><?= $table['tname'] ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button name="precommande" type="submit" class="btn btn-primary">commander</button>
+                </div>
+              </form>
+            </div>
 
-    </div>
-  </div>
-</div> 
+          </div>
+        </div>
+      </div> 
     </p>
     <div class="table-responsive">
       <table class="table table-striped">
@@ -269,7 +269,7 @@ include __DIR__."/../../sanitalizer/command.php";
             <td> 
                <form  method="POST" class="p-1">
                 <input type="hidden" name="precomande_id" value="<?= $commande['id'] ?>">
-                 <button type="submit" class="" name="confirm_commande">payer</button>
+                 <button type="submit" class="btn btn-success btn-sm" name="confirm_commande">payer</button>
                 </form></td>
           </tr>
           <?php

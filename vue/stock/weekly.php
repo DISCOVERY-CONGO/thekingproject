@@ -194,7 +194,7 @@ include __DIR__."/../navs/head.php";
     <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Mes tables</h4>
+                  <h4 class="card-title">Rapport de stock hebdomadaire</h4>
                   <p class="card-description">
                   </p>
                   <div class="table-responsive pt-3">

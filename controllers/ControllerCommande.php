@@ -83,33 +83,24 @@ class ControllerCommande extends BaseController{
 
         }
 
-    // public function commandClient($clientId = null, $productId = null)
-    //     {
-    //         $commande = new Commande;
-    //         return $commande->clients_command($clientId,$productId);
-    //     }
 
-    public function store_precommande($data){
+public function store_precommande($data){
             $commande = new Commande;
             $table = new \Models\Data_table;
             $commande->precommandeStore($data);
             $table->change_status($data);
             $commandes = $commande->all_commandes();
-            //$this->affichage->views('commands/commands',$commandes);
             header('location:commandes');
         }
 
- public function store_command($data){
+public function store_command($data){
     $commande = new Commande;
     $produit = new Produit;
     $commande->store($data);
-    $produit->updateProductQuantity($data['produit_id']);
-  
-    
-        
+    $produit->updateProductQuantity($data['produit_id']);      
  }
 
- public function confirm_commande($data){
+public function confirm_commande($data){
     $structure = new \models\structure();
     $commande = new \Models\Commande;
 
@@ -123,8 +114,6 @@ class ControllerCommande extends BaseController{
    $commande = new Commande;
    $count_product = $repositorie->count_produit();
    $count_client = $repositorie->count_client();
- 
-   // $command = $commande->not_approved();
    $revenue = $commande->revenue();
    
  
@@ -143,8 +132,6 @@ class ControllerCommande extends BaseController{
  public function status($data){
     $commande = new Commande;
     $commande->precommande_status($data);
-    //$this->affichage->views('commands/commands',$commandes);
-    header('location:/');
 }
 
 

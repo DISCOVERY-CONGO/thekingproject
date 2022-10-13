@@ -96,6 +96,33 @@ public function inpout_output(){
                         }
     }
 
+
+    public function stock_hebdo(){
+        $sql = "SELECT produit.nom,
+        (SELECT SUM(quantite_produit.quantite) FROM quantite_produit 
+                             WHERE quantite_produit.id_produit = produit.id 
+                             AND day(quantite_produit.created_at) <= day(CURRENT_DATE)-7)
+                             AS input,
+                     (SELECT SUM(commande.quantite) 
+                         FROM commande 
+                         WHERE commande.produit_id = produit.id 
+                         AND day(commande.created_at) <= day(CURRENT_DATE)-7)
+                         AS qty_commande, produit.quantite 
+                         AS qty_total, -commande.quantite + produit.quantite as solde
+             FROM produit,commande,quantite_produit 
+             WHERE  commande.produit_id = produit.id 
+             AND day(commande.created_at) <= day(CURRENT_DATE)-7 
+             AND day(quantite_produit.created_at) <= day(CURRENT_DATE)-7  
+             AND quantite_produit.id_produit = produit.id
+             GROUP BY produit.nom  ";
+    
+                        $this->req = $this->connect->query($sql);
+                        $result = $this->req->fetchAll();
+                            if($result != null){
+                                return $result;
+                            }
+        }
+
     public function rapport_between($data){
         $from_date = $data['from_date'];
         $to_date = $data['to_date'];
